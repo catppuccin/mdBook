@@ -21,8 +21,8 @@ TODO
 
 ## 💝 Thanks to
 
-- [sgoudham]()
-- [winston]()
+- [Hamothy](https://github.com/sgoudham)
+- [Winston](https://github.com/nekowinston)
 
 &nbsp;
 
