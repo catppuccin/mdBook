@@ -1,8 +1,28 @@
 [package]
-name = "catppuccin-mdbook"
+name = "mdbook-catppuccin"
+authors = ["Goudham Suresh <sgoudham@gmail.com>", "winston <hey@winston.sh>"]
+description = "A mdbook preprocessor that implements catppuccin flavours as default themes"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/catppuccin/mdBook"
+keywords = ["mdbook", "markdown", "catppuccin", "preprocessor", "plugin"]
+exclude = [".github/**"]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[[bin]]
+name = "mdbook-catppuccin"
+path = "src/bin/mdbook-catppuccin.rs"
+
+[lib]
+name = "mdbook_catppuccin"
+path = "src/lib.rs"
 
 [dependencies]
+clap = "3.2.14"
+mdbook = "0.4.21"
+env_logger = "0.9.0"
+log = "0.4.17"
+semver = "1.0.12"
+serde_json = "1.0.82"
+toml_edit = "0.14.4"
