@@ -1,34 +1,121 @@
 @use "catppuccin" as *;
 
 @each $flavour, $color in $palette {
-  .#{$flavour} {
-    --bg: #{map-get($color, base)};
-    --fg: #{map-get($color, text)};
-    --sidebar-bg: #{map-get($color, mantle)};
-    --sidebar-fg: #{map-get($color, text)};
-    --sidebar-non-existant: #{map-get($color, overlay0)};
-    --sidebar-active: #{map-get($color, rosewater)};
-    --sidebar-spacer: #{map-get($color, overlay0)};
-    --scrollbar: #{map-get($color, overlay0)};
-    --icons: #{map-get($color, overlay0)};
-    --icons-hover: #{map-get($color, overlay1)};
-    --links: #{map-get($color, rosewater)};
-    --inline-code-color: #{map-get($color, peach)};
-    --theme-popup-bg: #{map-get($color, mantle)};
-    --theme-popup-border: #{map-get($color, crust)};
-    --theme-hover: #{map-get($color, overlay0)};
-    --quote-bg: #{map-get($color, mantle)};
-    --quote-border: #{map-get($color, crust)};
-    --table-border-color: #{map-get($color, crust)};
-    --table-header-bg: #{map-get($color, mantle)};
-    --table-alternate-bg: #{map-get($color, crust)};
-    --searchbar-border-color: #{map-get($color, crust)};
-    --searchbar-bg: #{map-get($color, mantle)};
-    --searchbar-fg: #{map-get($color, text)};
-    --searchbar-shadow-color: #{map-get($color, crust)};
-    --searchresults-header-fg: #{map-get($color, text)};
-    --searchresults-border-color: #{map-get($color, crust)};
-    --searchresults-li-bg: #{map-get($color, base)};
-    --search-mark-bg: #{map-get($color, peach)};
-  }
+	.#{$flavour} {
+		--bg: #{map-get($color, base)};
+		--fg: #{map-get($color, text)};
+		--sidebar-bg: #{map-get($color, mantle)};
+		--sidebar-fg: #{map-get($color, text)};
+		--sidebar-non-existant: #{map-get($color, overlay0)};
+		--sidebar-active: #{map-get($color, rosewater)};
+		--sidebar-spacer: #{map-get($color, overlay0)};
+		--scrollbar: #{map-get($color, overlay0)};
+		--icons: #{map-get($color, overlay0)};
+		--icons-hover: #{map-get($color, overlay1)};
+		--links: #{map-get($color, rosewater)};
+		--inline-code-color: #{map-get($color, peach)};
+		--theme-popup-bg: #{map-get($color, mantle)};
+		--theme-popup-border: #{map-get($color, crust)};
+		--theme-hover: #{map-get($color, overlay0)};
+		--quote-bg: #{map-get($color, mantle)};
+		--quote-border: #{map-get($color, crust)};
+		--table-border-color: #{map-get($color, crust)};
+		--table-header-bg: #{map-get($color, mantle)};
+		--table-alternate-bg: #{map-get($color, crust)};
+		--searchbar-border-color: #{map-get($color, crust)};
+		--searchbar-bg: #{map-get($color, mantle)};
+		--searchbar-fg: #{map-get($color, text)};
+		--searchbar-shadow-color: #{map-get($color, crust)};
+		--searchresults-header-fg: #{map-get($color, text)};
+		--searchresults-border-color: #{map-get($color, crust)};
+		--searchresults-li-bg: #{map-get($color, base)};
+		--search-mark-bg: #{map-get($color, peach)};
+
+		// highlight.js/css
+		.hjls {
+			display: block;
+			overflow-x: auto;
+			background-color: #{map-get($color, mantle)} !important;
+			padding: 1em !important;
+		}
+
+		.hljs-built_in,
+		.hljs-selector-tag,
+		.hljs-section,
+		.hljs-link {
+			color: #{map-get($color, sapphire)} !important;
+		}
+
+		.hljs-keyword {
+			color: #{map-get($color, 'pink')} !important;
+		}
+
+		.hljs,
+		.hljs-subst {
+			color: #{map-get($color, subtext0)} !important;
+		}
+
+		.hljs-title {
+			color: #{map-get($color, 'blue')} !important;
+		}
+
+		.hljs-attr,
+		.hljs-meta-keyword {
+			font-style: italic;
+			color: #{map-get($color, 'green')} !important;
+		}
+
+		.hljs-type {
+			color: #{map-get($color, 'blue')} !important;
+		}
+
+		.hljs-string {
+			color: #{map-get($color, 'green')} !important;
+		}
+
+		.hljs-meta,
+		.hljs-name,
+		.hljs-symbol,
+		.hljs-bullet,
+		.hljs-addition,
+		.hljs-variable,
+		.hljs-template-tag,
+		.hljs-template-variable {
+			color: #{map-get($color, flamingo)} !important;
+		}
+
+		.hljs-addition {
+			color: #{map-get($color, 'green')} !important;
+		}
+
+		.hljs-deletion {
+			color: #{map-get($color, 'red')} !important;
+		}
+
+		.hljs-comment,
+		.hljs-quote {
+			color: #{map-get($color, surface2)} !important;
+		}
+
+		.hljs-keyword,
+		.hljs-selector-tag,
+		.hljs-literal,
+		.hljs-title,
+		.hljs-section,
+		.hljs-doctag,
+		.hljs-type,
+		.hljs-name,
+		.hljs-strong {
+			font-weight: bold !important;
+		}
+
+		.hljs-literal,
+		.hljs-number {
+			color: #{map-get($color, peach)} !important;
+		}
+
+		.hljs-emphasis {
+			font-style: italic !important;
+		}
+	}
 }
