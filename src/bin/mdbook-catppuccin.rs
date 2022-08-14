@@ -41,8 +41,8 @@ pub fn make_app() -> Command<'static> {
                 )
                 .arg(
                     Arg::new("dir")
-                     .default_value(".")
-                     .help("Root directory for the book, this should contain the configuration file `book.toml`")
+                        .default_value(".")
+                        .help("Root directory for the book, this should contain the configuration file `book.toml`")
                 )
                 .about("Install the necessary files needed and update the config to include them"),
         )
@@ -82,14 +82,15 @@ fn handle_supports(pre: &Catppuccin, sub_args: &ArgMatches) -> ! {
 }
 
 mod install {
+    use std::{fs, path::PathBuf};
     use std::fs::File;
     use std::io::Write;
-    use std::{fs, path::PathBuf};
 
     use clap::ArgMatches;
     use log::{error, info, warn};
-    use mdbook_catppuccin::toml::ArrayExt;
     use toml_edit::{Array, Document, Item, Table, Value};
+
+    use mdbook_catppuccin::toml::{ArrayExt, DocumentExt};
 
     const VERSION: &str = env!("CARGO_PKG_VERSION");
     const CATPPUCCIN_ASSETS: &[(&str, &str, &[u8])] = &[
@@ -139,7 +140,7 @@ mod install {
         //     Err(unpog) => error!("Unexpected Configuration: {}", unpog),
         // }
 
-        if let Ok(preprocessor) = tbl_preproccesor(&mut document) {
+        if let Ok(preprocessor) = document.get_or_insert_into_preprocessor_mut("catppuccin") {
             let value = toml_edit::value(Value::from(VERSION.trim()).decorated(
                 " ",
                 " # DO NOT EDIT: Managed by `mdbook-catppuccin install`",
@@ -157,7 +158,7 @@ mod install {
             };
             let path_str = path.to_str().expect("Non-UTF8 Filepath");
 
-            if let Ok(asset) = tbl_additional_asset(&mut document, entry) {
+            if let Ok(asset) = document.get_or_insert_into_output_html_mut(entry) {
                 if !asset.contains_str(path_str) {
                     info!("Adding '{path_str}' to '{entry}'");
                     asset.push(path_str);
@@ -200,41 +201,4 @@ mod install {
     fn copy_assets() {}
 
     fn update_configuration_file() {}
-
-    fn tbl_additional_asset<'a>(
-        doc: &'a mut Document,
-        entry: &'a str,
-    ) -> Result<&'a mut Array, ()> {
-        let doc = doc.as_table_mut();
-        let empty_table = Item::Table(Table::default());
-        let empty_array = Item::Value(Value::Array(Array::default()));
-
-        doc.entry("output")
-            .or_insert(empty_table.clone())
-            .as_table_mut()
-            .and_then(|item| {
-                item.entry("html")
-                    .or_insert(empty_table)
-                    .as_table_mut()?
-                    .entry(entry)
-                    .or_insert(empty_array)
-                    .as_value_mut()?
-                    .as_array_mut()
-            })
-            .ok_or(())
-    }
-
-    fn tbl_preproccesor(doc: &mut Document) -> Result<&mut Item, ()> {
-        let doc = doc.as_table_mut();
-
-        let empty_table = Item::Table(Table::default());
-        let item = doc.entry("preprocessor").or_insert(empty_table.clone());
-        let item = item
-            .as_table_mut()
-            .ok_or(())?
-            .entry("catppuccin")
-            .or_insert(empty_table);
-
-        Ok(item)
-    }
 }

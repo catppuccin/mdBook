@@ -1,11 +1,53 @@
-use toml_edit::{Array, Table};
+use toml_edit::{Array, Document, Item, Table, Value};
+
+pub trait DocumentExt {
+    fn get_or_insert_into_output_html_mut(&mut self, entry: &str) -> Result<&mut Array, String>;
+    fn get_or_insert_into_preprocessor_mut(&mut self, entry: &str) -> Result<&mut Item, &str>;
+}
+
+impl DocumentExt for Document {
+    fn get_or_insert_into_output_html_mut(&mut self, entry: &str) -> Result<&mut Array, String> {
+        let empty_table = Item::Table(Table::default());
+        let empty_array = Item::Value(Value::Array(Array::default()));
+
+        self.entry("output")
+            .or_insert(empty_table.clone())
+            .as_table_mut()
+            .and_then(|item| {
+                item.entry("html")
+                    .or_insert(empty_table)
+                    .as_table_mut()?
+                    .entry(entry)
+                    .or_insert(empty_array)
+                    .as_value_mut()?
+                    .as_array_mut()
+            })
+            .ok_or(format!("Could not insert 'output.html.{entry}'"))
+    }
+
+    fn get_or_insert_into_preprocessor_mut(&mut self, entry: &str) -> Result<&mut Item, &str> {
+        let empty_table = Item::Table(Table::default());
+        let table = self.entry("preprocessor")
+            .or_insert(empty_table.clone())
+            .as_table_mut()
+            .ok_or("'No table 'preprocessor' found")?
+            .entry(entry)
+            .or_insert(empty_table);
+        Ok(table)
+    }
+}
 
 pub(crate) trait TableExt {
+    fn contains(&self, key: &str) -> bool;
     fn additional_css(&self) -> Result<&Array, &str>;
     fn additional_js(&self) -> Result<&Array, &str>;
 }
 
 impl TableExt for Table {
+    fn contains(&self, item: &str) -> bool {
+        self.iter().any(|(key, _)| key == item)
+    }
+
     fn additional_css(&self) -> Result<&Array, &str> {
         self.get("additional-css")
             .and_then(|item| item.as_array())
@@ -21,11 +63,8 @@ impl TableExt for Table {
 
 pub trait ArrayExt {
     fn contains_str(&self, value: &str) -> bool;
+
     /// Returns `Option<&str>` with the `&str` that contains the given value
-    ///
-    /// # Errors
-    ///
-    /// This function will return an error if catppuccin.css does not found
     ///
     /// # Safety
     ///
