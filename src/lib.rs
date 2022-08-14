@@ -1,11 +1,15 @@
-mod install;
+pub mod toml;
 
-use log::{error, warn};
+use std::process;
+
+use log::error;
 use mdbook::book::Book;
 use mdbook::errors::Result;
 use mdbook::preprocess::{Preprocessor, PreprocessorContext};
 
 pub struct Catppuccin;
+
+const VERSION: &str = env!("CARGO_PKG_VERSION");
 
 impl Catppuccin {
     pub fn new() -> Self {
@@ -18,9 +22,15 @@ impl Preprocessor for Catppuccin {
         "catppuccin"
     }
 
-    fn run(&self, ctx: &PreprocessorContext, mut book: Book) -> Result<Book> {
-        env_logger::init_from_env(env_logger::Env::default().default_filter_or("info"));
-        let src_dir = ctx.root.join(&ctx.config.book.src);
+    fn run(&self, ctx: &PreprocessorContext, book: Book) -> Result<Book> {
+        let html_config = ctx.config.html_config().unwrap_or_else(|| {
+            error!("Could not parse 'output.html' field");
+            process::exit(1);
+        });
+        let theme_dir = match html_config.theme {
+            Some(ref theme) => ctx.root.join(theme),
+            None => ctx.root.join("theme"),
+        };
 
         Ok(book)
     }
