@@ -82,13 +82,13 @@ fn handle_supports(pre: &Catppuccin, sub_args: &ArgMatches) -> ! {
 }
 
 mod install {
-    use std::{fs, path::PathBuf};
     use std::fs::File;
     use std::io::Write;
+    use std::{fs, path::PathBuf};
 
     use clap::ArgMatches;
     use log::{error, info, warn};
-    use toml_edit::{Array, Document, Item, Table, Value};
+    use toml_edit::{Document, Value};
 
     use mdbook_catppuccin::toml::{ArrayExt, DocumentExt};
 
@@ -103,6 +103,11 @@ mod install {
             "catppuccin.css",
             "additional-css",
             include_bytes!("./assets/catppuccin.css"),
+        ),
+        (
+            "catppuccin-highlight.css",
+            "additional-css",
+            include_bytes!("./assets/catppuccin-highlight.css"),
         ),
     ];
 
@@ -125,20 +130,6 @@ mod install {
         let mut document = toml
             .parse::<Document>()
             .expect("Configuration is not valid TOML");
-
-        // match tbl_output_html(&document) {
-        //     Ok(pog) => {
-        //         match pog.additional_js() {
-        //             Ok(css) => if !css.contains_str("catppuccin.css") {},
-        //             Err(err) => error!("Unexpected Table: {err}"),
-        //         }
-        //         match pog.additional_css() {
-        //             Ok(_) => todo!(),
-        //             Err(err) => error!("Unexpected Table: {err}"),
-        //         }
-        //     }
-        //     Err(unpog) => error!("Unexpected Configuration: {}", unpog),
-        // }
 
         if let Ok(preprocessor) = document.get_or_insert_into_preprocessor_mut("catppuccin") {
             let value = toml_edit::value(Value::from(VERSION.trim()).decorated(
