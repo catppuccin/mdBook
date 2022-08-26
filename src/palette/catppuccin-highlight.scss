@@ -2,87 +2,97 @@
 
 @each $flavour, $color in catppuccin.$palette {
     .#{$flavour} {
+        code,
         .hljs {
-            background: #{map-get($color, mantle)} !important;
+            background: #{map-get($color, "mantle")} !important;
         }
+        pre {
+            .hljs {
+                background: #{map-get($color, "mantle")} !important;
+            }
 
-        .hljs-built_in,
-        .hljs-selector-tag,
-        .hljs-section,
-        .hljs-link {
-            color: #{map-get($color, sapphire)} !important;
-        }
+            .hljs-params {
+                color: #{map-get($color, "red")} !important;
+            }
 
-        .hljs-keyword {
-            color: #{map-get($color, "pink")} !important;
-        }
+            .hljs-built_in,
+            .hljs-selector-tag,
+            .hljs-section,
+            .hljs-link {
+                color: #{map-get($color, "sapphire")} !important;
+            }
 
-        .hljs,
-        .hljs-subst {
-            color: #{map-get($color, subtext0)} !important;
-        }
+            .hljs-keyword {
+                color: #{map-get($color, "mauve")} !important;
+            }
 
-        .hljs-title {
-            color: #{map-get($color, "blue")} !important;
-        }
+            .hljs,
+            .hljs-subst {
+                color: #{map-get($color, "subtext0")} !important;
+            }
 
-        .hljs-attr,
-        .hljs-meta-keyword {
-            font-style: italic;
-            color: #{map-get($color, "green")} !important;
-        }
+            .hljs-title {
+                color: #{map-get($color, "blue")} !important;
+            }
 
-        .hljs-type {
-            color: #{map-get($color, "blue")} !important;
-        }
+            .hljs-attr,
+            .hljs-meta-keyword {
+                font-style: italic;
+                color: #{map-get($color, "green")} !important;
+            }
 
-        .hljs-string {
-            color: #{map-get($color, "green")} !important;
-        }
+            .hljs-type {
+                color: #{map-get($color, "blue")} !important;
+            }
 
-        .hljs-meta,
-        .hljs-name,
-        .hljs-symbol,
-        .hljs-bullet,
-        .hljs-addition,
-        .hljs-variable,
-        .hljs-template-tag,
-        .hljs-template-variable {
-            color: #{map-get($color, flamingo)} !important;
-        }
+            .hljs-string {
+                color: #{map-get($color, "green")} !important;
+            }
 
-        .hljs-addition {
-            color: #{map-get($color, "green")} !important;
-        }
+            .hljs-meta,
+            .hljs-name,
+            .hljs-symbol,
+            .hljs-bullet,
+            .hljs-addition,
+            .hljs-variable,
+            .hljs-template-tag,
+            .hljs-template-variable {
+                color: #{map-get($color, "flamingo")} !important;
+            }
 
-        .hljs-deletion {
-            color: #{map-get($color, "red")} !important;
-        }
+            .hljs-addition {
+                color: #{map-get($color, "green")} !important;
+            }
 
-        .hljs-comment,
-        .hljs-quote {
-            color: #{map-get($color, surface2)} !important;
-        }
+            .hljs-deletion {
+                color: #{map-get($color, "red")} !important;
+            }
 
-        .hljs-keyword,
-        .hljs-selector-tag,
-        .hljs-literal,
-        .hljs-title,
-        .hljs-section,
-        .hljs-doctag,
-        .hljs-type,
-        .hljs-name,
-        .hljs-strong {
-            font-weight: bold !important;
-        }
+            .hljs-comment,
+            .hljs-quote {
+                color: #{map-get($color, "surface2")} !important;
+            }
 
-        .hljs-literal,
-        .hljs-number {
-            color: #{map-get($color, peach)} !important;
-        }
+            .hljs-keyword,
+            .hljs-selector-tag,
+            .hljs-literal,
+            .hljs-title,
+            .hljs-section,
+            .hljs-doctag,
+            .hljs-type,
+            .hljs-name,
+            .hljs-strong {
+                font-weight: bold !important;
+            }
 
-        .hljs-emphasis {
-            font-style: italic !important;
+            .hljs-literal,
+            .hljs-number {
+                color: #{map-get($color, "peach")} !important;
+            }
+
+            .hljs-emphasis {
+                font-style: italic !important;
+            }
         }
     }
 }
