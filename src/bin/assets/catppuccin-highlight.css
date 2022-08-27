@@ -1,6 +1,16 @@
 .mocha code,
 .mocha .hljs {
-  background: #181825 !important;
+  background: #181825;
+}
+.mocha code .hljs-attr,
+.mocha code .hljs-string {
+  color: #a6e3a1;
+}
+.mocha code .hljs-tag {
+  color: #f38ba8;
+}
+.mocha code .hljs-name {
+  color: #f2cdcd;
 }
 .mocha pre .hljs {
   background: #181825 !important;
@@ -26,7 +36,6 @@
 }
 .mocha pre .hljs-attr,
 .mocha pre .hljs-meta-keyword {
-  font-style: italic;
   color: #a6e3a1 !important;
 }
 .mocha pre .hljs-type {
@@ -34,6 +43,9 @@
 }
 .mocha pre .hljs-string {
   color: #a6e3a1 !important;
+}
+.mocha pre .hljs-tag {
+  color: #f38ba8 !important;
 }
 .mocha pre .hljs-meta,
 .mocha pre .hljs-name,
@@ -76,7 +88,17 @@
 
 .macchiato code,
 .macchiato .hljs {
-  background: #1e2030 !important;
+  background: #1e2030;
+}
+.macchiato code .hljs-attr,
+.macchiato code .hljs-string {
+  color: #a6da95;
+}
+.macchiato code .hljs-tag {
+  color: #ed8796;
+}
+.macchiato code .hljs-name {
+  color: #f0c6c6;
 }
 .macchiato pre .hljs {
   background: #1e2030 !important;
@@ -102,7 +124,6 @@
 }
 .macchiato pre .hljs-attr,
 .macchiato pre .hljs-meta-keyword {
-  font-style: italic;
   color: #a6da95 !important;
 }
 .macchiato pre .hljs-type {
@@ -110,6 +131,9 @@
 }
 .macchiato pre .hljs-string {
   color: #a6da95 !important;
+}
+.macchiato pre .hljs-tag {
+  color: #ed8796 !important;
 }
 .macchiato pre .hljs-meta,
 .macchiato pre .hljs-name,
@@ -152,7 +176,17 @@
 
 .frappe code,
 .frappe .hljs {
-  background: #292c3c !important;
+  background: #292c3c;
+}
+.frappe code .hljs-attr,
+.frappe code .hljs-string {
+  color: #a6d189;
+}
+.frappe code .hljs-tag {
+  color: #e78284;
+}
+.frappe code .hljs-name {
+  color: #eebebe;
 }
 .frappe pre .hljs {
   background: #292c3c !important;
@@ -178,7 +212,6 @@
 }
 .frappe pre .hljs-attr,
 .frappe pre .hljs-meta-keyword {
-  font-style: italic;
   color: #a6d189 !important;
 }
 .frappe pre .hljs-type {
@@ -186,6 +219,9 @@
 }
 .frappe pre .hljs-string {
   color: #a6d189 !important;
+}
+.frappe pre .hljs-tag {
+  color: #e78284 !important;
 }
 .frappe pre .hljs-meta,
 .frappe pre .hljs-name,
@@ -228,7 +264,17 @@
 
 .latte code,
 .latte .hljs {
-  background: #e6e9ef !important;
+  background: #e6e9ef;
+}
+.latte code .hljs-attr,
+.latte code .hljs-string {
+  color: #40a02b;
+}
+.latte code .hljs-tag {
+  color: #d20f39;
+}
+.latte code .hljs-name {
+  color: #dd7878;
 }
 .latte pre .hljs {
   background: #e6e9ef !important;
@@ -254,7 +300,6 @@
 }
 .latte pre .hljs-attr,
 .latte pre .hljs-meta-keyword {
-  font-style: italic;
   color: #40a02b !important;
 }
 .latte pre .hljs-type {
@@ -262,6 +307,9 @@
 }
 .latte pre .hljs-string {
   color: #40a02b !important;
+}
+.latte pre .hljs-tag {
+  color: #d20f39 !important;
 }
 .latte pre .hljs-meta,
 .latte pre .hljs-name,

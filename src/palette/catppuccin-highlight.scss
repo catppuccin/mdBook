@@ -4,8 +4,24 @@
     .#{$flavour} {
         code,
         .hljs {
-            background: #{map-get($color, "mantle")} !important;
+            background: #{map-get($color, "mantle")};
         }
+
+        code {
+            .hljs-attr,
+            .hljs-string {
+                color: #{map-get($color, "green")};
+            }
+
+            .hljs-tag {
+                color: #{map-get($color, "red")};
+            }
+
+            .hljs-name {
+                color: #{map-get($color, "flamingo")};
+            }
+        }
+
         pre {
             .hljs {
                 background: #{map-get($color, "mantle")} !important;
@@ -37,7 +53,6 @@
 
             .hljs-attr,
             .hljs-meta-keyword {
-                font-style: italic;
                 color: #{map-get($color, "green")} !important;
             }
 
@@ -47,6 +62,10 @@
 
             .hljs-string {
                 color: #{map-get($color, "green")} !important;
+            }
+
+            .hljs-tag {
+                color: #{map-get($color, "red")} !important;
             }
 
             .hljs-meta,
