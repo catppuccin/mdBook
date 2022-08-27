@@ -20,8 +20,8 @@ It is important to know that there are 2 ways to install this theme:
 
 1. Install `mdbook-catppuccin` using [Cargo](https://doc.rust-lang.org/cargo/) (It comes installed with [Rust](https://rustup.rs/) by default!)
 
-    1.1 Binaries Coming Soon™
-
+    - **Binaries** are also available if that's more your style! You can always find the latest releases [here](https://github.com/catppuccin/mdBook/releases/latest)!
+    
 2. Transfer files to your mdBook from this GitHub manually
 
 ### Rust (Preferred)
