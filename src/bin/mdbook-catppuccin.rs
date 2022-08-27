@@ -136,8 +136,9 @@ mod install {
     fn read_configuration_file(toml_config: &PathBuf) -> (String, Document) {
         info!("Reading configuration file '{}'", toml_config.display());
         let toml = fs::read_to_string(&toml_config).expect("Can't read configuration file");
-        let document = toml.parse::<Document>()
-                    .expect("Configuration is not valid TOML");
+        let document = toml
+            .parse::<Document>()
+            .expect("Configuration is not valid TOML");
         (toml, document)
     }
 
@@ -177,10 +178,10 @@ mod install {
             let path_str = path.to_str().expect("Non-UTF8 Filepath");
 
             if let TomlPath::Path(path) = entry {
-                if let Ok(asset) = document.insert_into_output_html(path) {
-                    if !asset.contains_str(path_str) {
+                if let Ok(additional_key) = document.insert_into_output_html(path) {
+                    if !additional_key.contains_str(path_str) {
                         info!("Adding '{path_str}' to '{path}'");
-                        asset.push(path_str);
+                        additional_key.push(path_str);
                     }
                 } else {
                     warn!("Unexpected configuration, not updating '{path}'");
