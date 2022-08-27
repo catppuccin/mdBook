@@ -54,7 +54,7 @@ It is important to know that there are 2 ways to install this theme:
 
 ### How Can I Remove The Default mdBook Themes?
 
-Navigate to [`index.hbs (L125 - L132)`](https://github.com/sgoudham/catppuccin-mdBook/blob/main/src/bin/assets/index.hbs#L125-L132) and remove each theme that you do not want appearing on the mdBook
+Navigate to [`index.hbs (L125 - L132)`](https://github.com/catppuccin/mdBook/blob/main/src/bin/assets/index.hbs#L125-L132) and remove each theme that you do not want appearing on the mdBook
 
 For example, to remove all the default themes:
 
