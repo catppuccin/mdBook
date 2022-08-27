@@ -15,14 +15,14 @@
 	<img src="assets/catwalk.webp"/>
 </p>
 
-## Usage
-
+## Installation
 It is important to know that there are 2 ways to install this theme:
 
-1. Transfer files to your mdBook from this GitHub manually
-2. Install `mdbook-catppuccin` using Rust
+1. Install `mdbook-catppuccin` using [Cargo](https://doc.rust-lang.org/cargo/) (It comes installed with [Rust](https://rustup.rs/) by default!)
 
-## Installation
+    1.1 Binaries Coming Soon™
+
+2. Transfer files to your mdBook from this GitHub manually
 
 ### Rust (Preferred)
 
@@ -75,14 +75,14 @@ For example, to remove all the default themes:
 
 Running `mdbook build` again should get rid of the themes appearing in the theme picker, enjoy!
 
-### Why Should I Install This Pre-Processor If I Can Just Install Everything Manually?
+### What's The Point Of This mdBook Preprocessor If I Can Just Install Everything Manually?
 
 Arguably, it's actually better to transfer over the assets individually as you won't have to install this mdBook preprocessor.
 However, the assets will _**NOT**_ be managed for you. You are in charge of upgrading/modifying the assets as you see fit. The preferred method of installation is through Rust as the pre-processor will be able to detect differences in versions of assets.
 
 ## Acknowledgement
 
-Inspiration for the `install` command came from [mdBook-admonish](https://github.com/tommilligan/mdbook-admonish) which is another great mdBook pre-processor!
+Inspiration for the `install` command came from [mdbook-admonish](https://github.com/tommilligan/mdbook-admonish) which is another great mdBook pre-processor!
 
 ## 💝 Thanks to
 
