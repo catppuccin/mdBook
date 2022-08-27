@@ -1,114 +1,114 @@
 name: build
 
 on:
-    push:
-        paths:
-            - "src/**"
-            - ".github/**"
-            - "Cargo.toml"
-            - "Cargo.lock"
-        branches:
-            - "**"
-    pull_request:
-        paths:
-            - "src/**"
-            - ".github/**"
-            - "Cargo.toml"
-            - "Cargo.lock"
+  push:
+    paths:
+      - "src/**"
+      - ".github/**"
+      - "Cargo.toml"
+      - "Cargo.lock"
+    branches:
+      - "**"
+  pull_request:
+    paths:
+      - "src/**"
+      - ".github/**"
+      - "Cargo.toml"
+      - "Cargo.lock"
 
 jobs:
-    windows:
-        runs-on: windows-latest
-        strategy:
-            matrix:
-                target:
-                    - x86_64-pc-windows-gnu
-                    - x86_64-pc-windows-msvc
+  windows:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        target:
+          - x86_64-pc-windows-gnu
+          - x86_64-pc-windows-msvc
 
-        steps:
-            - uses: actions/checkout@v3
-            - name: Cache Cargo
-              uses: actions/cache@v3
-              with:
-                  path: |
-                      ~/.cargo/registry
-                      ./target
-                  # Example key: windows-stable-x86_64-pc-windows-gnu-3k4j234lksjfd9
-                  key: windows-stable-${{ matrix.target }}-${{ hashFiles('**/Cargo.lock') }}
-                  restore-keys: |
-                      windows-stable-${{ matrix.target }}-
-                      windows-stable-
-                      windows-
-            - name: Set Rust Channel
-              run: rustup default stable
-              shell: bash
-            - name: Set Rust Target
-              run: rustup target add ${{ matrix.target }}
-              shell: bash
-            - name: Build
-              run: cargo build --target ${{ matrix.target }}
-              shell: bash
-            - name: Test
-              run: cargo test --target ${{ matrix.target }}
-              shell: bash
+    steps:
+      - uses: actions/checkout@v3
+      - name: Cache Cargo
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/registry
+            ./target
+          # Example key: windows-stable-x86_64-pc-windows-gnu-3k4j234lksjfd9
+          key: windows-stable-${{ matrix.target }}-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            windows-stable-${{ matrix.target }}-
+            windows-stable-
+            windows-
+      - name: Set Rust Channel
+        run: rustup default stable
+        shell: bash
+      - name: Set Rust Target
+        run: rustup target add ${{ matrix.target }}
+        shell: bash
+      - name: Build
+        run: cargo build --target ${{ matrix.target }}
+        shell: bash
+      - name: Test
+        run: cargo test --target ${{ matrix.target }}
+        shell: bash
 
-    macos:
-        runs-on: macos-latest
-        strategy:
-            matrix:
-                target:
-                    - x86_64-apple-darwin
+  macos:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        target:
+          - x86_64-apple-darwin
 
-        steps:
-            - uses: actions/checkout@v3
-            - name: Cache Cargo
-              uses: actions/cache@v3
-              with:
-                  path: |
-                      ~/.cargo/registry
-                      ./target
-                  # Example key: macos-stable-x86_64-apple-darwin-3k4j234lksjfd9
-                  key: macos-stable-${{ matrix.target }}-${{ hashFiles('**/Cargo.lock') }}
-                  restore-keys: |
-                      macos-stable-${{ matrix.target }}-
-                      macos-stable-
-                      macos-
-            - name: Set Rust Channel
-              run: rustup default stable
-            - name: Set Rust Target
-              run: rustup target add ${{ matrix.target }}
-            - name: Build
-              run: cargo build --target ${{ matrix.target }}
-            - name: Test
-              run: cargo test --target ${{ matrix.target }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Cache Cargo
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/registry
+            ./target
+          # Example key: macos-stable-x86_64-apple-darwin-3k4j234lksjfd9
+          key: macos-stable-${{ matrix.target }}-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            macos-stable-${{ matrix.target }}-
+            macos-stable-
+            macos-
+      - name: Set Rust Channel
+        run: rustup default stable
+      - name: Set Rust Target
+        run: rustup target add ${{ matrix.target }}
+      - name: Build
+        run: cargo build --target ${{ matrix.target }}
+      - name: Test
+        run: cargo test --target ${{ matrix.target }}
 
-    linux:
-        runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                target:
-                    - x86_64-unknown-linux-gnu
-                    - x86_64-unknown-linux-musl
+  linux:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target:
+          - x86_64-unknown-linux-gnu
+          - x86_64-unknown-linux-musl
 
-        steps:
-            - uses: actions/checkout@v3
-            - name: Cache Cargo
-              uses: actions/cache@v3
-              with:
-                  path: |
-                      ~/.cargo/registry
-                      ./target
-                  # Example key: linux-stable-x86_64-unknown-linux-gnu-3k4j234lksjfd9
-                  key: linux-stable-${{ matrix.target }}-${{ hashFiles('**/Cargo.lock') }}
-                  restore-keys: |
-                      linux-stable-${{ matrix.target }}-
-                      linux-stable-
-                      linux-
-            - name: Set Rust Channel
-              run: rustup default stable
-            - name: Set Rust Target
-              run: rustup target add ${{ matrix.target }}
-            - name: Build
-              run: cargo build --target ${{ matrix.target }}
-            - name: Test
-              run: cargo test --target ${{ matrix.target }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Cache Cargo
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/registry
+            ./target
+          # Example key: linux-stable-x86_64-unknown-linux-gnu-3k4j234lksjfd9
+          key: linux-stable-${{ matrix.target }}-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            linux-stable-${{ matrix.target }}-
+            linux-stable-
+            linux-
+      - name: Set Rust Channel
+        run: rustup default stable
+      - name: Set Rust Target
+        run: rustup target add ${{ matrix.target }}
+      - name: Build
+        run: cargo build --target ${{ matrix.target }}
+      - name: Test
+        run: cargo test --target ${{ matrix.target }}
