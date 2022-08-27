@@ -80,10 +80,12 @@
             }
 
             .hljs-addition {
+                background-color: #{map-get($color, "mantle")} !important;
                 color: #{map-get($color, "green")} !important;
             }
 
             .hljs-deletion {
+                background-color: #{map-get($color, "mantle")} !important;
                 color: #{map-get($color, "red")} !important;
             }
 
