@@ -34,12 +34,6 @@ pub fn make_app() -> Command<'static> {
         .subcommand(
             Command::new("install")
                 .arg(
-                    Arg::new("assets-dir")
-                        .default_value(".")
-                        .long("assets-dir")
-                        .help("Relative directory for the assets, from the book directory root")
-                )
-                .arg(
                     Arg::new("dir")
                         .default_value(".")
                         .help("Root directory for the book, this should contain the configuration file `book.toml`")
@@ -81,39 +75,45 @@ fn handle_supports(pre: &Catppuccin, sub_args: &ArgMatches) -> ! {
     }
 }
 
+// all selection highlights -> surface0
+// function docs (shift+k) -> mantle
+
 mod install {
     use std::fs::File;
-    use std::io::Write;
+    use std::io::{ErrorKind, Write};
+    use std::path::Path;
     use std::{fs, path::PathBuf};
 
     use clap::ArgMatches;
     use log::{error, info, warn};
     use toml_edit::{Document, Value};
 
-    use mdbook_catppuccin::toml::{ArrayExt, DocumentExt};
+    use mdbook_catppuccin::{
+        toml::{ArrayExt, DocumentExt, TableExt},
+        TomlPath,
+    };
 
     const VERSION: &str = env!("CARGO_PKG_VERSION");
-    const CATPPUCCIN_ASSETS: &[(&str, &str, &[u8])] = &[
-        (
-            "catppuccin.js",
-            "additional-js",
-            include_bytes!("./assets/catppuccin.js"),
-        ),
+    const CATPPUCCIN_ASSETS: &[(&str, TomlPath, &[u8])] = &[
         (
             "catppuccin.css",
-            "additional-css",
+            TomlPath::Path("additional-css"),
             include_bytes!("./assets/catppuccin.css"),
         ),
         (
             "catppuccin-highlight.css",
-            "additional-css",
+            TomlPath::Path("additional-css"),
             include_bytes!("./assets/catppuccin-highlight.css"),
+        ),
+        (
+            "index.hbs",
+            TomlPath::None,
+            include_bytes!("./assets/index.hbs"),
         ),
     ];
 
     pub(crate) fn handle_install(sub_args: &ArgMatches) {
         let dir = sub_args.get_one::<String>("dir").unwrap();
-        let assets_dir = sub_args.get_one::<String>("assets-dir").unwrap();
         let project_dir = PathBuf::from(dir);
         let toml_config = project_dir.join("book.toml");
 
@@ -125,13 +125,44 @@ mod install {
             return;
         }
 
+        let (toml, mut document) = read_configuration_file(&toml_config);
+        let theme_dir = populate_theme_directory(&document, &project_dir);
+        copy_assets(&mut document, &theme_dir);
+        update_configuration_file(document, toml, toml_config);
+
+        info!("mdbook-catppuccin is now installed. Build your book with `mdbook build` to try out your new catppuccin colour palettes!");
+    }
+
+    fn read_configuration_file(toml_config: &PathBuf) -> (String, Document) {
         info!("Reading configuration file '{}'", toml_config.display());
         let toml = fs::read_to_string(&toml_config).expect("Can't read configuration file");
-        let mut document = toml
-            .parse::<Document>()
-            .expect("Configuration is not valid TOML");
+        let document = toml.parse::<Document>()
+                    .expect("Configuration is not valid TOML");
+        (toml, document)
+    }
 
-        if let Ok(preprocessor) = document.get_or_insert_into_preprocessor_mut("catppuccin") {
+    fn populate_theme_directory(document: &Document, project_dir: &Path) -> PathBuf {
+        let mut theme_dir = project_dir.join("theme");
+
+        if let Ok(output_html) = document.get_output_html() {
+            if let Ok(theme) = output_html.theme() {
+                theme_dir = project_dir.join(theme)
+            }
+        } else {
+            warn!("Unexpected configuration, defaulting to default 'theme' directory for transfering assets");
+        }
+
+        if let Err(err) = fs::create_dir_all(&theme_dir) {
+            if err.kind() == ErrorKind::PermissionDenied {
+                warn!("Permission to create '{}' denied", theme_dir.display())
+            }
+        }
+
+        theme_dir
+    }
+
+    fn copy_assets(document: &mut Document, theme_dir: &Path) {
+        if let Ok(preprocessor) = document.insert_into_preprocessor("catppuccin") {
             let value = toml_edit::value(Value::from(VERSION.trim()).decorated(
                 " ",
                 " # DO NOT EDIT: Managed by `mdbook-catppuccin install`",
@@ -142,31 +173,44 @@ mod install {
         };
 
         for (name, entry, content) in CATPPUCCIN_ASSETS {
-            let path = if assets_dir == "." {
-                project_dir.join(name)
-            } else {
-                project_dir.join(assets_dir).join(name)
-            };
+            let path = theme_dir.join(name);
             let path_str = path.to_str().expect("Non-UTF8 Filepath");
 
-            if let Ok(asset) = document.get_or_insert_into_output_html_mut(entry) {
-                if !asset.contains_str(path_str) {
-                    info!("Adding '{path_str}' to '{entry}'");
-                    asset.push(path_str);
+            if let TomlPath::Path(path) = entry {
+                if let Ok(asset) = document.insert_into_output_html(path) {
+                    if !asset.contains_str(path_str) {
+                        info!("Adding '{path_str}' to '{path}'");
+                        asset.push(path_str);
+                    }
+                } else {
+                    warn!("Unexpected configuration, not updating '{path}'");
                 }
-            } else {
-                warn!("Unexpected configuration, not updating '{entry}'");
             }
 
-            info!(
-                "Copying '{name}' to '{filepath}'",
-                filepath = path.display()
-            );
-            let mut file = File::create(path).expect("Can't open file for writing");
+            if *name == "index.hbs" {
+                let file_exists = Path::new(path_str).try_exists();
+                if let Ok(val) = file_exists {
+                    if val {
+                        info!(
+                            "'{}' already exists and therefore will not be overwritten",
+                            path.display()
+                        );
+                        break;
+                    }
+                } else {
+                    error!("Unexpected error, cannot determine if 'index.hbs' exists");
+                    break;
+                }
+            }
+
+            info!("Copying '{name}' to '{path_str}'");
+            let mut file = File::create(path_str).expect("Can't open file for writing");
             file.write_all(content)
                 .expect("Can't write content to file");
         }
+    }
 
+    fn update_configuration_file(document: Document, toml: String, toml_config: PathBuf) {
         let new_toml = document.to_string();
         if new_toml != toml {
             info!(
@@ -183,13 +227,5 @@ mod install {
                 toml_config.display()
             );
         }
-
-        info!("mdbook-catppuccin is now installed. Build your book with `mdbook build` to see your new catppuccin colour palettes in action!");
     }
-
-    fn read_configuration_file() {}
-
-    fn copy_assets() {}
-
-    fn update_configuration_file() {}
 }
