@@ -75,9 +75,6 @@ fn handle_supports(pre: &Catppuccin, sub_args: &ArgMatches) -> ! {
     }
 }
 
-// all selection highlights -> surface0
-// function docs (shift+k) -> mantle
-
 mod install {
     use std::fs::File;
     use std::io::{ErrorKind, Write};
