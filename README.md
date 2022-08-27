@@ -64,6 +64,7 @@ For example, to remove all the default themes:
 -    <li role="none"><button role="menuitem" class="theme" id="rust">{{ theme_option "Rust" }}</button></li>
 -    <li role="none"><button role="menuitem" class="theme" id="coal">{{ theme_option "Coal" }}</button></li>
 -    <li role="none"><button role="menuitem" class="theme" id="navy">{{ theme_option "Navy" }}</button></li>
+-    <li role="none"><button role="menuitem" class="theme" id="ayu">{{ theme_option "Ayu" }}</button></li>
 +    <li role="none"><button role="menuitem" class="theme" id="latte">{{ theme_option "Latte" }}</button></li>
 +    <li role="none"><button role="menuitem" class="theme" id="frappe">{{ theme_option "Frappé" }}</button></li>
 +    <li role="none"><button role="menuitem" class="theme" id="macchiato">{{ theme_option "Macchiato" }}</button></li>
