@@ -45,8 +45,6 @@ It is important to know that there are 2 ways to install this theme:
     ```diff
     [output.html]
     -additional-css = []
-
-    [output.html]
     +additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-highlight.css"]
     ```
 
