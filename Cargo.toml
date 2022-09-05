@@ -19,7 +19,7 @@ name = "mdbook_catppuccin"
 path = "src/lib.rs"
 
 [dependencies]
-clap = "3.2.14"
+clap = "3.2.20"
 mdbook = "0.4.21"
 env_logger = "0.9.0"
 log = "0.4.17"
