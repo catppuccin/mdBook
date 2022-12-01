@@ -20,7 +20,7 @@ path = "src/lib.rs"
 
 [dependencies]
 clap = "3.2.22"
-mdbook = "0.4.21"
+mdbook = "0.4.22"
 env_logger = "0.10.0"
 log = "0.4.17"
 semver = "1.0.14"
