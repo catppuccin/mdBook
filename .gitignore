@@ -12,6 +12,3 @@
 
 # node
 node_modules/
-
-# builds
-/bin/
