@@ -9,3 +9,9 @@
 # Added by cargo
 
 /target
+
+# node
+node_modules/
+
+# builds
+/bin/
