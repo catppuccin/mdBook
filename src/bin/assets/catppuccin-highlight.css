@@ -134,11 +134,11 @@
 }
 .mocha code .hljs-diff-addition {
   color: #a6e3a1;
-  background: rgba(var(--ctp-green), 15%);
+  background: rgba(166, 227, 161, 0.15);
 }
 .mocha code .hljs-diff-deletion {
   color: #f38ba8;
-  background: rgba(var(--ctp-red), 15%);
+  background: rgba(243, 139, 168, 0.15);
 }
 
 .macchiato code.hljs {
@@ -277,11 +277,11 @@
 }
 .macchiato code .hljs-diff-addition {
   color: #a6da95;
-  background: rgba(var(--ctp-green), 15%);
+  background: rgba(166, 218, 149, 0.15);
 }
 .macchiato code .hljs-diff-deletion {
   color: #ed8796;
-  background: rgba(var(--ctp-red), 15%);
+  background: rgba(237, 135, 150, 0.15);
 }
 
 .frappe code.hljs {
@@ -420,11 +420,11 @@
 }
 .frappe code .hljs-diff-addition {
   color: #a6d189;
-  background: rgba(var(--ctp-green), 15%);
+  background: rgba(166, 209, 137, 0.15);
 }
 .frappe code .hljs-diff-deletion {
   color: #e78284;
-  background: rgba(var(--ctp-red), 15%);
+  background: rgba(231, 130, 132, 0.15);
 }
 
 .latte code.hljs {
@@ -563,9 +563,9 @@
 }
 .latte code .hljs-diff-addition {
   color: #a6d189;
-  background: rgba(var(--ctp-green), 15%);
+  background: rgba(166, 209, 137, 0.15);
 }
 .latte code .hljs-diff-deletion {
   color: #e78284;
-  background: rgba(var(--ctp-red), 15%);
+  background: rgba(231, 130, 132, 0.15);
 }
