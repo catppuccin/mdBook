@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/catppuccin/mdBook#readme",
   "devDependencies": {
-    "@catppuccin/highlightjs": "^0.1.1",
+    "@catppuccin/highlightjs": "^0.1.2",
     "@catppuccin/palette": "^0.1.6",
     "sass": "^1.58.3"
   }
