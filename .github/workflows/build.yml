@@ -1,114 +1,138 @@
+# Copyright (c) 2023 Catppuccin
+# Copyright (c) 2015 Andrew Gallant
+
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+
 name: build
 
 on:
+  workflow_dispatch:
   push:
-    paths:
-      - "src/**"
-      - ".github/**"
-      - "Cargo.toml"
-      - "Cargo.lock"
+    # paths:
+    #  - "src/**"
+    #  - "Cargo.toml"
+    #  - "Cargo.lock"
+    # TODO: Remove
     branches:
-      - "**"
+      - main
+      - 0.2.0
   pull_request:
-    paths:
-      - "src/**"
-      - ".github/**"
-      - "Cargo.toml"
-      - "Cargo.lock"
+    # TODO: Remove
+    branches:
+      - main
+      - 0.2.0
+    # paths:
+    #  - "src/**"
+    #  - "Cargo.toml"
+    #  - "Cargo.lock"
 
 jobs:
-  windows:
-    runs-on: windows-latest
+  compile:
+    env:
+      # For some builds, we use cross to test on 32-bit and big-endian systems.
+      CARGO: cargo
+      # When CARGO is set to CROSS, this is set to `--target matrix.target`.
+      TARGET_FLAGS:
+      # When CARGO is set to CROSS, TARGET_DIR includes matrix.target.
+      TARGET_DIR: ./target
+      # Emit backtraces on panics.
+      RUST_BACKTRACE: 1
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        target:
-          - x86_64-pc-windows-gnu
-          - x86_64-pc-windows-msvc
-
+        build:
+          - stable
+          - nightly
+          - nightly-musl
+          - nightly-32
+          - nightly-arm
+          - macos
+          - win-msvc
+          - win-gnu
+        include:
+          - build: stable
+            os: ubuntu-22.04
+            rust: stable
+          - build: nightly
+            os: ubuntu-22.04
+            rust: nightly
+          - build: nightly-musl
+            os: ubuntu-22.04
+            rust: nightly
+            target: x86_64-unknown-linux-musl
+          - build: nightly-32
+            os: ubuntu-22.04
+            rust: nightly
+            target: i686-unknown-linux-gnu
+          - build: nightly-arm
+            os: ubuntu-22.04
+            rust: nightly
+            target: arm-unknown-linux-gnueabihf
+          - build: macos
+            os: macos-12
+            rust: nightly
+          - build: win-msvc
+            os: windows-2022
+            rust: nightly
+          - build: win-gnu
+            os: windows-2022
+            rust: nightly-x86_64-gnu
     steps:
-      - uses: actions/checkout@v3
-      - name: Cache Cargo
-        uses: actions/cache@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install & Build CSS
+        run: npm install && npm run build
+
+      - name: Install packages (Ubuntu)
+        if: matrix.os == 'ubuntu-22.04'
+        shell: bash
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends musl-tools
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@master
         with:
-          path: |
-            ~/.cargo/registry
-            ./target
-          # Example key: windows-stable-x86_64-pc-windows-gnu-3k4j234lksjfd9
-          key: windows-stable-${{ matrix.target }}-${{ hashFiles('**/Cargo.lock') }}
-          restore-keys: |
-            windows-stable-${{ matrix.target }}-
-            windows-stable-
-            windows-
-      - name: Set Rust Channel
-        run: rustup default stable
-        shell: bash
-      - name: Set Rust Target
-        run: rustup target add ${{ matrix.target }}
-        shell: bash
-      - name: Build
-        run: cargo build --target ${{ matrix.target }}
-        shell: bash
+          toolchain: ${{ matrix.rust }}
+
+      - name: Cache Rust
+        uses: Swatinem/rust-cache@v2
+        with:
+          key: ${{ matrix.rust }}
+      
+      - name: Use Cross
+        if: matrix.target != ''
+        run: |
+          cargo install cross
+          echo "CARGO=cross" >> $GITHUB_ENV
+          echo "TARGET_FLAGS=--target ${{ matrix.target }}" >> $GITHUB_ENV
+          echo "TARGET_DIR=./target/${{ matrix.target }}" >> $GITHUB_ENV
+
+      - name: Show command used for Cargo
+        run: |
+          echo "cargo command is: ${{ env.CARGO }}"
+          echo "target flag is: ${{ env.TARGET_FLAGS }}"
+
+      - name: Compile
+        run: ${{ env.CARGO }} build --verbose ${{ env.TARGET_FLAGS }}
+
       - name: Test
-        run: cargo test --target ${{ matrix.target }}
-        shell: bash
+        run: ${{ env.CARGO }} test --verbose ${{ env.TARGET_FLAGS }}
 
-  macos:
-    runs-on: macos-latest
-    strategy:
-      matrix:
-        target:
-          - x86_64-apple-darwin
-
+  rustfmt:
+    name: rustfmt
+    runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
-      - name: Cache Cargo
-        uses: actions/cache@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@master
         with:
-          path: |
-            ~/.cargo/registry
-            ./target
-          # Example key: macos-stable-x86_64-apple-darwin-3k4j234lksjfd9
-          key: macos-stable-${{ matrix.target }}-${{ hashFiles('**/Cargo.lock') }}
-          restore-keys: |
-            macos-stable-${{ matrix.target }}-
-            macos-stable-
-            macos-
-      - name: Set Rust Channel
-        run: rustup default stable
-      - name: Set Rust Target
-        run: rustup target add ${{ matrix.target }}
-      - name: Build
-        run: cargo build --target ${{ matrix.target }}
-      - name: Test
-        run: cargo test --target ${{ matrix.target }}
-
-  linux:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        target:
-          - x86_64-unknown-linux-gnu
-          - x86_64-unknown-linux-musl
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Cache Cargo
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.cargo/registry
-            ./target
-          # Example key: linux-stable-x86_64-unknown-linux-gnu-3k4j234lksjfd9
-          key: linux-stable-${{ matrix.target }}-${{ hashFiles('**/Cargo.lock') }}
-          restore-keys: |
-            linux-stable-${{ matrix.target }}-
-            linux-stable-
-            linux-
-      - name: Set Rust Channel
-        run: rustup default stable
-      - name: Set Rust Target
-        run: rustup target add ${{ matrix.target }}
-      - name: Build
-        run: cargo build --target ${{ matrix.target }}
-      - name: Test
-        run: cargo test --target ${{ matrix.target }}
+          toolchain: stable
+          components: rustfmt
+      - name: Check formatting
+        run: cargo fmt --all --check
