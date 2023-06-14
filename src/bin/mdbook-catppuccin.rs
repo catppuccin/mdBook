@@ -1,6 +1,6 @@
 use std::{io, process};
 
-use clap::{Arg, ArgMatches, Command, crate_version};
+use clap::{crate_version, Arg, ArgMatches, Command};
 use mdbook::errors::Error;
 use mdbook::preprocess::{CmdPreprocessor, Preprocessor};
 use semver::{Version, VersionReq};

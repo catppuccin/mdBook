@@ -57,8 +57,8 @@ pub trait TableExt {
 impl TableExt for Table {
     fn theme(&self) -> Result<&'_ str, &str> {
         self.get("theme")
-        .and_then(|item| item.as_str())
-        .ok_or("'theme' not found")
+            .and_then(|item| item.as_str())
+            .ok_or("'theme' not found")
     }
 }
 
