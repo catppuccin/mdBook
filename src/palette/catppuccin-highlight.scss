@@ -1,12 +1,26 @@
+// https://github.com/catppuccin/highlightjs/pull/1
+
 .mocha {
   @import "@catppuccin/highlightjs/sass/catppuccin-mocha";
+  code.hljs {
+    background: #181825;
+  }
 }
 .macchiato {
   @import "@catppuccin/highlightjs/sass/catppuccin-macchiato";
+  code.hljs {
+    background: #1e2030;
+  }
 }
 .frappe {
   @import "@catppuccin/highlightjs/sass/catppuccin-frappe";
+  code.hljs {
+    background: #292c3c;
+  }
 }
 .latte {
-  @import "@catppuccin/highlightjs/sass/catppuccin-frappe";
+  @import "@catppuccin/highlightjs/sass/catppuccin-latte";
+  code.hljs {
+    background: #e6e9ef;
+  }
 }
