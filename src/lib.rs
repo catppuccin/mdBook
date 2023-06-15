@@ -41,11 +41,12 @@ impl Preprocessor for Catppuccin {
                     match cmp {
                         Cmp::Lt => error!(
                             r#"mdbook-catppuccin with version '{LATEST_ASSETS_VERSION}' is out of date with current asset version '{current_assets_version}'.
-                            Please upgrade by running 'cargo install --force mdbook-catppuccin' and then re-run 'mdbook-catppuccin install'"#
+Please upgrade by running 'cargo install --force mdbook-catppuccin' and then re-run 'mdbook-catppuccin install'"#
                         ),
                         Cmp::Gt => error!(
-                            r#"Out-Of-Date Asset Version '{current_assets_version}' Found: Please update your version of 'mdbook-catppuccin' to '{LATEST_ASSETS_VERSION}'.
-                            Then run 'mdbook-catppuccin install' to install the lastest assets."#
+                            r#"Out-Of-Date Asset Version '{current_assets_version}' Found: 
+Please update your version of 'mdbook-catppuccin' to '{LATEST_ASSETS_VERSION}'. 
+Then run 'mdbook-catppuccin install' to install the lastest assets."#
                         ),
                         _ => {}
                     }
