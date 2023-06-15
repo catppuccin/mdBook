@@ -122,6 +122,9 @@ jobs:
 
       - name: Test
         run: ${{ env.CARGO }} test --verbose ${{ env.TARGET_FLAGS }}
+      
+      - name: View Target Dir
+        run: ls -la target/release
 
   rustfmt:
     name: rustfmt
