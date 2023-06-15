@@ -44,6 +44,7 @@ jobs:
       RUST_BACKTRACE: 1
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         build:
           - stable
@@ -124,6 +125,7 @@ jobs:
         run: ${{ env.CARGO }} test --verbose ${{ env.TARGET_FLAGS }}
       
       - name: View Target Dir
+        shell: bash
         run: ls -la target/debug
 
   rustfmt:
