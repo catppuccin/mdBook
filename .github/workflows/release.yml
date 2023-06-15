@@ -160,3 +160,9 @@
             asset_path: ${{ env.ASSET }}
             asset_name: ${{ env.ASSET }}
             asset_content_type: application/octet-stream
+        
+    # update-website:
+    #   name: update-website
+    #   needs: create-release
+    #   uses: ./.github/workflows/website.yml
+    #   secrets: inherit
