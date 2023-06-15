@@ -48,7 +48,7 @@ jobs:
       matrix:
         build:
           - stable
-          - nightly
+          - nightly-gnu
           - nightly-musl
           - nightly-32
           - nightly-arm
@@ -59,9 +59,10 @@ jobs:
           - build: stable
             os: ubuntu-22.04
             rust: stable
-          - build: nightly
+          - build: nightly-gnu
             os: ubuntu-22.04
             rust: nightly
+            target: x86_64-unknown-linux-gnu
           - build: nightly-musl
             os: ubuntu-22.04
             rust: nightly
@@ -102,8 +103,6 @@ jobs:
 
       - name: Cache Rust
         uses: Swatinem/rust-cache@v2
-        with:
-          key: ${{ matrix.rust }}
       
       - name: Use Cross
         if: matrix.target != ''
