@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## [v0.2.0](https://github.com/catppuccin/mdBook/releases/tag/untagged-f340edb92c501ff41598) - 2023-06-16 02:13:13
+
+*No description*
+
+### Feature
+
+- general:
+  - use npm package imports, update highlightjs ([f3bcc7e](https://github.com/catppuccin/mdBook/commit/f3bcc7e601fb1850d120c12e961cf8d4fb3883ed)) ([#39](https://github.com/catppuccin/mdBook/pull/39))
+  - dependabot is over party ([07a4d8a](https://github.com/catppuccin/mdBook/commit/07a4d8a06c6ec4b65e0ed6702bf61849acc9e073)) ([#16](https://github.com/catppuccin/mdBook/pull/16))
+
+### Bug Fixes
+
+- general:
+  - update to fixed highlightjs version ([98cf81a](https://github.com/catppuccin/mdBook/commit/98cf81a998a49c3176854f46c6e9a971f34b1c93)) ([#39](https://github.com/catppuccin/mdBook/pull/39))
+  - move output from `/bin/assets` to `/src/bin/assets` ([759ad4f](https://github.com/catppuccin/mdBook/commit/759ad4fe0e7e575214115a4eb0f64b32f9b294e8)) ([#39](https://github.com/catppuccin/mdBook/pull/39))
+
+### Refactor
+
+- general:
+  - remove comment ([58bf406](https://github.com/catppuccin/mdBook/commit/58bf406baa1a377d338b76ef1a6b20937cc99ecc))
+
 ## [v0.1.1](https://github.com/catppuccin/mdBook/releases/tag/v0.1.1) - 2022-08-27 21:05:04
 
 *No description*
