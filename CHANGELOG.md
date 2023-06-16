@@ -4,7 +4,8 @@
 
 Apologies for leaving this on the backburner for so long!
 
-This release makes the port more maintainable as we are now using [catppuccin/highlightjs](https://github.com/catppuccin/highlightjs) for the majority of the CSS. There has also been improvements to the CI/CD pipeline and includes a Nix flake (which I still need to fix!)
+This release makes the port more maintainable as we are now using [catppuccin/highlightjs](https://github.com/catppuccin/highlightjs) for the majority of the CSS.
+There has also been improvements to the CI/CD pipeline and includes a Nix flake (which I still need to fix!)
 
 Thanks to anyone who chooses to use this, I really appreciate it <3
 
@@ -17,6 +18,7 @@ Thanks to anyone who chooses to use this, I really appreciate it <3
 ### Bug Fixes
 
 - general:
+  - different colours for code blocks and inline code ([87a1749](https://github.com/catppuccin/mdBook/commit/87a1749fdf8d6046aa986fe5199fea74bd5299e1))
   - code backgrounds updated to `mantle` ([5feb4df](https://github.com/catppuccin/mdBook/commit/5feb4df45897b9399351588e230960ec9cdeefda)) ([#45](https://github.com/catppuccin/mdBook/pull/45))
   - update to fixed highlightjs version ([98cf81a](https://github.com/catppuccin/mdBook/commit/98cf81a998a49c3176854f46c6e9a971f34b1c93)) ([#39](https://github.com/catppuccin/mdBook/pull/39))
   - move output from `/bin/assets` to `/src/bin/assets` ([759ad4f](https://github.com/catppuccin/mdBook/commit/759ad4fe0e7e575214115a4eb0f64b32f9b294e8)) ([#39](https://github.com/catppuccin/mdBook/pull/39))
