@@ -13,23 +13,15 @@ name: build
 on:
   workflow_dispatch:
   push:
-    # paths:
-    #  - "src/**"
-    #  - "Cargo.toml"
-    #  - "Cargo.lock"
-    # TODO: Remove
-    branches:
-      - main
-      - 0.2.0
+    paths:
+     - "src/**"
+     - "Cargo.toml"
+     - "Cargo.lock"
   pull_request:
-    # TODO: Remove
-    branches:
-      - main
-      - 0.2.0
-    # paths:
-    #  - "src/**"
-    #  - "Cargo.toml"
-    #  - "Cargo.lock"
+    paths:
+     - "src/**"
+     - "Cargo.toml"
+     - "Cargo.lock"
 
 jobs:
   compile:

@@ -163,6 +163,6 @@
         
     # update-website:
     #   name: update-website
-    #   needs: create-release
+    #   needs: build-release
     #   uses: ./.github/workflows/website.yml
     #   secrets: inherit
