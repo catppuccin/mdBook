@@ -3,7 +3,7 @@
   "version": "0.1.2",
   "description": "Soothing pastel theme for mdBook",
   "scripts": {
-    "build": "sass -I node_modules --no-charset --no-source-map src/palette:src/bin/assets"
+    "build": "sass -I node_modules --no-charset --no-source-map palette:src/bin/assets"
   },
   "repository": {
     "type": "git",
