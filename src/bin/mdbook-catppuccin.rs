@@ -1,6 +1,6 @@
 use std::{io, process};
 
-use clap::{Arg, ArgMatches, Command};
+use clap::{crate_version, Arg, ArgMatches, Command};
 use mdbook::errors::Error;
 use mdbook::preprocess::{CmdPreprocessor, Preprocessor};
 use semver::{Version, VersionReq};
@@ -26,6 +26,7 @@ fn main() {
 pub fn make_app() -> Command<'static> {
     Command::new("mdbook-catppuccin")
         .about("A mdbook preprocessor that implements catppuccin flavours as default themes")
+        .version(crate_version!())
         .subcommand(
             Command::new("supports")
                 .arg(Arg::new("renderer").required(true))
