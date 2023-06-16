@@ -10,7 +10,3 @@
 
 # node
 node_modules/
-
-# sass generated
-src/bin/assets/catppuccin.css
-src/bin/assets/catppuccin-highlight.css
