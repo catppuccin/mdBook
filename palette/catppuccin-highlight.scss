@@ -2,31 +2,34 @@
 // The problem is that `.mocha code.hljs` is overriding the colours but `.mocha code` works perfectly
 // Until then, make sure you manually edit the files to remove that properly
 
+@use "@catppuccin/palette/scss/catppuccin";
+
 .mocha {
-  code {
-    color: #cdd6f4;
-    background: #181825;
-  }
   @import "@catppuccin/highlightjs/sass/catppuccin-mocha";
 }
 .macchiato {
-  code {
-    color: #cad3f5;
-    background: #1e2030;
-  }
   @import "@catppuccin/highlightjs/sass/catppuccin-macchiato";
 }
 .frappe {
-  code {
-    color: #c6d0f5;
-    background: #292c3c;
-  }
   @import "@catppuccin/highlightjs/sass/catppuccin-frappe";
 }
 .latte {
-  code {
-    color: #4c4f69;
-    background: #e6e9ef;
-  }
   @import "@catppuccin/highlightjs/sass/catppuccin-latte";
+}
+
+@each $flavour, $colour in catppuccin.$palette {
+  .#{$flavour} {
+    code {
+      color: map-get($colour, "text");
+      background: map-get($colour, "mantle");
+    }
+    .ace_gutter {
+      color: map-get($colour, "overlay1");
+      background: map-get($colour, "mantle");
+    }
+    .ace_gutter-active-line.ace_gutter-cell {
+      color: map-get($colour, "pink");
+      background: map-get($colour, "mantle");
+    }
+  }
 }
