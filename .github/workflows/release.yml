@@ -42,7 +42,6 @@ jobs:
       run:
         shell: bash
     env:
-      # For some builds, we use cross to test on 32-bit and big-endian systems.
       CARGO: cargo
       # When CARGO is set to CROSS, this is set to `--target matrix.target`.
       TARGET_FLAGS:
