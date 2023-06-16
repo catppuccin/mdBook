@@ -140,6 +140,7 @@ jobs:
       - name: Build archive
         run: |
           staging="${{ env.BINARY }}-${{ matrix.target }}"
+          mkdir "$staging"
           cp {README.md,LICENSE} "$staging/"
 
           if [ "${{ matrix.os }}" == "windows-2022" ]; then
