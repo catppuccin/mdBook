@@ -5,17 +5,17 @@ on:
   # workflow_call:
   push:
     paths:
-     - "example/**"
+      - "example/**"
   pull_request:
     paths:
-     - "example/**"
+      - "example/**"
 
 jobs:
   build-website:
     runs-on: ubuntu-latest
     defaults:
       run:
-       working-directory: ./example
+        working-directory: ./example
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -23,7 +23,7 @@ jobs:
       - name: Setup mdBook
         uses: peaceiris/actions-mdbook@v1
         with:
-          mdbook-version: 'latest'
+          mdbook-version: "latest"
 
       - name: Download mdbook-catppuccin
         run: |
@@ -45,5 +45,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./book
-          exclude_assets: '.github,**/.gitignore'
+          exclude_assets: ".github,**/.gitignore"
           allow_empty_commit: true

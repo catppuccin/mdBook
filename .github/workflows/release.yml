@@ -8,161 +8,162 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 
-  name: release
+name: release
 
-  on:
-    push:
-      tags:
-        - "v*"
-  
-  env:
-    BINARY: mdbook-catppuccin
-  
-  jobs:
-    create-release:
-      name: create-release
-      runs-on: ubuntu-22.04
-      outputs:
-        upload_url: ${{ steps.release.outputs.upload_url }}
-      steps:
-        - name: Create GitHub Release
-          id: release
-          uses: actions/create-release@v1
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          with:
-            draft: true
-            tag_name: ${{ github.ref_name }}
-            release_name: ${{ github.ref_name }}
-  
-    build-release:
-      needs: ["create-release"]
-      runs-on: ${{ matrix.os }}
-      defaults:
-        run:
-          shell: bash
-      env:
-        # For some builds, we use cross to test on 32-bit and big-endian systems.
-        CARGO: cargo
-        # When CARGO is set to CROSS, this is set to `--target matrix.target`.
-        TARGET_FLAGS:
-        # When CARGO is set to CROSS, TARGET_DIR includes matrix.target.
-        TARGET_DIR: ./target
-        # Emit backtraces on panics.
-        RUST_BACKTRACE: 1
-      strategy:
-        fail-fast: false
-        matrix:
-          build: [linux, linux-gnu, linux-arm, macos, win-msvc, win-gnu, win32-msvc]
-          include:
-            - build: linux
-              os: ubuntu-22.04
-              rust: nightly
-              target: x86_64-unknown-linux-musl
-            - build: linux-gnu
-              os: ubuntu-22.04
-              rust: nightly
-              target: x86_64-unknown-linux-gnu
-            - build: linux-arm
-              os: ubuntu-22.04
-              rust: nightly
-              target: arm-unknown-linux-gnueabihf
-            - build: macos
-              os: macos-12
-              rust: nightly
-              target: x86_64-apple-darwin
-            - build: win-msvc
-              os: windows-2022
-              rust: nightly
-              target: x86_64-pc-windows-msvc
-            - build: win-gnu
-              os: windows-2022
-              rust: nightly-x86_64-gnu
-              target: x86_64-pc-windows-gnu
-            - build: win32-msvc
-              os: windows-2022
-              rust: nightly
-              target: i686-pc-windows-msvc
+on:
+  push:
+    tags:
+      - "v*"
 
-      steps:
-        - name: Checkout repository
-          uses: actions/checkout@v3
-  
-        - name: Install & Build CSS
-          run: npm install && npm run build
-  
-        - name: Install packages (Ubuntu)
-          if: matrix.os == 'ubuntu-22.04'
-          run: sudo apt-get update && sudo apt-get install -y --no-install-recommends musl-tools
-  
-        - name: Install Rust
-          uses: dtolnay/rust-toolchain@master
-          with:
-            toolchain: ${{ matrix.rust }}
-            target: ${{ matrix.target }}
-  
-        - name: Cache Rust
-          uses: Swatinem/rust-cache@v2
-          with:
-            key: ${{ matrix.rust }}
-  
-        - name: Use Cross
-          if: matrix.os != 'windows-2022'
-          run: |
-            cargo install cross
-            echo "CARGO=cross" >> $GITHUB_ENV
-            echo "TARGET_FLAGS=--target ${{ matrix.target }}" >> $GITHUB_ENV
-            echo "TARGET_DIR=./target/${{ matrix.target }}" >> $GITHUB_ENV
-  
-        - name: Show command used for Cargo
-          run: |
-            echo "cargo command is: ${{ env.CARGO }}"
-            echo "target flag is: ${{ env.TARGET_FLAGS }}"
-            echo "target dir is: ${{ env.TARGET_DIR }}"
-  
-        - name: Compile
-          run: ${{ env.CARGO }} build --release --verbose ${{ env.TARGET_FLAGS }}
-  
-        - name: Strip release binary (linux and macos)
-          if: matrix.build == 'linux' || matrix.build == 'macos'
-          run: strip "target/${{ matrix.target }}/release/${{ env.BINARY }}"
-  
-        - name: Strip release binary (arm)
-          if: matrix.build == 'linux-arm'
-          run: |
-            docker run --rm -v \
-              "$PWD/target:/target:Z" \
-              rustembedded/cross:arm-unknown-linux-gnueabihf \
-              arm-linux-gnueabihf-strip \
-              /target/arm-unknown-linux-gnueabihf/release/${{ env.BINARY }}
-  
-        - name: Build archive
-          run: |
-            staging="${{ env.BINARY }}-${{ matrix.target }}"
-            cp {README.md,LICENSE,CHANGELOG.md} "$staging/"
-  
-            if [ "${{ matrix.os }}" == "windows-2022" ]; then
-              cp "target/release/${{ env.BINARY }}.exe" "$staging/"
-              7z a "$staging.zip" "$staging"
-              echo "ASSET=$staging.zip" >> $GITHUB_ENV
-            else
-              cp "target/${{ matrix.target }}/release/${{ env.BINARY }}" "$staging/"
-              tar czf "$staging.tar.gz" "$staging"
-              echo "ASSET=$staging.tar.gz" >> $GITHUB_ENV
-            fi
-  
-        - name: Upload release archive
-          uses: actions/upload-release-asset@v1.0.2
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          with:
-            upload_url: ${{ needs.create-release.outputs.upload_url }}
-            asset_path: ${{ env.ASSET }}
-            asset_name: ${{ env.ASSET }}
-            asset_content_type: application/octet-stream
-        
-    # update-website:
-    #   name: update-website
-    #   needs: build-release
-    #   uses: ./.github/workflows/website.yml
-    #   secrets: inherit
+env:
+  BINARY: mdbook-catppuccin
+
+jobs:
+  create-release:
+    name: create-release
+    runs-on: ubuntu-22.04
+    outputs:
+      upload_url: ${{ steps.release.outputs.upload_url }}
+    steps:
+      - name: Create GitHub Release
+        id: release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          draft: true
+          tag_name: ${{ github.ref_name }}
+          release_name: ${{ github.ref_name }}
+
+  build-release:
+    needs: ["create-release"]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    env:
+      # For some builds, we use cross to test on 32-bit and big-endian systems.
+      CARGO: cargo
+      # When CARGO is set to CROSS, this is set to `--target matrix.target`.
+      TARGET_FLAGS:
+      # When CARGO is set to CROSS, TARGET_DIR includes matrix.target.
+      TARGET_DIR: ./target
+      # Emit backtraces on panics.
+      RUST_BACKTRACE: 1
+    strategy:
+      fail-fast: false
+      matrix:
+        build:
+          [linux, linux-gnu, linux-arm, macos, win-msvc, win-gnu, win32-msvc]
+        include:
+          - build: linux
+            os: ubuntu-22.04
+            rust: nightly
+            target: x86_64-unknown-linux-musl
+          - build: linux-gnu
+            os: ubuntu-22.04
+            rust: nightly
+            target: x86_64-unknown-linux-gnu
+          - build: linux-arm
+            os: ubuntu-22.04
+            rust: nightly
+            target: arm-unknown-linux-gnueabihf
+          - build: macos
+            os: macos-12
+            rust: nightly
+            target: x86_64-apple-darwin
+          - build: win-msvc
+            os: windows-2022
+            rust: nightly
+            target: x86_64-pc-windows-msvc
+          - build: win-gnu
+            os: windows-2022
+            rust: nightly-x86_64-gnu
+            target: x86_64-pc-windows-gnu
+          - build: win32-msvc
+            os: windows-2022
+            rust: nightly
+            target: i686-pc-windows-msvc
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install & Build CSS
+        run: npm install && npm run build
+
+      - name: Install packages (Ubuntu)
+        if: matrix.os == 'ubuntu-22.04'
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends musl-tools
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ matrix.rust }}
+          target: ${{ matrix.target }}
+
+      - name: Cache Rust
+        uses: Swatinem/rust-cache@v2
+        with:
+          key: ${{ matrix.rust }}
+
+      - name: Use Cross
+        if: matrix.os != 'windows-2022'
+        run: |
+          cargo install cross
+          echo "CARGO=cross" >> $GITHUB_ENV
+          echo "TARGET_FLAGS=--target ${{ matrix.target }}" >> $GITHUB_ENV
+          echo "TARGET_DIR=./target/${{ matrix.target }}" >> $GITHUB_ENV
+
+      - name: Show command used for Cargo
+        run: |
+          echo "cargo command is: ${{ env.CARGO }}"
+          echo "target flag is: ${{ env.TARGET_FLAGS }}"
+          echo "target dir is: ${{ env.TARGET_DIR }}"
+
+      - name: Compile
+        run: ${{ env.CARGO }} build --release --verbose ${{ env.TARGET_FLAGS }}
+
+      - name: Strip release binary (linux and macos)
+        if: matrix.build == 'linux' || matrix.build == 'macos'
+        run: strip "target/${{ matrix.target }}/release/${{ env.BINARY }}"
+
+      - name: Strip release binary (arm)
+        if: matrix.build == 'linux-arm'
+        run: |
+          docker run --rm -v \
+            "$PWD/target:/target:Z" \
+            rustembedded/cross:arm-unknown-linux-gnueabihf \
+            arm-linux-gnueabihf-strip \
+            /target/arm-unknown-linux-gnueabihf/release/${{ env.BINARY }}
+
+      - name: Build archive
+        run: |
+          staging="${{ env.BINARY }}-${{ matrix.target }}"
+          cp {README.md,LICENSE,CHANGELOG.md} "$staging/"
+
+          if [ "${{ matrix.os }}" == "windows-2022" ]; then
+            cp "target/release/${{ env.BINARY }}.exe" "$staging/"
+            7z a "$staging.zip" "$staging"
+            echo "ASSET=$staging.zip" >> $GITHUB_ENV
+          else
+            cp "target/${{ matrix.target }}/release/${{ env.BINARY }}" "$staging/"
+            tar czf "$staging.tar.gz" "$staging"
+            echo "ASSET=$staging.tar.gz" >> $GITHUB_ENV
+          fi
+
+      - name: Upload release archive
+        uses: actions/upload-release-asset@v1.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.create-release.outputs.upload_url }}
+          asset_path: ${{ env.ASSET }}
+          asset_name: ${{ env.ASSET }}
+          asset_content_type: application/octet-stream
+
+  # update-website:
+  #   name: update-website
+  #   needs: build-release
+  #   uses: ./.github/workflows/website.yml
+  #   secrets: inherit
