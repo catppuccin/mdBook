@@ -1,26 +1,32 @@
-// https://github.com/catppuccin/highlightjs/pull/1
+// FIXME: Go upstream to catppuccin/highlightjs and fix the problem OR alteast understand the problem right now
+// The problem is that `.mocha code.hljs` is overriding the colours but `.mocha code` works perfectly
+// Until then, make sure you manually edit the files to remove that properly
 
 .mocha {
-  @import "@catppuccin/highlightjs/sass/catppuccin-mocha";
-  code.hljs {
+  code {
+    color: #cdd6f4;
     background: #181825;
   }
+  @import "@catppuccin/highlightjs/sass/catppuccin-mocha";
 }
 .macchiato {
-  @import "@catppuccin/highlightjs/sass/catppuccin-macchiato";
-  code.hljs {
+  code {
+    color: #cad3f5;
     background: #1e2030;
   }
+  @import "@catppuccin/highlightjs/sass/catppuccin-macchiato";
 }
 .frappe {
-  @import "@catppuccin/highlightjs/sass/catppuccin-frappe";
-  code.hljs {
+  code {
+    color: #c6d0f5;
     background: #292c3c;
   }
+  @import "@catppuccin/highlightjs/sass/catppuccin-frappe";
 }
 .latte {
-  @import "@catppuccin/highlightjs/sass/catppuccin-latte";
-  code.hljs {
+  code {
+    color: #4c4f69;
     background: #e6e9ef;
   }
+  @import "@catppuccin/highlightjs/sass/catppuccin-latte";
 }

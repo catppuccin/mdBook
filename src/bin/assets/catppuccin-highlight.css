@@ -1,6 +1,6 @@
-.mocha code.hljs {
+.mocha code {
   color: #cdd6f4;
-  background: #1e1e2e;
+  background: #181825;
 }
 .mocha code .hljs-keyword {
   color: #cba6f7;
@@ -140,13 +140,10 @@
   color: #f38ba8;
   background: rgba(243, 139, 168, 0.15);
 }
-.mocha code.hljs {
-  background: #181825;
-}
 
-.macchiato code.hljs {
+.macchiato code {
   color: #cad3f5;
-  background: #24273a;
+  background: #1e2030;
 }
 .macchiato code .hljs-keyword {
   color: #c6a0f6;
@@ -286,13 +283,10 @@
   color: #ed8796;
   background: rgba(237, 135, 150, 0.15);
 }
-.macchiato code.hljs {
-  background: #1e2030;
-}
 
-.frappe code.hljs {
+.frappe code {
   color: #c6d0f5;
-  background: #303446;
+  background: #292c3c;
 }
 .frappe code .hljs-keyword {
   color: #ca9ee6;
@@ -432,13 +426,10 @@
   color: #e78284;
   background: rgba(231, 130, 132, 0.15);
 }
-.frappe code.hljs {
-  background: #292c3c;
-}
 
-.latte code.hljs {
+.latte code {
   color: #4c4f69;
-  background: #eff1f5;
+  background: #e6e9ef;
 }
 .latte code .hljs-keyword {
   color: #8839ef;
@@ -577,7 +568,4 @@
 .latte code .hljs-diff-deletion {
   color: #d20f39;
   background: rgba(210, 15, 57, 0.15);
-}
-.latte code.hljs {
-  background: #e6e9ef;
 }
