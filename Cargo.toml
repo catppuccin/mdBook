@@ -8,7 +8,7 @@ license = "MIT"
 readme = "README.md"
 repository = "https://github.com/catppuccin/mdBook"
 keywords = ["mdbook", "markdown", "catppuccin", "preprocessor", "plugin"]
-exclude = [".github/**"]
+include = [ "/src", "/assets", "/README.md", "/LICENSE" ]
 
 [[bin]]
 name = "mdbook-catppuccin"
