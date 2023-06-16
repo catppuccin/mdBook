@@ -54,3 +54,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./book
           exclude_assets: '.github,**/.gitignore'
+          allow_empty_commit: true
