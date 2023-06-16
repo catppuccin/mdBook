@@ -14,14 +14,14 @@ on:
   workflow_dispatch:
   push:
     paths:
-     - "src/**"
-     - "Cargo.toml"
-     - "Cargo.lock"
+      - "src/**"
+      - "Cargo.toml"
+      - "Cargo.lock"
   pull_request:
     paths:
-     - "src/**"
-     - "Cargo.toml"
-     - "Cargo.lock"
+      - "src/**"
+      - "Cargo.toml"
+      - "Cargo.lock"
 
 jobs:
   compile:
@@ -95,7 +95,7 @@ jobs:
 
       - name: Cache Rust
         uses: Swatinem/rust-cache@v2
-      
+
       - name: Use Cross
         if: matrix.target != ''
         run: |
@@ -114,7 +114,7 @@ jobs:
 
       - name: Test
         run: ${{ env.CARGO }} test --verbose ${{ env.TARGET_FLAGS }}
-      
+
       - name: View Target Dir
         shell: bash
         run: ls -la target/debug
