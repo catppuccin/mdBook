@@ -44,6 +44,5 @@ jobs:
         if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./book
+          publish_dir: ./example/book
           exclude_assets: ".github,**/.gitignore"
-          allow_empty_commit: true
