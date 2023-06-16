@@ -2,9 +2,9 @@
 
 ## [v0.2.0](https://github.com/catppuccin/mdBook/releases/tag/untagged-f340edb92c501ff41598) - 2023-06-16 02:13:13
 
-Apologies for leavigng this on the backburner for so long!
+Apologies for leaving this on the backburner for so long!
 
-This release makes the port more maintainable as we are now using [catppuccin/highlightjs](https://github.com/catppuccin/highlightjs) for the majority of the CSS. There has also been improvements to the CI/CD pipeline and the inclusion of a Nix flake (which I still need to fix!)
+This release makes the port more maintainable as we are now using [catppuccin/highlightjs](https://github.com/catppuccin/highlightjs) for the majority of the CSS. There has also been improvements to the CI/CD pipeline and includes a Nix flake (which I still need to fix!)
 
 Thanks to anyone who chooses to use this, I really appreciate it <3
 
