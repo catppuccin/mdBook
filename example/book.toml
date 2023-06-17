@@ -17,5 +17,5 @@ additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-highlight.css"]
 no-section-label = true
 git-repository-url = "https://github.com/catppuccin/mdBook"
 git-repository-icon = "fa-github"
-edit-url-template = "https://github.com/catppuccin/mdBook/edit/main/{path}"
+edit-url-template = "https://github.com/catppuccin/mdBook/edit/main/example/{path}"
 cname = "mdbook.catppuccin.com"

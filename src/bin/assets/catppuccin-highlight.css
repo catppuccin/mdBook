@@ -555,7 +555,7 @@
 }
 
 .mocha code {
-  color: #cdd6f4;
+  color: #a6adc8;
   background: #181825;
 }
 .mocha .ace_gutter {
@@ -568,7 +568,7 @@
 }
 
 .macchiato code {
-  color: #cad3f5;
+  color: #a5adcb;
   background: #1e2030;
 }
 .macchiato .ace_gutter {
@@ -581,7 +581,7 @@
 }
 
 .frappe code {
-  color: #c6d0f5;
+  color: #a5adce;
   background: #292c3c;
 }
 .frappe .ace_gutter {
@@ -594,7 +594,7 @@
 }
 
 .latte code {
-  color: #4c4f69;
+  color: #6c6f85;
   background: #e6e9ef;
 }
 .latte .ace_gutter {

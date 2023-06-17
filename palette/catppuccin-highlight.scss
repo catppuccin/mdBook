@@ -20,7 +20,7 @@
 @each $flavour, $colour in catppuccin.$palette {
   .#{$flavour} {
     code {
-      color: map-get($colour, "text");
+      color: map-get($colour, "subtext0");
       background: map-get($colour, "mantle");
     }
     .ace_gutter {
