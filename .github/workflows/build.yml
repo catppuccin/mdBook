@@ -80,9 +80,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install & Build CSS
-        run: npm install && npm run build
-
       - name: Install packages (Ubuntu)
         if: matrix.os == 'ubuntu-22.04'
         shell: bash
