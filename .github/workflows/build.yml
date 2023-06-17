@@ -117,20 +117,16 @@ jobs:
 
       - name: View Target Dir
         shell: bash
-        run: tree target
+        run: ls -la ${{ env.TARGET_DIR }}/debug
 
       - name: Retrieve Name of Binary
         id: upload-artifact
         shell: bash
         run: |
-          echo "name=target/debug/${{ env.BINARY }}" >> $GITHUB_OUTPUT
-
           if [ "${{ matrix.os }}" == "windows-2022" ]; then
-            echo "name=target/debug/${{ env.BINARY }}.exe"
-          fi
-
-          if [ "${{ matrix.target }}" != "" ]; then
-            echo "name=target/${{ matrix.target }}/debug/${{ env.BINARY }}"
+            echo "name=${{ env.TARGET_DIR }}/debug/${{ env.BINARY }}.exe" >> $GITHUB_OUTPUT
+          else
+            echo "name=${{ env.TARGET_DIR}}/debug/${{ env.BINARY }}" >> $GITHUB_OUTPUT
           fi
 
       - name: Upload Binary
