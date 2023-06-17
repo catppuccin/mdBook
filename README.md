@@ -87,7 +87,7 @@ cargo build --release
   A:
 
   - Navigate to
-    [`index.hbs (L125 - L132)`](https://github.com/catppuccin/mdBook/blob/main/src/bin/assets/index.hbs#L125-L132)
+    [`index.hbs (L125 - L133)`](https://github.com/catppuccin/mdBook/blob/main/src/bin/assets/index.hbs#L125-L133)
     and remove the themes that you don't want. Remember to run `mdbook build` again!
   - E.g. To remove all default themes:
 
