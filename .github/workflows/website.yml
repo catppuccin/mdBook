@@ -27,12 +27,11 @@ jobs:
 
       - name: Download mdbook-catppuccin
         run: |
-          mkdir ./bin
-          curl -sSL ${{ env.RELEASE_URL }}/${{ env.TARGET }} | tar -xz --directory=./bin
-          echo `pwd`/bin >> $GITHUB_PATH
+          curl -sSL ${{ env.RELEASE_URL }}/${{ env.TARGET }}.tar.gz | tar -xz
+          echo `pwd`/${{ env.TARGET }} >> $GITHUB_PATH
         env:
           RELEASE_URL: "https://github.com/catppuccin/mdBook/releases/latest/download"
-          TARGET: "mdbook-catppuccin-x86_64-unknown-linux-gnu.tar.gz"
+          TARGET: "mdbook-catppuccin-x86_64-unknown-linux-gnu"
 
       - name: Build mdBook
         run: |
