@@ -23,6 +23,9 @@ on:
       - "Cargo.toml"
       - "Cargo.lock"
 
+env:
+  BINARY: mdbook-catppuccin
+
 jobs:
   compile:
     env:
@@ -114,7 +117,27 @@ jobs:
 
       - name: View Target Dir
         shell: bash
-        run: ls -la target/debug
+        run: tree target
+
+      - name: Retrieve Name of Binary
+        id: upload-artifact
+        shell: bash
+        run: |
+          echo "name=target/debug/${{ env.BINARY }}" >> $GITHUB_OUTPUT
+
+          if [ "${{ matrix.os }}" == "windows-2022" ]; then
+            echo "name=target/debug/${{ env.BINARY }}.exe"
+          fi
+
+          if [ "${{ matrix.target }}" != "" ]; then
+            echo "name=target/${{ matrix.target }}/debug/${{ env.BINARY }}"
+          fi
+
+      - name: Upload Binary
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.BINARY }}-${{ matrix.build }}
+          path: ${{ steps.upload-artifact.outputs.name }}
 
   rustfmt:
     name: rustfmt
