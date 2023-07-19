@@ -19,10 +19,14 @@
       pkgs = import nixpkgs {
         inherit system;
       };
+      lib = nixpkgs.lib;
 
       craneLib = crane.lib.${system};
       mdBook-catppuccin = craneLib.buildPackage {
-        src = craneLib.cleanCargoSource (craneLib.path ./.);
+        src = lib.cleanSourceWith {
+          src = lib.cleanSource (craneLib.path ./.);
+          filter = name: type: (lib.hasInfix "/src/bin/assets/" name) || craneLib.filterCargoSources name type;
+        };
         buildInputs = [] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [pkgs.libiconv];
       };
     in {
