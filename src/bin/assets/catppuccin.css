@@ -28,6 +28,114 @@
   --searchresults-li-bg: #1e1e2e;
   --search-mark-bg: #fab387;
 }
+.mocha :is(.admonition):is(.tip, .hint, .important) {
+  border-color: #f9e2af;
+}
+.mocha :is(.tip, .hint, .important) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(249, 226, 175, 0.1);
+}
+.mocha :is(.tip, .hint, .important) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #f9e2af;
+}
+.mocha :is(.admonition):is(.abstract, .summary, .tldr) {
+  border-color: #f2cdcd;
+}
+.mocha :is(.abstract, .summary, .tldr) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(242, 205, 205, 0.1);
+}
+.mocha :is(.abstract, .summary, .tldr) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #f2cdcd;
+}
+.mocha :is(.admonition):is(.example) {
+  border-color: #cba6f7;
+}
+.mocha :is(.example) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(203, 166, 247, 0.1);
+}
+.mocha :is(.example) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #cba6f7;
+}
+.mocha :is(.admonition):is(.info, .todo) {
+  border-color: #89dceb;
+}
+.mocha :is(.info, .todo) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(137, 220, 235, 0.1);
+}
+.mocha :is(.info, .todo) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #89dceb;
+}
+.mocha :is(.admonition):is(.success, .check, .done) {
+  border-color: #a6e3a1;
+}
+.mocha :is(.success, .check, .done) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(166, 227, 161, 0.1);
+}
+.mocha :is(.success, .check, .done) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #a6e3a1;
+}
+.mocha :is(.admonition):is(.note) {
+  border-color: #89b4fa;
+}
+.mocha :is(.note) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(137, 180, 250, 0.1);
+}
+.mocha :is(.note) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #89b4fa;
+}
+.mocha :is(.admonition):is(.warning, .caution, .attention) {
+  border-color: #fab387;
+}
+.mocha :is(.warning, .caution, .attention) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(250, 179, 135, 0.1);
+}
+.mocha :is(.warning, .caution, .attention) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #fab387;
+}
+.mocha :is(.admonition):is(.question, .help, .faq) {
+  border-color: #94e2d5;
+}
+.mocha :is(.question, .help, .faq) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(148, 226, 213, 0.1);
+}
+.mocha :is(.question, .help, .faq) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #94e2d5;
+}
+.mocha :is(.admonition):is(.danger, .error) {
+  border-color: #f38ba8;
+}
+.mocha :is(.danger, .error) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(243, 139, 168, 0.1);
+}
+.mocha :is(.danger, .error) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #f38ba8;
+}
+.mocha :is(.admonition):is(.failure, .fail, .missing) {
+  border-color: #f38ba8;
+}
+.mocha :is(.failure, .fail, .missing) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(243, 139, 168, 0.1);
+}
+.mocha :is(.failure, .fail, .missing) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #f38ba8;
+}
+.mocha :is(.admonition):is(.bug) {
+  border-color: #f38ba8;
+}
+.mocha :is(.bug) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(243, 139, 168, 0.1);
+}
+.mocha :is(.bug) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #f38ba8;
+}
+.mocha :is(.admonition):is(.quote, .cite) {
+  border-color: #f5c2e7;
+}
+.mocha :is(.quote, .cite) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(245, 194, 231, 0.1);
+}
+.mocha :is(.quote, .cite) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #f5c2e7;
+}
 
 .macchiato {
   --bg: #24273a;
@@ -58,6 +166,114 @@
   --searchresults-border-color: #181926;
   --searchresults-li-bg: #24273a;
   --search-mark-bg: #f5a97f;
+}
+.macchiato :is(.admonition):is(.tip, .hint, .important) {
+  border-color: #eed49f;
+}
+.macchiato :is(.tip, .hint, .important) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(238, 212, 159, 0.1);
+}
+.macchiato :is(.tip, .hint, .important) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #eed49f;
+}
+.macchiato :is(.admonition):is(.abstract, .summary, .tldr) {
+  border-color: #f0c6c6;
+}
+.macchiato :is(.abstract, .summary, .tldr) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(240, 198, 198, 0.1);
+}
+.macchiato :is(.abstract, .summary, .tldr) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #f0c6c6;
+}
+.macchiato :is(.admonition):is(.example) {
+  border-color: #c6a0f6;
+}
+.macchiato :is(.example) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(198, 160, 246, 0.1);
+}
+.macchiato :is(.example) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #c6a0f6;
+}
+.macchiato :is(.admonition):is(.info, .todo) {
+  border-color: #91d7e3;
+}
+.macchiato :is(.info, .todo) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(145, 215, 227, 0.1);
+}
+.macchiato :is(.info, .todo) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #91d7e3;
+}
+.macchiato :is(.admonition):is(.success, .check, .done) {
+  border-color: #a6da95;
+}
+.macchiato :is(.success, .check, .done) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(166, 218, 149, 0.1);
+}
+.macchiato :is(.success, .check, .done) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #a6da95;
+}
+.macchiato :is(.admonition):is(.note) {
+  border-color: #8aadf4;
+}
+.macchiato :is(.note) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(138, 173, 244, 0.1);
+}
+.macchiato :is(.note) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #8aadf4;
+}
+.macchiato :is(.admonition):is(.warning, .caution, .attention) {
+  border-color: #f5a97f;
+}
+.macchiato :is(.warning, .caution, .attention) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(245, 169, 127, 0.1);
+}
+.macchiato :is(.warning, .caution, .attention) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #f5a97f;
+}
+.macchiato :is(.admonition):is(.question, .help, .faq) {
+  border-color: #8bd5ca;
+}
+.macchiato :is(.question, .help, .faq) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(139, 213, 202, 0.1);
+}
+.macchiato :is(.question, .help, .faq) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #8bd5ca;
+}
+.macchiato :is(.admonition):is(.danger, .error) {
+  border-color: #ed8796;
+}
+.macchiato :is(.danger, .error) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(237, 135, 150, 0.1);
+}
+.macchiato :is(.danger, .error) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #ed8796;
+}
+.macchiato :is(.admonition):is(.failure, .fail, .missing) {
+  border-color: #ed8796;
+}
+.macchiato :is(.failure, .fail, .missing) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(237, 135, 150, 0.1);
+}
+.macchiato :is(.failure, .fail, .missing) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #ed8796;
+}
+.macchiato :is(.admonition):is(.bug) {
+  border-color: #ed8796;
+}
+.macchiato :is(.bug) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(237, 135, 150, 0.1);
+}
+.macchiato :is(.bug) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #ed8796;
+}
+.macchiato :is(.admonition):is(.quote, .cite) {
+  border-color: #f5bde6;
+}
+.macchiato :is(.quote, .cite) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(245, 189, 230, 0.1);
+}
+.macchiato :is(.quote, .cite) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #f5bde6;
 }
 
 .frappe {
@@ -90,6 +306,114 @@
   --searchresults-li-bg: #303446;
   --search-mark-bg: #ef9f76;
 }
+.frappe :is(.admonition):is(.tip, .hint, .important) {
+  border-color: #e5c890;
+}
+.frappe :is(.tip, .hint, .important) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(229, 200, 144, 0.1);
+}
+.frappe :is(.tip, .hint, .important) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #e5c890;
+}
+.frappe :is(.admonition):is(.abstract, .summary, .tldr) {
+  border-color: #eebebe;
+}
+.frappe :is(.abstract, .summary, .tldr) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(238, 190, 190, 0.1);
+}
+.frappe :is(.abstract, .summary, .tldr) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #eebebe;
+}
+.frappe :is(.admonition):is(.example) {
+  border-color: #ca9ee6;
+}
+.frappe :is(.example) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(202, 158, 230, 0.1);
+}
+.frappe :is(.example) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #ca9ee6;
+}
+.frappe :is(.admonition):is(.info, .todo) {
+  border-color: #99d1db;
+}
+.frappe :is(.info, .todo) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(153, 209, 219, 0.1);
+}
+.frappe :is(.info, .todo) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #99d1db;
+}
+.frappe :is(.admonition):is(.success, .check, .done) {
+  border-color: #a6d189;
+}
+.frappe :is(.success, .check, .done) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(166, 209, 137, 0.1);
+}
+.frappe :is(.success, .check, .done) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #a6d189;
+}
+.frappe :is(.admonition):is(.note) {
+  border-color: #8caaee;
+}
+.frappe :is(.note) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(140, 170, 238, 0.1);
+}
+.frappe :is(.note) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #8caaee;
+}
+.frappe :is(.admonition):is(.warning, .caution, .attention) {
+  border-color: #ef9f76;
+}
+.frappe :is(.warning, .caution, .attention) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(239, 159, 118, 0.1);
+}
+.frappe :is(.warning, .caution, .attention) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #ef9f76;
+}
+.frappe :is(.admonition):is(.question, .help, .faq) {
+  border-color: #81c8be;
+}
+.frappe :is(.question, .help, .faq) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(129, 200, 190, 0.1);
+}
+.frappe :is(.question, .help, .faq) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #81c8be;
+}
+.frappe :is(.admonition):is(.danger, .error) {
+  border-color: #e78284;
+}
+.frappe :is(.danger, .error) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(231, 130, 132, 0.1);
+}
+.frappe :is(.danger, .error) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #e78284;
+}
+.frappe :is(.admonition):is(.failure, .fail, .missing) {
+  border-color: #e78284;
+}
+.frappe :is(.failure, .fail, .missing) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(231, 130, 132, 0.1);
+}
+.frappe :is(.failure, .fail, .missing) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #e78284;
+}
+.frappe :is(.admonition):is(.bug) {
+  border-color: #e78284;
+}
+.frappe :is(.bug) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(231, 130, 132, 0.1);
+}
+.frappe :is(.bug) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #e78284;
+}
+.frappe :is(.admonition):is(.quote, .cite) {
+  border-color: #f4b8e4;
+}
+.frappe :is(.quote, .cite) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(244, 184, 228, 0.1);
+}
+.frappe :is(.quote, .cite) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #f4b8e4;
+}
 
 .latte {
   --bg: #eff1f5;
@@ -120,4 +444,112 @@
   --searchresults-border-color: #dce0e8;
   --searchresults-li-bg: #eff1f5;
   --search-mark-bg: #fe640b;
+}
+.latte :is(.admonition):is(.tip, .hint, .important) {
+  border-color: #df8e1d;
+}
+.latte :is(.tip, .hint, .important) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(223, 142, 29, 0.1);
+}
+.latte :is(.tip, .hint, .important) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #df8e1d;
+}
+.latte :is(.admonition):is(.abstract, .summary, .tldr) {
+  border-color: #dd7878;
+}
+.latte :is(.abstract, .summary, .tldr) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(221, 120, 120, 0.1);
+}
+.latte :is(.abstract, .summary, .tldr) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #dd7878;
+}
+.latte :is(.admonition):is(.example) {
+  border-color: #8839ef;
+}
+.latte :is(.example) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(136, 57, 239, 0.1);
+}
+.latte :is(.example) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #8839ef;
+}
+.latte :is(.admonition):is(.info, .todo) {
+  border-color: #04a5e5;
+}
+.latte :is(.info, .todo) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(4, 165, 229, 0.1);
+}
+.latte :is(.info, .todo) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #04a5e5;
+}
+.latte :is(.admonition):is(.success, .check, .done) {
+  border-color: #40a02b;
+}
+.latte :is(.success, .check, .done) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(64, 160, 43, 0.1);
+}
+.latte :is(.success, .check, .done) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #40a02b;
+}
+.latte :is(.admonition):is(.note) {
+  border-color: #1e66f5;
+}
+.latte :is(.note) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(30, 102, 245, 0.1);
+}
+.latte :is(.note) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #1e66f5;
+}
+.latte :is(.admonition):is(.warning, .caution, .attention) {
+  border-color: #fe640b;
+}
+.latte :is(.warning, .caution, .attention) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(254, 100, 11, 0.1);
+}
+.latte :is(.warning, .caution, .attention) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #fe640b;
+}
+.latte :is(.admonition):is(.question, .help, .faq) {
+  border-color: #179299;
+}
+.latte :is(.question, .help, .faq) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(23, 146, 153, 0.1);
+}
+.latte :is(.question, .help, .faq) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #179299;
+}
+.latte :is(.admonition):is(.danger, .error) {
+  border-color: #d20f39;
+}
+.latte :is(.danger, .error) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(210, 15, 57, 0.1);
+}
+.latte :is(.danger, .error) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #d20f39;
+}
+.latte :is(.admonition):is(.failure, .fail, .missing) {
+  border-color: #d20f39;
+}
+.latte :is(.failure, .fail, .missing) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(210, 15, 57, 0.1);
+}
+.latte :is(.failure, .fail, .missing) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #d20f39;
+}
+.latte :is(.admonition):is(.bug) {
+  border-color: #d20f39;
+}
+.latte :is(.bug) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(210, 15, 57, 0.1);
+}
+.latte :is(.bug) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #d20f39;
+}
+.latte :is(.admonition):is(.quote, .cite) {
+  border-color: #ea76cb;
+}
+.latte :is(.quote, .cite) > :is(.admonition-title, summary.admonition-title) {
+  background-color: rgba(234, 118, 203, 0.1);
+}
+.latte :is(.quote, .cite) > :is(.admonition-title, summary.admonition-title)::before {
+  background-color: #ea76cb;
 }

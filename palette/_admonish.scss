@@ -1,0 +1,29 @@
+@use "sass:color";
+@use "@catppuccin/palette/scss/catppuccin" as catppuccin;
+
+@mixin level($palette, $classes, $color) {
+  :is(.admonition):is(#{$classes}) {
+    border-color: #{map-get($palette, $color)};
+  }
+  :is(#{$classes}) > :is(.admonition-title, summary.admonition-title) {
+    background-color: #{color.change(map-get($palette, $color), $alpha: 0.1)};
+  }
+  :is(#{$classes}) > :is(.admonition-title, summary.admonition-title)::before {
+    background-color: #{map-get($palette, $color)};
+  }
+}
+
+@mixin main($palette) {
+  @include level($palette, ".tip, .hint, .important", "yellow");
+  @include level($palette, ".abstract, .summary, .tldr", "flamingo");
+  @include level($palette, ".example", "mauve");
+  @include level($palette, ".info, .todo", "sky");
+  @include level($palette, ".success, .check, .done", "green");
+  @include level($palette, ".note", "blue");
+  @include level($palette, ".warning, .caution, .attention", "peach");
+  @include level($palette, ".question, .help, .faq", "teal");
+  @include level($palette, ".danger, .error", "red");
+  @include level($palette, ".failure, .fail, .missing", "red");
+  @include level($palette, ".bug", "red");
+  @include level($palette, ".quote, .cite", "pink");
+}

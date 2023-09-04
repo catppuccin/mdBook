@@ -1,4 +1,5 @@
 @use "@catppuccin/palette/scss/catppuccin" as catppuccin;
+@use "admonish";
 
 @each $flavour, $color in catppuccin.$palette {
   .#{$flavour} {
@@ -30,5 +31,7 @@
     --searchresults-border-color: #{map-get($color, "crust")};
     --searchresults-li-bg: #{map-get($color, "base")};
     --search-mark-bg: #{map-get($color, "peach")};
+
+    @include admonish.main($color);
   }
 }

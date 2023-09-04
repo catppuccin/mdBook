@@ -2,3 +2,4 @@
 
 - [Landing](./first.md)
 - [Super Secret](./secret.md)
+- [Admonishments](./admonish.md)
