@@ -1,26 +1,11 @@
-// FIXME: Go upstream to catppuccin/highlightjs and fix the problem OR alteast understand the problem right now
-// The problem is that `.mocha code.hljs` is overriding the colours but `.mocha code` works perfectly
-// Until then, make sure you manually edit the files to remove that properly
-
 @use "@catppuccin/palette/scss/catppuccin";
-
-.mocha {
-  @import "@catppuccin/highlightjs/sass/catppuccin-mocha";
-}
-.macchiato {
-  @import "@catppuccin/highlightjs/sass/catppuccin-macchiato";
-}
-.frappe {
-  @import "@catppuccin/highlightjs/sass/catppuccin-frappe";
-}
-.latte {
-  @import "@catppuccin/highlightjs/sass/catppuccin-latte";
-}
+@use "@catppuccin/highlightjs/sass/_theme" as hljs;
 
 @each $flavour, $colour in catppuccin.$palette {
   .#{$flavour} {
+    @include hljs.highlights($flavour, "hex");
     code {
-      color: map-get($colour, "subtext0");
+      color: map-get($colour, "text");
       background: map-get($colour, "mantle");
     }
     .ace_gutter {
