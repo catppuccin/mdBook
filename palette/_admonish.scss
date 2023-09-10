@@ -1,4 +1,5 @@
 @use "sass:color";
+@use "sass:list";
 @use "@catppuccin/palette/scss/catppuccin" as catppuccin;
 
 @mixin level($palette, $classes, $color) {
@@ -13,17 +14,58 @@
   }
 }
 
+$mappings: (
+  "yellow": (
+    ".hint",
+    ".important",
+    ".tip",
+  ),
+  "flamingo": (
+    ".abstract",
+    ".summary",
+    ".tldr",
+  ),
+  "mauve": (
+    ".example",
+  ),
+  "sky": (
+    ".info",
+    ".todo",
+  ),
+  "green": (
+    ".check",
+    ".done",
+    ".success",
+  ),
+  "blue": (
+    ".note",
+  ),
+  "peach": (
+    ".attention",
+    ".caution",
+    ".warning",
+  ),
+  "teal": (
+    ".faq",
+    ".help",
+    ".question",
+  ),
+  "red": (
+    ".bug",
+    ".danger",
+    ".error",
+    ".fail",
+    ".failure",
+    ".missing",
+  ),
+  "pink": (
+    ".cite",
+    ".quote",
+  ),
+);
+
 @mixin main($palette) {
-  @include level($palette, ".tip, .hint, .important", "yellow");
-  @include level($palette, ".abstract, .summary, .tldr", "flamingo");
-  @include level($palette, ".example", "mauve");
-  @include level($palette, ".info, .todo", "sky");
-  @include level($palette, ".success, .check, .done", "green");
-  @include level($palette, ".note", "blue");
-  @include level($palette, ".warning, .caution, .attention", "peach");
-  @include level($palette, ".question, .help, .faq", "teal");
-  @include level($palette, ".danger, .error", "red");
-  @include level($palette, ".failure, .fail, .missing", "red");
-  @include level($palette, ".bug", "red");
-  @include level($palette, ".quote, .cite", "pink");
+  @each $color, $classes in $mappings {
+    @include level($palette, $classes, $color);
+  }
 }
