@@ -10,3 +10,6 @@
 
 # node
 node_modules/
+
+# nix
+result
