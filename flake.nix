@@ -1,55 +1,49 @@
 {
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    crane = {
-      url = "github:ipetkov/crane";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    flake-utils.url = "github:numtide/flake-utils";
-  };
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
   outputs = {
     self,
     nixpkgs,
-    crane,
-    flake-utils,
     ...
-  }:
-    flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = import nixpkgs {
-        inherit system;
-      };
-      lib = nixpkgs.lib;
+  }: let
+    systems = ["aarch64-darwin" "aarch64-linux" "armv6l-linux" "armv7l-linux" "x86_64-darwin" "x86_64-linux"];
+    forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f system);
+  in {
+    checks = forAllSystems (system: {
+      default = self.packages.${system}.default;
+    });
 
-      craneLib = crane.lib.${system};
-      mdBook-catppuccin = craneLib.buildPackage {
-        src = lib.cleanSourceWith {
-          src = lib.cleanSource (craneLib.path ./.);
-          filter = name: type: (lib.hasInfix "/src/bin/assets/" name) || craneLib.filterCargoSources name type;
-        };
-        buildInputs = [] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [pkgs.libiconv];
+    packages = forAllSystems (system: let
+      pkgs = nixpkgs.legacyPackages.${system};
+    in rec {
+      mdbook-catppuccin = pkgs.rustPlatform.buildRustPackage {
+        pname = "mdbook-catppuccin";
+        version = (builtins.fromTOML (builtins.readFile ./Cargo.toml)).package.version;
+        buildInputs = with pkgs; ([] ++ lib.optionals stdenv.isDarwin [libiconv]);
+        src = pkgs.nix-gitignore.gitignoreSource [] ./.;
+        cargoLock.lockFile = ./Cargo.lock;
       };
-    in {
-      checks = {
-        inherit mdBook-catppuccin;
-      };
+      default = mdbook-catppuccin;
+    });
 
-      packages.default = mdBook-catppuccin;
-      # TODO: nix build doesn't work atm since node/sass are not packaged too
-      apps.default = flake-utils.lib.mkApp {
-        drv = mdBook-catppuccin;
+    devShells = forAllSystems (system: let
+      pkgs = nixpkgs.legacyPackages.${system};
+    in rec {
+      default = pkgs.mkShell {
+        buildInputs = with pkgs; (
+          [
+            cargo
+            mdbook
+            mdbook-admonish
+            node2nix
+            nodejs
+          ]
+          ++ lib.optionals stdenv.isDarwin [libiconv]
+        );
       };
-
-      devShells.default = pkgs.mkShell {
-        name = "rust-shell";
-        inputsFrom = builtins.attrValues self.checks.${system};
-        nativeBuildInputs = with pkgs; [
-          cargo
-          rustc
-          nodejs
-          sass
-          mdbook
-        ];
+      demo = pkgs.mkShell {
+        buildInputs = default.buildInputs ++ [self.packages.${system}.mdbook-catppuccin];
       };
     });
+  };
 }
