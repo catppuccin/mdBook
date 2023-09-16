@@ -7,7 +7,7 @@
     border-color: #{map-get($palette, $color)};
   }
   :is(#{$classes}) > :is(.admonition-title, summary.admonition-title) {
-    background-color: #{color.change(map-get($palette, $color), $alpha: 0.1)};
+    background-color: #{color.change(map-get($palette, $color), $alpha: 0.2)};
   }
   :is(#{$classes}) > :is(.admonition-title, summary.admonition-title)::before {
     background-color: #{map-get($palette, $color)};
