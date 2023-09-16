@@ -3,8 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Catppuccin&#x27;s mdBook</title>
-        <meta name="robots" content="noindex" />
+        <title>Admonishments - Catppuccin&#x27;s mdBook</title>
 
 
         <!-- Custom HTML head -->
@@ -85,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="landing.html">Landing</a></li><li class="chapter-item expanded "><a href="admonish.html">Admonishments</a></li><li class="chapter-item expanded "><a href="secret.html">Super Secret</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="landing.html">Landing</a></li><li class="chapter-item expanded "><a href="admonish.html" class="active">Admonishments</a></li><li class="chapter-item expanded "><a href="secret.html">Super Secret</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -122,6 +121,9 @@
                         <a href="https://github.com/catppuccin/mdBook" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
+                        <a href="https://github.com/catppuccin/mdBook/edit/main/example/src/admonish.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
 
                     </div>
                 </div>
@@ -148,138 +150,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="example-markdown-document"><a class="header" href="#example-markdown-document">Example Markdown Document</a></h1>
-<h2 id="information"><a class="header" href="#information">Information</a></h2>
-<p><strong>crates.io</strong>: <a href="https://crates.io/crates/mdbook-catppuccin">https://crates.io/crates/mdbook-catppuccin</a></p>
-<p><strong>repository</strong>: <a href="https://github.com/catppuccin/mdBook">https://github.com/catppuccin/mdBook</a></p>
-<h2 id="text"><a class="header" href="#text">Text</a></h2>
-<p>Here is a paragraph with bold text. <strong>This is some bold text.</strong> Here is a
-paragraph with bold text. <strong>This is also some bold text.</strong></p>
-<p>Here is another one with italic text. <em>This is some italic text.</em> Here is
-another one with italic text. <em>This is some italic text.</em></p>
-<p>Here is another one with struckout text. <del>This is some struckout text.</del></p>
-<h2 id="links"><a class="header" href="#links">Links</a></h2>
-<p>Autolink: <a href="http://example.com">http://example.com</a></p>
-<p>Link: <a href="http://example.com">Example</a></p>
-<p>Reference style <a href="http://example.com" title="Example">link</a>.</p>
-<h2 id="images"><a class="header" href="#images">Images</a></h2>
-<img src="https://avatars.githubusercontent.com/u/58985301" width="150">
-<h2 id="headers"><a class="header" href="#headers">Headers</a></h2>
-<h1 id="first-level-title"><a class="header" href="#first-level-title">First level title</a></h1>
-<h2 id="second-level-title"><a class="header" href="#second-level-title">Second level title</a></h2>
-<h3 id="third-level-title"><a class="header" href="#third-level-title">Third level title</a></h3>
-<h4 id="fourth-level-title"><a class="header" href="#fourth-level-title">Fourth level title</a></h4>
-<h5 id="fifth-level-title"><a class="header" href="#fifth-level-title">Fifth level title</a></h5>
-<h6 id="sixth-level-title"><a class="header" href="#sixth-level-title">Sixth level title</a></h6>
-<h3 id="title-with-link"><a class="header" href="#title-with-link">Title with <a href="http://localhost">link</a></a></h3>
-<h3 id="title-with"><a class="header" href="#title-with">Title with <img src="http://localhost" alt="image" /></a></h3>
-<h2 id="code"><a class="header" href="#code">Code</a></h2>
-<p>Inline <code>code span in a</code> paragraph.</p>
-<pre><code>This
-  is
-    code
-      fence
-</code></pre>
-<pre><code class="language-java">public class Main {
-  public static void main(String[] args) {
-    System.out.println(&quot;Hello, World!&quot;);
-    System.out.println(&quot;This is some Java code!&quot;);
-  }
-}
-</code></pre>
-<p>This is a code block:</p>
-<pre><code>/**
- * Sorts the specified array into ascending numerical order.
- *
- * &lt;p&gt;Implementation note: The sorting algorithm is a Dual-Pivot Quicksort
- * by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm
- * offers O(n log(n)) performance on many data sets that cause other
- * quicksorts to degrade to quadratic performance, and is typically
- * faster than traditional (one-pivot) Quicksort implementations.
- *
- * @param a the array to be sorted
- */
-public static void sort(byte[] a) {
-    DualPivotQuicksort.sort(a);
-}
-</code></pre>
-<h2 id="quotes"><a class="header" href="#quotes">Quotes</a></h2>
-<blockquote>
-<p>This is the first level of quoting.</p>
-<blockquote>
-<p>This is nested blockquote.</p>
-</blockquote>
-<p>Back to the first level.</p>
-</blockquote>
-<blockquote>
-<p>A list within a blockquote:</p>
-<ul>
-<li>asterisk 1</li>
-<li>asterisk 2</li>
-<li>asterisk 3</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>Formatting within a blockquote:</p>
-<h3 id="header"><a class="header" href="#header">header</a></h3>
-<p>Link: <a href="http://example.com">Example</a></p>
-</blockquote>
-<h2 id="html"><a class="header" href="#html">Html</a></h2>
-<p>This is inline <span>html</html>.
-And this is an html block.</p>
-<table>
-  <tr>
-    <th>Column 1</th>
-    <th>Column 2</th>
-  </tr>
-  <tr>
-    <td>Row 1 Cell 1</td>
-    <td>Row 1 Cell 2</td>
-  </tr>
-  <tr>
-    <td>Row 2 Cell 1</td>
-    <td>Row 2 Cell 2</td>
-  </tr>
-</table>
-<h2 id="horizontal-rules"><a class="header" href="#horizontal-rules">Horizontal rules</a></h2>
-<hr />
-<hr />
-<hr />
-<h2 id="lists"><a class="header" href="#lists">Lists</a></h2>
-<p>Unordered list:</p>
-<ul>
-<li>asterisk 1</li>
-<li>asterisk 2</li>
-<li>asterisk 3</li>
-</ul>
-<p>Ordered list:</p>
-<ol>
-<li>First</li>
-<li>Second</li>
-<li>Third</li>
-</ol>
-<p>Mixed:</p>
-<ol>
-<li>First</li>
-<li>Second:</li>
-</ol>
-<ul>
-<li>Fee</li>
-<li>Fie</li>
-<li>Foe</li>
-</ul>
-<ol start="3">
-<li>Third</li>
-</ol>
-<p>Definition list:</p>
-<p>Some term
-: First definition
-: Second definition</p>
-<p>Tables:</p>
-<div class="table-wrapper"><table><thead><tr><th>Header 1</th><th>Header 2</th></tr></thead><tbody>
-<tr><td>Data 1</td><td>Data 2</td></tr>
-</tbody></table>
-</div><div style="break-before: page; page-break-before: always;"></div><h1 id="reference"><a class="header" href="#reference">Reference</a></h1>
+                        <h1 id="reference"><a class="header" href="#reference">Reference</a></h1>
 <p>The following admonishments are implemented by the
 <a href="https://github.com/tommilligan/mdbook-admonish"><code>mdbook-admonish</code></a> plugin and
 are automatically themed to match Catppuccin.</p>
@@ -321,15 +192,18 @@ are automatically themed to match Catppuccin.</p>
 <p><code>quote</code>, <code>cite</code></p>
 <pre><code class="language-admonish quote">Rust is a multi-paradigm, general-purpose programming language designed for performance and safety, especially safe concurrency.
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="super-secret"><a class="header" href="#super-secret">Super Secret</a></h1>
-<p>You thought you'd find something here, didn't you? </p>
-<p>Here, have a cookie for your efforts: 🍪</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="landing.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
+                            <a rel="next" href="secret.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -337,7 +211,13 @@ are automatically themed to match Catppuccin.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="landing.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
+                    <a rel="next" href="secret.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>
@@ -360,11 +240,6 @@ are automatically themed to match Catppuccin.</p>
 
         <!-- Custom JS scripts -->
 
-        <script type="text/javascript">
-        window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
-        });
-        </script>
 
     </body>
 </html>
