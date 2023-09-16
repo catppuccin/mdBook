@@ -17,7 +17,7 @@ assets_version = "2.0.2" # do not edit: managed by `mdbook-admonish install`
 [output.html]
 default-theme = "mocha"
 preferred-dark-theme = "mocha"
-additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-highlight.css", "./mdbook-admonish.css"]
+additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-highlight.css", "./theme/mdbook-admonish.css"]
 no-section-label = true
 git-repository-url = "https://github.com/catppuccin/mdBook"
 git-repository-icon = "fa-github"
