@@ -1,5 +1,23 @@
 @use "@catppuccin/palette/scss/catppuccin" as catppuccin;
-@use "admonish";
+@use "@catppuccin/highlightjs/sass/_theme" as hljs;
+
+@each $flavour, $colour in catppuccin.$palette {
+  .#{$flavour} {
+    @include hljs.highlights($flavour, "hex");
+    code {
+      color: map-get($colour, "text");
+      background: map-get($colour, "mantle");
+    }
+    .ace_gutter {
+      color: map-get($colour, "overlay1");
+      background: map-get($colour, "mantle");
+    }
+    .ace_gutter-active-line.ace_gutter-cell {
+      color: map-get($colour, "pink");
+      background: map-get($colour, "mantle");
+    }
+  }
+}
 
 @each $flavour, $color in catppuccin.$palette {
   .#{$flavour} {
@@ -31,7 +49,5 @@
     --searchresults-border-color: #{map-get($color, "crust")};
     --searchresults-li-bg: #{map-get($color, "base")};
     --search-mark-bg: #{map-get($color, "peach")};
-
-    @include admonish.main($color);
   }
 }

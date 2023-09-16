@@ -69,3 +69,9 @@ $mappings: (
     @include level($palette, $classes, $color);
   }
 }
+
+@each $flavour, $color in catppuccin.$palette {
+  .#{$flavour} {
+    @include main($color);
+  }
+}

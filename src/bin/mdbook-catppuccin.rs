@@ -99,9 +99,9 @@ mod install {
             include_bytes!("./assets/catppuccin.css"),
         ),
         (
-            "catppuccin-highlight.css",
+            "catppuccin-admonish.css",
             TomlPath::Path("additional-css"),
-            include_bytes!("./assets/catppuccin-highlight.css"),
+            include_bytes!("./assets/catppuccin-admonish.css"),
         ),
         (
             "index.hbs",
