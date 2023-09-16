@@ -113,7 +113,7 @@
 
 - Q: **_"What's the `catppuccin-admonish.css` file?"_**\
   A: It is a CSS file that is used to style the admonishments that are generated
-  by the [mdbook-admonish](https://github.com/tommilligan/mdbook-admonish).
+  by [mdbook-admonish](https://github.com/tommilligan/mdbook-admonish).
   **You can remove this file if you are not using this plugin.**
 
   E.g.
