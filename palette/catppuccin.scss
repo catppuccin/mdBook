@@ -8,6 +8,15 @@
       color: map-get($colour, "text");
       background: map-get($colour, "mantle");
     }
+    blockquote {
+      blockquote {
+        border-top: 0.1em solid map-get($colour, "surface2");
+        border-bottom: 0.1em solid map-get($colour, "surface2");
+      }
+    }
+    hr {
+      color: map-get($colour, "surface2");
+    }
     .ace_gutter {
       color: map-get($colour, "overlay1");
       background: map-get($colour, "mantle");
@@ -40,7 +49,7 @@
     --quote-border: #{map-get($color, "crust")};
     --table-border-color: #{map-get($color, "crust")};
     --table-header-bg: #{map-get($color, "mantle")};
-    --table-alternate-bg: #{map-get($color, "crust")};
+    --table-alternate-bg: #{map-get($color, "mantle")};
     --searchbar-border-color: #{map-get($color, "crust")};
     --searchbar-bg: #{map-get($color, "mantle")};
     --searchbar-fg: #{map-get($color, "text")};

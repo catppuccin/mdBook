@@ -144,6 +144,13 @@
   color: #cdd6f4;
   background: #181825;
 }
+.mocha blockquote blockquote {
+  border-top: 0.1em solid #585b70;
+  border-bottom: 0.1em solid #585b70;
+}
+.mocha hr {
+  color: #585b70;
+}
 .mocha .ace_gutter {
   color: #7f849c;
   background: #181825;
@@ -298,6 +305,13 @@
 .macchiato code {
   color: #cad3f5;
   background: #1e2030;
+}
+.macchiato blockquote blockquote {
+  border-top: 0.1em solid #5b6078;
+  border-bottom: 0.1em solid #5b6078;
+}
+.macchiato hr {
+  color: #5b6078;
 }
 .macchiato .ace_gutter {
   color: #8087a2;
@@ -454,6 +468,13 @@
   color: #c6d0f5;
   background: #292c3c;
 }
+.frappe blockquote blockquote {
+  border-top: 0.1em solid #626880;
+  border-bottom: 0.1em solid #626880;
+}
+.frappe hr {
+  color: #626880;
+}
 .frappe .ace_gutter {
   color: #838ba7;
   background: #292c3c;
@@ -609,6 +630,13 @@
   color: #4c4f69;
   background: #e6e9ef;
 }
+.latte blockquote blockquote {
+  border-top: 0.1em solid #acb0be;
+  border-bottom: 0.1em solid #acb0be;
+}
+.latte hr {
+  color: #acb0be;
+}
 .latte .ace_gutter {
   color: #8c8fa1;
   background: #e6e9ef;
@@ -638,7 +666,7 @@
   --quote-border: #11111b;
   --table-border-color: #11111b;
   --table-header-bg: #181825;
-  --table-alternate-bg: #11111b;
+  --table-alternate-bg: #181825;
   --searchbar-border-color: #11111b;
   --searchbar-bg: #181825;
   --searchbar-fg: #cdd6f4;
@@ -669,7 +697,7 @@
   --quote-border: #181926;
   --table-border-color: #181926;
   --table-header-bg: #1e2030;
-  --table-alternate-bg: #181926;
+  --table-alternate-bg: #1e2030;
   --searchbar-border-color: #181926;
   --searchbar-bg: #1e2030;
   --searchbar-fg: #cad3f5;
@@ -700,7 +728,7 @@
   --quote-border: #232634;
   --table-border-color: #232634;
   --table-header-bg: #292c3c;
-  --table-alternate-bg: #232634;
+  --table-alternate-bg: #292c3c;
   --searchbar-border-color: #232634;
   --searchbar-bg: #292c3c;
   --searchbar-fg: #c6d0f5;
@@ -731,7 +759,7 @@
   --quote-border: #dce0e8;
   --table-border-color: #dce0e8;
   --table-header-bg: #e6e9ef;
-  --table-alternate-bg: #dce0e8;
+  --table-alternate-bg: #e6e9ef;
   --searchbar-border-color: #dce0e8;
   --searchbar-bg: #e6e9ef;
   --searchbar-fg: #4c4f69;
