@@ -1,8 +1,8 @@
 # Reference
 
 The following admonishments are implemented by the
-[`mdbook-admonish`](https://github.com/tommilligan/mdbook-admonish) plugin and
-are automatically themed to match Catppuccin.
+[mdbook-admonish](https://github.com/tommilligan/mdbook-admonish) plugin and are
+automatically themed to match Catppuccin.
 
 ## Directives
 
