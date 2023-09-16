@@ -1,6 +1,6 @@
 {
   "name": "catppuccin-mdbook",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "Soothing pastel theme for mdBook",
   "scripts": {
     "build": "sass -I node_modules --no-charset --no-source-map palette:src/bin/assets"

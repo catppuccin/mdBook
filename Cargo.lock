@@ -871,7 +871,7 @@ dependencies = [
 
 [[package]]
 name = "mdbook-catppuccin"
-version = "0.2.1"
+version = "1.0.0"
 dependencies = [
  "clap",
  "env_logger 0.10.0",
