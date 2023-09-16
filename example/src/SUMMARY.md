@@ -1,5 +1,5 @@
 # Summary
 
-- [Landing](./first.md)
-- [Super Secret](./secret.md)
+- [Landing](./landing.md)
 - [Admonishments](./admonish.md)
+- [Super Secret](./secret.md)
