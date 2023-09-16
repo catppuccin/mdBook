@@ -8,12 +8,16 @@ title = "Catppuccin's mdBook"
 [preprocessor]
 
 [preprocessor.catppuccin]
-assets_version = "0.2.0" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
+assets_version = "0.2.1" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
+
+[preprocessor.admonish]
+command = "mdbook-admonish"
+assets_version = "2.0.2" # do not edit: managed by `mdbook-admonish install`
 
 [output.html]
 default-theme = "mocha"
 preferred-dark-theme = "mocha"
-additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-highlight.css"]
+additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-highlight.css", "./theme/mdbook-admonish.css"]
 no-section-label = true
 git-repository-url = "https://github.com/catppuccin/mdBook"
 git-repository-icon = "fa-github"

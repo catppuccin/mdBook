@@ -169,11 +169,3 @@ Tables:
 | Header 1 | Header 2 |
 | -------- | -------- |
 | Data 1   | Data 2   |
-
-## Admonishments (NOT SUPPORTED YET - [#2](https://github.com/catppuccin/mdBook/issues/2))
-
-> **Note**:
-> This is a note!
-
-> **Warning**:
-> This is a warning!

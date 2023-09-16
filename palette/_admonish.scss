@@ -1,0 +1,71 @@
+@use "sass:color";
+@use "sass:list";
+@use "@catppuccin/palette/scss/catppuccin" as catppuccin;
+
+@mixin level($palette, $classes, $color) {
+  :is(.admonition):is(#{$classes}) {
+    border-color: #{map-get($palette, $color)};
+  }
+  :is(#{$classes}) > :is(.admonition-title, summary.admonition-title) {
+    background-color: #{color.change(map-get($palette, $color), $alpha: 0.2)};
+  }
+  :is(#{$classes}) > :is(.admonition-title, summary.admonition-title)::before {
+    background-color: #{map-get($palette, $color)};
+  }
+}
+
+$mappings: (
+  "yellow": (
+    ".hint",
+    ".important",
+    ".tip",
+  ),
+  "flamingo": (
+    ".abstract",
+    ".summary",
+    ".tldr",
+  ),
+  "mauve": (
+    ".example",
+  ),
+  "sky": (
+    ".info",
+    ".todo",
+  ),
+  "green": (
+    ".check",
+    ".done",
+    ".success",
+  ),
+  "blue": (
+    ".note",
+  ),
+  "peach": (
+    ".attention",
+    ".caution",
+    ".warning",
+  ),
+  "teal": (
+    ".faq",
+    ".help",
+    ".question",
+  ),
+  "red": (
+    ".bug",
+    ".danger",
+    ".error",
+    ".fail",
+    ".failure",
+    ".missing",
+  ),
+  "pink": (
+    ".cite",
+    ".quote",
+  ),
+);
+
+@mixin main($palette) {
+  @each $color, $classes in $mappings {
+    @include level($palette, $classes, $color);
+  }
+}
