@@ -33,9 +33,8 @@ jobs:
       - uses: google-github-actions/release-please-action@v3
         id: release
         with:
-          draft: true
+          command: manifest
           draft-pull-request: true
-          release-type: rust
 
   build:
     needs: ["release-please"]

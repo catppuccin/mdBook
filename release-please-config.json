@@ -1,0 +1,22 @@
+{
+  "release-type": "rust",
+  "draft": true,
+  "packages": {
+    ".": {
+      "component": "main"
+    },
+    "example": {
+      "component": "example"
+    },
+    "palette": {
+      "component": "palette"
+    }
+  },
+  "plugins": [
+    {
+      "type": "linked-versions",
+      "groupName": "my group",
+      "components": ["main", "example", "palette"]
+    }
+  ]
+}
