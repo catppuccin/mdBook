@@ -8,39 +8,37 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 
-name: release
+name: build-and-release
 
 on:
+  workflow_dispatch:
   push:
-    tags:
-      - "v*"
+    branches:
+      - main
 
 env:
   BINARY: mdbook-catppuccin
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
-  create-release:
-    name: create-release
-    runs-on: ubuntu-22.04
+  release-please:
+    runs-on: ubuntu-latest
     outputs:
-      upload_url: ${{ steps.release.outputs.upload_url }}
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
     steps:
-      - name: Create GitHub Release
+      - uses: google-github-actions/release-please-action@v3
         id: release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           draft: true
-          tag_name: ${{ github.ref_name }}
-          release_name: ${{ github.ref_name }}
-
-  build-release:
-    needs: ["create-release"]
+          draft-pull-request: true
+          release-type: rust
+  build:
+    needs: ["release-please"]
     runs-on: ${{ matrix.os }}
-    defaults:
-      run:
-        shell: bash
     env:
       CARGO: cargo
       # When CARGO is set to CROSS, this is set to `--target matrix.target`.
@@ -49,11 +47,20 @@ jobs:
       TARGET_DIR: ./target
       # Emit backtraces on panics.
       RUST_BACKTRACE: 1
+    defaults:
+      run:
+        shell: bash
     strategy:
       fail-fast: false
       matrix:
         build:
-          [linux, linux-gnu, linux-arm, macos, win-msvc, win-gnu, win32-msvc]
+          - linux
+          - linux-gnu
+          - linux-arm
+          - macos
+          - win-msvc
+          - win-gnu
+          - win32-msvc
         include:
           - build: linux
             os: ubuntu-22.04
@@ -117,6 +124,9 @@ jobs:
           echo "target flag is: ${{ env.TARGET_FLAGS }}"
           echo "target dir is: ${{ env.TARGET_DIR }}"
 
+      - name: Test
+        run: ${{ env.CARGO }} test --release --verbose ${{ env.TARGET_FLAGS }}
+
       - name: Compile
         run: ${{ env.CARGO }} build --release --verbose ${{ env.TARGET_FLAGS }}
 
@@ -133,28 +143,35 @@ jobs:
             arm-linux-gnueabihf-strip \
             /target/arm-unknown-linux-gnueabihf/release/${{ env.BINARY }}
 
-      - name: Build archive
+      - name: Create Artifact
+        id: create-artifact
         run: |
           staging="${{ env.BINARY }}-${{ matrix.target }}"
           mkdir "$staging"
           cp {README.md,LICENSE} "$staging/"
 
           if [ "${{ matrix.os }}" == "windows-2022" ]; then
-            cp "target/release/${{ env.BINARY }}.exe" "$staging/"
+            name="${{ env.TARGET_DIR }}/release/${{ env.BINARY }}.exe"
+            echo "$name" >> $GITHUB_OUTPUT
+            cp "$name" "$staging/"
             7z a "$staging.zip" "$staging"
-            echo "ASSET=$staging.zip" >> $GITHUB_ENV
+            echo "asset=$staging.zip" >> $GITHUB_OUTPUT
           else
-            cp "target/${{ matrix.target }}/release/${{ env.BINARY }}" "$staging/"
+            name="${{ env.TARGET_DIR}}/release/${{ env.BINARY }}"
+            echo "$name" >> $GITHUB_OUTPUT
+            cp "$name" "$staging/"
             tar czf "$staging.tar.gz" "$staging"
-            echo "ASSET=$staging.tar.gz" >> $GITHUB_ENV
+            echo "asset=$staging.tar.gz" >> $GITHUB_OUTPUT
           fi
 
-      - name: Upload release archive
-        uses: actions/upload-release-asset@v1.0.2
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.BINARY }}-${{ matrix.target }}
+          path: ${{ steps.create-artifact.outputs.asset }}
+
+      - name: Upload Release Artifacts
+        if: ${{ needs.release-please.outputs.release_created }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ needs.create-release.outputs.upload_url }}
-          asset_path: ${{ env.ASSET }}
-          asset_name: ${{ env.ASSET }}
-          asset_content_type: application/octet-stream
+        run: gh release upload ${{ needs.release-please.outputs.tag_name }} ${{ steps.create-artifact.outputs.asset }}
