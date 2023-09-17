@@ -33,11 +33,7 @@ jobs:
       - uses: google-github-actions/release-please-action@v3
         id: release
         with:
-          release-type: rust
-          draft: true
-          draft-pull-request: true
-          extra-files: |
-            { "type": "json", "path": "palette/package.json", "jsonpath": "$.version" }
+          command: manifest
 
   build:
     needs: ["release-please"]
