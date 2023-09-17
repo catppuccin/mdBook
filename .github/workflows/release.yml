@@ -39,6 +39,7 @@ jobs:
 
   build:
     needs: ["release-please"]
+    if: needs.release-please.outputs.release_created
     runs-on: ${{ matrix.os }}
     env:
       CARGO: cargo
@@ -150,26 +151,17 @@ jobs:
 
           if [ "${{ matrix.os }}" == "windows-2022" ]; then
             artifact="${{ env.TARGET_DIR }}/release/${{ env.BINARY }}.exe"
-            eco "name=$artifact" >> $GITHUB_OUTPUT
             cp "$artifact" "$staging/"
             7z a "$staging.zip" "$staging"
             echo "asset=$staging.zip" >> $GITHUB_OUTPUT
           else
             artifact="${{ env.TARGET_DIR}}/release/${{ env.BINARY }}"
-            eco "name=$artifact" >> $GITHUB_OUTPUT
             cp "$artifact" "$staging/"
             tar czf "$staging.tar.gz" "$staging"
             echo "asset=$staging.tar.gz" >> $GITHUB_OUTPUT
           fi
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ env.BINARY }}-${{ matrix.target }}
-          path: ${{ steps.create-artifact.outputs.name }}
-
       - name: Upload Artifacts to Release
-        if: ${{ needs.release-please.outputs.release_created }}
+        run: gh release upload ${{ needs.release-please.outputs.tag_name }} ${{ steps.create-artifact.outputs.asset }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release upload ${{ needs.release-please.outputs.tag_name }} ${{ steps.create-artifact.outputs.asset }}
