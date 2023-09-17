@@ -1,0 +1,25 @@
+{
+  "packages": {
+    ".": {
+      "release-type": "rust",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": "palette/package.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": "palette/package-lock.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": "palette/package-lock.json",
+          "jsonpath": "$.packages.''.version"
+        }
+      ]
+    }
+  },
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
+}
