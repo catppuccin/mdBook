@@ -16,7 +16,7 @@
         {
           "type": "json",
           "path": "palette/package-lock.json",
-          "jsonpath": "$.packages.''.version"
+          "jsonpath": "$['packages']['']['version']"
         }
       ]
     }
