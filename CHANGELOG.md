@@ -1,5 +1,41 @@
 # CHANGELOG
 
+## [2.0.0](https://github.com/catppuccin/mdBook/compare/mdbook-catppuccin-v1.0.0...mdbook-catppuccin-v2.0.0) (2023-09-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* merge css files and separate admonish
+
+### Features
+
+* add mdbook-admonish support ([#59](https://github.com/catppuccin/mdBook/issues/59)) ([c8ba6ec](https://github.com/catppuccin/mdBook/commit/c8ba6ec236ba0bf7f4579dd8d31f27d454d7d61c))
+* dependabot is over party ([07a4d8a](https://github.com/catppuccin/mdBook/commit/07a4d8a06c6ec4b65e0ed6702bf61849acc9e073))
+* Fix codeblock colours ([e93f034](https://github.com/catppuccin/mdBook/commit/e93f0347722d3bd6ce5caa81cccbc93d0b205db6))
+* Generate catppuccin flavours with sass ([44144a2](https://github.com/catppuccin/mdBook/commit/44144a2512265c0eb6d1376a1da4c0be1cf43894))
+* **mdbook:** Add insert_dotted_table() ([37620fe](https://github.com/catppuccin/mdBook/commit/37620fe8c375ba4eaf54ae70a086445b82bc7a1c))
+* Refactor + Wrap up port ([9ba9813](https://github.com/catppuccin/mdBook/commit/9ba9813fd3d1ac75106cc2b0add0ae6627aae2c4))
+* **scss:** Generate css for .hjls ([c151055](https://github.com/catppuccin/mdBook/commit/c1510551c54cc3bc1c5751a6769fdcca3531f3e4))
+* style nested `blockquote` and `hr` ([f78383c](https://github.com/catppuccin/mdBook/commit/f78383ce5bedd6b276d6f12656f35f2474de91fe))
+* theme editable playground ([3adcd2d](https://github.com/catppuccin/mdBook/commit/3adcd2ddbf96031dd7d761705149fa5bb6aaac4e))
+* use npm package imports, update highlightjs ([f3bcc7e](https://github.com/catppuccin/mdBook/commit/f3bcc7e601fb1850d120c12e961cf8d4fb3883ed))
+
+
+### Bug Fixes
+
+* Add 'ayu' back into index.hbs ([45220f0](https://github.com/catppuccin/mdBook/commit/45220f0fcca322f5c1b3285371b84942daae3d70))
+* **cargo:** add `cargo` feature for `crate_version` ([dde0c18](https://github.com/catppuccin/mdBook/commit/dde0c18b73f8742f0e5ef29629d1107552b7bab1))
+* different colours for code blocks and inline code ([87a1749](https://github.com/catppuccin/mdBook/commit/87a1749fdf8d6046aa986fe5199fea74bd5299e1))
+* Fix white background colour ([38514d4](https://github.com/catppuccin/mdBook/commit/38514d4f5c670d197e8c10fe07d3fff5f182ccb8))
+* move output from `/bin/assets` to `/src/bin/assets` ([759ad4f](https://github.com/catppuccin/mdBook/commit/759ad4fe0e7e575214115a4eb0f64b32f9b294e8))
+* Update assets and resolve highlights ([caedfd0](https://github.com/catppuccin/mdBook/commit/caedfd094ae0be4421cf4f235ab80dfdfb929c33))
+* update to fixed highlightjs version ([98cf81a](https://github.com/catppuccin/mdBook/commit/98cf81a998a49c3176854f46c6e9a971f34b1c93))
+
+
+### Code Refactoring
+
+* merge css files and separate admonish ([5a160cd](https://github.com/catppuccin/mdBook/commit/5a160cd7e9a8ba21fc4cb4c884e3a664fcf715ea))
+
 ## [1.0.0](https://github.com/catppuccin/mdBook/compare/mdbook-catppuccin-v0.2.1...mdbook-catppuccin-v1.0.0) (2023-09-17)
 
 
