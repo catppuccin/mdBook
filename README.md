@@ -84,6 +84,7 @@
 2. Run the following command to generate the CSS files that will be packaged by the rust binary:
 
    ```shell
+   cd palette
    npm run build
    ```
 
@@ -99,7 +100,7 @@
 
    ```shell
    cd example
-   ../../target/release/mdbook-catppuccin install
+   ../target/release/mdbook-catppuccin install
    mdbook serve
    ```
 
