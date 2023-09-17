@@ -37,11 +37,7 @@ jobs:
           draft: true
           draft-pull-request: true
           extra-files: |
-            {
-              "type": "json",
-              "path": "palette/package.json",
-              "jsonpath": "$.version"
-            }
+            { "type": "json", "path": "palette/package.json", "jsonpath": "$.version" }
 
   build:
     needs: ["release-please"]
