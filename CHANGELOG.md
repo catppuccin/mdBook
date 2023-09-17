@@ -1,6 +1,32 @@
 # CHANGELOG
 
-## [v0.2.0](https://github.com/catppuccin/mdBook/releases/tag/untagged-f340edb92c501ff41598) - 2023-06-16 02:13:13
+## [1.0.0](https://github.com/catppuccin/mdBook/compare/mdbook-catppuccin-v0.2.1...mdbook-catppuccin-v1.0.0) (2023-09-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* merge css files and separate admonish
+
+### Features
+
+* add mdbook-admonish support ([#59](https://github.com/catppuccin/mdBook/issues/59)) ([c8ba6ec](https://github.com/catppuccin/mdBook/commit/c8ba6ec236ba0bf7f4579dd8d31f27d454d7d61c))
+* style nested `blockquote` and `hr` ([f78383c](https://github.com/catppuccin/mdBook/commit/f78383ce5bedd6b276d6f12656f35f2474de91fe))
+
+### Code Refactoring
+
+* merge css files and separate admonish ([5a160cd](https://github.com/catppuccin/mdBook/commit/5a160cd7e9a8ba21fc4cb4c884e3a664fcf715ea))
+
+## [v0.2.1](https://github.com/catppuccin/mdBook/releases/tag/v0.2.1) - 2023-07-29
+
+### Bug Fixes
+
+* add `cargo` feature for `crate_version` by @sgoudham (dde0c18b73f8742f0e5ef29629d1107552b7bab1)
+	* This fixes #52  
+* pin mdbook to 0.4.22 by @nyxkrage (cc92a344d1693d6f0a54fc55110af57bb2dfe70a)
+	* This will prevent issues like #52 from happening again. 
+* Fix source filter in `flake.nix` by @VojtechStep in https://github.com/catppuccin/mdBook/pull/51
+
+## [v0.2.0](https://github.com/catppuccin/mdBook/releases/tag/v0.2.0) - 2023-06-16 02:13:13
 
 Apologies for leaving this on the backburner for so long!
 
