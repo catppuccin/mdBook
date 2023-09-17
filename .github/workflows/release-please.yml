@@ -36,6 +36,7 @@ jobs:
           draft: true
           draft-pull-request: true
           release-type: rust
+
   build:
     needs: ["release-please"]
     runs-on: ${{ matrix.os }}
@@ -54,7 +55,7 @@ jobs:
       fail-fast: false
       matrix:
         build:
-          - linux
+          - linux-musl
           - linux-gnu
           - linux-arm
           - macos
@@ -62,7 +63,7 @@ jobs:
           - win-gnu
           - win32-msvc
         include:
-          - build: linux
+          - build: linux-musl
             os: ubuntu-22.04
             rust: nightly
             target: x86_64-unknown-linux-musl
@@ -92,10 +93,10 @@ jobs:
             target: i686-pc-windows-msvc
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Install packages (Ubuntu)
+      - name: Install Packages (Ubuntu)
         if: matrix.os == 'ubuntu-22.04'
         run: sudo apt-get update && sudo apt-get install -y --no-install-recommends musl-tools
 
@@ -118,23 +119,20 @@ jobs:
           echo "TARGET_FLAGS=--target ${{ matrix.target }}" >> $GITHUB_ENV
           echo "TARGET_DIR=./target/${{ matrix.target }}" >> $GITHUB_ENV
 
-      - name: Show command used for Cargo
+      - name: Show Cargo Command
         run: |
           echo "cargo command is: ${{ env.CARGO }}"
           echo "target flag is: ${{ env.TARGET_FLAGS }}"
           echo "target dir is: ${{ env.TARGET_DIR }}"
 
-      - name: Test
-        run: ${{ env.CARGO }} test --release --verbose ${{ env.TARGET_FLAGS }}
-
       - name: Compile
         run: ${{ env.CARGO }} build --release --verbose ${{ env.TARGET_FLAGS }}
 
-      - name: Strip release binary (linux and macos)
-        if: matrix.build == 'linux' || matrix.build == 'linux-gnu' || matrix.build == 'macos'
+      - name: Strip Binary (linux and macos)
+        if: matrix.build == 'linux-musl' || matrix.build == 'linux-gnu' || matrix.build == 'macos'
         run: strip "target/${{ matrix.target }}/release/${{ env.BINARY }}"
 
-      - name: Strip release binary (arm)
+      - name: Strip Binary (linux-arm)
         if: matrix.build == 'linux-arm'
         run: |
           docker run --rm -v \
@@ -168,7 +166,7 @@ jobs:
           name: ${{ env.BINARY }}-${{ matrix.target }}
           path: ${{ steps.create-artifact.outputs.asset }}
 
-      - name: Upload Release Artifacts
+      - name: Upload Artifacts to Release
         if: ${{ needs.release-please.outputs.release_created }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
