@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## [v1.0.0](https://github.com/catppuccin/mdBook/compare/mdbook-catppuccin-v0.2.1...mdbook-catppuccin-v1.0.0) (2023-09-17)
+## [1.0.0](https://github.com/catppuccin/mdBook/compare/mdbook-catppuccin-v0.2.1...mdbook-catppuccin-v1.0.0) (2023-09-17)
 
 
 ### ⚠ BREAKING CHANGES
