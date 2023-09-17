@@ -152,13 +152,11 @@ jobs:
 
           if [ "${{ matrix.os }}" == "windows-2022" ]; then
             name="${{ env.TARGET_DIR }}/release/${{ env.BINARY }}.exe"
-            echo "$name" >> $GITHUB_OUTPUT
             cp "$name" "$staging/"
             7z a "$staging.zip" "$staging"
             echo "asset=$staging.zip" >> $GITHUB_OUTPUT
           else
             name="${{ env.TARGET_DIR}}/release/${{ env.BINARY }}"
-            echo "$name" >> $GITHUB_OUTPUT
             cp "$name" "$staging/"
             tar czf "$staging.tar.gz" "$staging"
             echo "asset=$staging.tar.gz" >> $GITHUB_OUTPUT
