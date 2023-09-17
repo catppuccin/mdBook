@@ -3,6 +3,7 @@
   "draft-pull-request": true,
   "packages": {
     ".": {
+      "package-name": "",
       "release-type": "rust",
       "extra-files": [
         {
