@@ -1,6 +1,6 @@
 use std::{io, process};
 
-use clap::{crate_version, Arg, ArgMatches, Command};
+use clap::{command, crate_version, Arg, ArgMatches, Command};
 use mdbook::errors::Error;
 use mdbook::preprocess::{CmdPreprocessor, Preprocessor};
 use semver::{Version, VersionReq};
@@ -23,8 +23,9 @@ fn main() {
     }
 }
 
-pub fn make_app() -> Command<'static> {
-    Command::new("mdbook-catppuccin")
+pub fn make_app() -> Command {
+    command!()
+        .name("mdbook-catppuccin")
         .about("A mdbook preprocessor that implements catppuccin flavours as default themes")
         .version(crate_version!())
         .subcommand(
@@ -66,10 +67,11 @@ fn handle_preprocessing(pre: &Catppuccin) -> Result<(), Error> {
 }
 
 fn handle_supports(pre: &Catppuccin, sub_args: &ArgMatches) -> ! {
-    let renderer = sub_args.value_of("renderer").expect("Required argument");
-    let supported = pre.supports_renderer(renderer);
+    let renderer = sub_args
+        .get_one::<&str>("renderer")
+        .expect("Required argument");
 
-    if supported {
+    if pre.supports_renderer(renderer) {
         process::exit(0);
     } else {
         process::exit(1);
