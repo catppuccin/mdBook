@@ -9,6 +9,7 @@
       "component": "example"
     },
     "palette": {
+      "release-type": "node",
       "component": "palette"
     }
   },
