@@ -85,6 +85,7 @@
 
    ```shell
    cd palette
+   npm install
    npm run build
    ```
 
