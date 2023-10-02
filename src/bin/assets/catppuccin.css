@@ -151,6 +151,9 @@
 .mocha hr {
   color: #585b70;
 }
+.mocha del {
+  color: #9399b2;
+}
 .mocha .ace_gutter {
   color: #7f849c;
   background: #181825;
@@ -312,6 +315,9 @@
 }
 .macchiato hr {
   color: #5b6078;
+}
+.macchiato del {
+  color: #939ab7;
 }
 .macchiato .ace_gutter {
   color: #8087a2;
@@ -475,6 +481,9 @@
 .frappe hr {
   color: #626880;
 }
+.frappe del {
+  color: #949cbb;
+}
 .frappe .ace_gutter {
   color: #838ba7;
   background: #292c3c;
@@ -636,6 +645,9 @@
 }
 .latte hr {
   color: #acb0be;
+}
+.latte del {
+  color: #7c7f93;
 }
 .latte .ace_gutter {
   color: #8c8fa1;

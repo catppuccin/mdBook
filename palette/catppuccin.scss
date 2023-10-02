@@ -17,6 +17,9 @@
     hr {
       color: map-get($colour, "surface2");
     }
+    del {
+      color: map-get($colour, "overlay2");
+    }
     .ace_gutter {
       color: map-get($colour, "overlay1");
       background: map-get($colour, "mantle");
