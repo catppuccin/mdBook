@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [1.1.0](https://github.com/catppuccin/mdBook/compare/v1.0.0...v1.1.0) (2023-10-02)
+
+
+### Features
+
+* darken struckout text ([5388763](https://github.com/catppuccin/mdBook/commit/5388763d108a72e1f0bd99656d7c88439fe9243a))
+* switch to clap v4 ([a1ddb9a](https://github.com/catppuccin/mdBook/commit/a1ddb9a11b6a5e83b75dbfeebe776ad7658ac9eb))
+
+
+### Bug Fixes
+
+* colours in `diff` codeblock ([#67](https://github.com/catppuccin/mdBook/issues/67)) ([a3b3f77](https://github.com/catppuccin/mdBook/commit/a3b3f7726c85cc815279f62fbd096d7249429866))
+
 ## [1.0.0](https://github.com/catppuccin/mdBook/compare/mdbook-catppuccin-v0.2.1...mdbook-catppuccin-v1.0.0) (2023-09-17)
 
 
