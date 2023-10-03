@@ -22,23 +22,23 @@ jobs:
       - name: Setup mdBook
         uses: peaceiris/actions-mdbook@v1
         with:
-          mdbook-version: "latest"
+          mdbook-version: "0.4.34"
 
       - name: Download mdbook-catppuccin
         run: |
-          curl -sSL ${{ env.RELEASE_URL }}/${{ env.TARGET }}.tar.gz | tar -xz
+          curl -sSL https://github.com/catppuccin/mdBook/releases/download/${{ env.VERSION }}/${{ env.TARGET }}.tar.gz | tar -xz
           echo `pwd`/${{ env.TARGET }} >> $GITHUB_PATH
         env:
-          RELEASE_URL: "https://github.com/catppuccin/mdBook/releases/latest/download"
+          VERSION: "v1.2.0"
           TARGET: "mdbook-catppuccin-x86_64-unknown-linux-gnu"
-      
+
       - name: Download mdbook-admonish
         run: |
           mkdir ${{ env.TARGET }}
-          curl -sSL ${{ env.RELEASE_URL }}/${{ env.TARGET }}.tar.gz | tar -xz --directory=${{ env.TARGET }}
+          curl -sSL https://github.com/catppuccin/mdBook/releases/download/${{ env.VERSION }}/${{ env.TARGET }}.tar.gz | tar -xz --directory=${{ env.TARGET }}
           echo `pwd`/${{ env.TARGET }} >> $GITHUB_PATH
         env:
-          RELEASE_URL: "https://github.com/tommilligan/mdbook-admonish/releases/download/v1.12.0"
+          VERSION: "v1.12.0"
           TARGET: "mdbook-admonish-v1.12.0-x86_64-unknown-linux-gnu"
 
       - name: Build mdBook
