@@ -8,7 +8,7 @@
 
 #page-wrapper.page-wrapper {
     transform: none;
-    margin-inline-start: 0px;
+    margin-left: 0px;
     overflow-y: initial;
 }
 
@@ -20,10 +20,6 @@
 
 .page {
     overflow-y: initial;
-}
-
-code {
-    direction: ltr !important;
 }
 
 pre > .buttons {
