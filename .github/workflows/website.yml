@@ -35,7 +35,7 @@ jobs:
       - name: Download mdbook-admonish
         run: |
           mkdir ${{ env.TARGET }}
-          curl -sSL https://github.com/catppuccin/mdBook/releases/download/${{ env.VERSION }}/${{ env.TARGET }}.tar.gz | tar -xz --directory=${{ env.TARGET }}
+          curl -sSL https://github.com/tommilligan/mdbook-admonish/releases/download/${{ env.VERSION }}/${{ env.TARGET }}.tar.gz | tar -xz --directory=${{ env.TARGET }}
           echo `pwd`/${{ env.TARGET }} >> $GITHUB_PATH
         env:
           VERSION: "v1.12.0"
