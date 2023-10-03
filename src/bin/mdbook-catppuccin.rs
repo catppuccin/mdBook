@@ -68,7 +68,7 @@ fn handle_preprocessing(pre: &Catppuccin) -> Result<(), Error> {
 
 fn handle_supports(pre: &Catppuccin, sub_args: &ArgMatches) -> ! {
     let renderer = sub_args
-        .get_one::<&str>("renderer")
+        .get_one::<String>("renderer")
         .expect("Required argument");
 
     if pre.supports_renderer(renderer) {
