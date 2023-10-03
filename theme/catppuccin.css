@@ -132,11 +132,11 @@
 .mocha .hljs-template-variable {
   color: #f2cdcd;
 }
-.mocha .hljs-diff-addition {
+.mocha .hljs-addition {
   color: #a6e3a1;
   background: rgba(166, 227, 161, 0.15);
 }
-.mocha .hljs-diff-deletion {
+.mocha .hljs-deletion {
   color: #f38ba8;
   background: rgba(243, 139, 168, 0.15);
 }
@@ -150,6 +150,9 @@
 }
 .mocha hr {
   color: #585b70;
+}
+.mocha del {
+  color: #9399b2;
 }
 .mocha .ace_gutter {
   color: #7f849c;
@@ -294,11 +297,11 @@
 .macchiato .hljs-template-variable {
   color: #f0c6c6;
 }
-.macchiato .hljs-diff-addition {
+.macchiato .hljs-addition {
   color: #a6da95;
   background: rgba(166, 218, 149, 0.15);
 }
-.macchiato .hljs-diff-deletion {
+.macchiato .hljs-deletion {
   color: #ed8796;
   background: rgba(237, 135, 150, 0.15);
 }
@@ -312,6 +315,9 @@
 }
 .macchiato hr {
   color: #5b6078;
+}
+.macchiato del {
+  color: #939ab7;
 }
 .macchiato .ace_gutter {
   color: #8087a2;
@@ -456,11 +462,11 @@
 .frappe .hljs-template-variable {
   color: #eebebe;
 }
-.frappe .hljs-diff-addition {
+.frappe .hljs-addition {
   color: #a6d189;
   background: rgba(166, 209, 137, 0.15);
 }
-.frappe .hljs-diff-deletion {
+.frappe .hljs-deletion {
   color: #e78284;
   background: rgba(231, 130, 132, 0.15);
 }
@@ -474,6 +480,9 @@
 }
 .frappe hr {
   color: #626880;
+}
+.frappe del {
+  color: #949cbb;
 }
 .frappe .ace_gutter {
   color: #838ba7;
@@ -618,11 +627,11 @@
 .latte .hljs-template-variable {
   color: #dd7878;
 }
-.latte .hljs-diff-addition {
+.latte .hljs-addition {
   color: #40a02b;
   background: rgba(64, 160, 43, 0.15);
 }
-.latte .hljs-diff-deletion {
+.latte .hljs-deletion {
   color: #d20f39;
   background: rgba(210, 15, 57, 0.15);
 }
@@ -636,6 +645,9 @@
 }
 .latte hr {
   color: #acb0be;
+}
+.latte del {
+  color: #7c7f93;
 }
 .latte .ace_gutter {
   color: #8c8fa1;
