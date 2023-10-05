@@ -33,7 +33,7 @@
         buildInputs = with pkgs; (
           [
             cargo
-            mdbook
+            # mdbook
             mdbook-admonish
             node2nix
             nodejs
