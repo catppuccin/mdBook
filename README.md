@@ -39,7 +39,7 @@
 
 ### Rust (Preferred)
 
-1. Install `mdbook-catppuccin` by running `cargo install mdbook-catppuccin` or download the latest [release](https://github.com/catppuccin/mdBook/releases/latest).
+1. Install by running `cargo install mdbook-catppuccin` or download the latest [release](https://github.com/catppuccin/mdBook/releases/latest).
 
 2. Navigate to your mdBook's root directory (same location where the `book.toml`
    lives) and run `mdbook-catppuccin install`
@@ -71,6 +71,21 @@
 
 5. Build your mdBook using `mdbook build` and enjoy your new catppuccin
    flavours!
+
+### Version Compatibility
+
+This table shows the compatibility between the mdBook version and the mdbook-catppuccin version.
+
+> [!IMPORTANT]  
+> Updates to the major version are **BREAKING CHANGES** to the
+> `index.hbs` file, which means that you will have to update the file manually
+> or use `mdbook-catppuccin install --force` flag to overwrite the `index.hbs`
+> upon installation.
+
+| mdbook-catppuccin | mdBook |
+| ----------------- | ------ |
+| 1.x.x             | 0.4.22 → 0.4.34  |
+| 2.x.x             | 0.4.35 → latest  |
 
 ### Development
 
