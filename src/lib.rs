@@ -17,6 +17,17 @@ pub enum TomlPath {
 const LATEST_ASSETS_VERSION: &str = env!("CARGO_PKG_VERSION");
 const TOML_KEY: &str = "preprocessor.catppuccin.assets_version";
 
+fn get_major_version(version: &str) -> i32 {
+    version
+        .split_once('.')
+        .unwrap()
+        .0
+        .parse::<i32>()
+        .unwrap_or_else(|_| {
+            panic!("Major version from '{version}' cannot be converted to an integer")
+        })
+}
+
 impl Catppuccin {
     pub fn new() -> Self {
         Catppuccin
@@ -43,11 +54,23 @@ impl Preprocessor for Catppuccin {
                             r#"mdbook-catppuccin with version '{LATEST_ASSETS_VERSION}' is out of date with current asset version '{current_assets_version}'.
 Please upgrade by running 'cargo install --force mdbook-catppuccin' and then re-run 'mdbook-catppuccin install'"#
                         ),
-                        Cmp::Gt => error!(
-                            r#"Out-Of-Date Asset Version '{current_assets_version}' Found: 
-Please update your version of 'mdbook-catppuccin' to '{LATEST_ASSETS_VERSION}'. 
+                        Cmp::Gt => {
+                            error!(
+                                r#"Out-Of-Date Asset Version '{current_assets_version}' Found:
+Please update your version of 'mdbook-catppuccin' to '{LATEST_ASSETS_VERSION}'.
 Then run 'mdbook-catppuccin install' to install the lastest assets."#
-                        ),
+                            );
+
+                            let current_major_version = get_major_version(current_assets_version);
+                            let latest_major_version = get_major_version(LATEST_ASSETS_VERSION);
+                            if latest_major_version > current_major_version {
+                                error!(
+                                    r#"BREAKING CHANGES - Major Version Mismatch Detected.
+Please see the version compatibility table to understand if you need to upgrade your 'index.hbs'.
+https://github.com/catppuccin/mdBook?tab=readme-ov-file#version-compatibility"#
+                                )
+                            }
+                        }
                         _ => {}
                     }
                 }
