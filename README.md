@@ -142,21 +142,21 @@ This table shows the compatibility between the mdBook version and the mdbook-cat
   ```
 
 - Q: **_"How can I remove the default themes?"_**\
-  A: Navigate to [`index.hbs (L125 - L133)`](https://github.com/catppuccin/mdBook/blob/main/src/bin/assets/index.hbs#L125-L133)
+  A: Navigate to [`index.hbs (L154 - L162)`](https://github.com/catppuccin/mdBook/blob/main/src/bin/assets/index.hbs#L154-L162)
   and remove the themes that you don't want. Remember to run `mdbook build` again!
 
   E.g. To remove all default themes:
 
   ```diff
-  - <li role="none"><button role="menuitem" class="theme" id="light">{{ theme_option "Light" }}</button></li>
-  - <li role="none"><button role="menuitem" class="theme" id="rust">{{ theme_option "Rust" }}</button></li>
-  - <li role="none"><button role="menuitem" class="theme" id="coal">{{ theme_option "Coal" }}</button></li>
-  - <li role="none"><button role="menuitem" class="theme" id="navy">{{ theme_option "Navy" }}</button></li>
-  - <li role="none"><button role="menuitem" class="theme" id="ayu">{{ theme_option "Ayu" }}</button></li>
-  + <li role="none"><button role="menuitem" class="theme" id="latte">{{ theme_option "Latte" }}</button></li>
-  + <li role="none"><button role="menuitem" class="theme" id="frappe">{{ theme_option "Frappé" }}</button></li>
-  + <li role="none"><button role="menuitem" class="theme" id="macchiato">{{ theme_option "Macchiato" }}</button></li>
-  + <li role="none"><button role="menuitem" class="theme" id="mocha">{{ theme_option "Mocha" }}</button></li>
+  - <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+  - <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+  - <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+  - <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+  - <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+  + <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
+  + <li role="none"><button role="menuitem" class="theme" id="frappe">Frappé</button></li>
+  + <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
+  + <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</button></li>
   ```
 
 ## Acknowledgement
