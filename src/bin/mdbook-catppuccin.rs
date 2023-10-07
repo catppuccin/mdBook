@@ -1,6 +1,6 @@
 use std::{io, process};
 
-use clap::{command, crate_version, Arg, ArgMatches, Command};
+use clap::{command, crate_version, Arg, ArgAction, ArgMatches, Command};
 use mdbook::errors::Error;
 use mdbook::preprocess::{CmdPreprocessor, Preprocessor};
 use semver::{Version, VersionReq};
@@ -39,6 +39,13 @@ pub fn make_app() -> Command {
                     Arg::new("dir")
                         .default_value(".")
                         .help("Root directory for the book, this should contain the configuration file `book.toml`")
+                )
+                .arg(
+                    Arg::new("force")
+                    .long("force")
+                    .short('f')
+                    .action(ArgAction::SetTrue)
+                    .help("Overwrite the existing 'index.hbs' file, should only be used when upgrading major versions")
                 )
                 .about("Install the necessary files needed and update the config to include them"),
         )
@@ -116,6 +123,7 @@ mod install {
         let dir = sub_args.get_one::<String>("dir").unwrap();
         let project_dir = PathBuf::from(dir);
         let toml_config = project_dir.join("book.toml");
+        let is_force = sub_args.get_flag("force");
 
         if !toml_config.exists() {
             error!(
@@ -127,7 +135,7 @@ mod install {
 
         let (toml, mut document) = read_configuration_file(&toml_config);
         let theme_dir = populate_theme_directory(&document, &project_dir);
-        copy_assets(&mut document, &theme_dir);
+        copy_assets(&mut document, &theme_dir, is_force);
         update_configuration_file(document, toml, toml_config);
 
         info!("mdbook-catppuccin is now installed. Build your book with `mdbook build` to try out your new catppuccin colour palettes!");
@@ -162,7 +170,7 @@ mod install {
         theme_dir
     }
 
-    fn copy_assets(document: &mut Document, theme_dir: &Path) {
+    fn copy_assets(document: &mut Document, theme_dir: &Path, is_force: bool) {
         if let Ok(preprocessor) = document.insert_into_preprocessor("catppuccin") {
             let value = toml_edit::value(Value::from(VERSION.trim()).decorated(
                 " ",
@@ -192,11 +200,18 @@ mod install {
                 let file_exists = Path::new(path_str).try_exists();
                 if let Ok(val) = file_exists {
                     if val {
-                        info!(
-                            "'{}' already exists and therefore will not be overwritten",
-                            path.display()
-                        );
-                        break;
+                        if is_force {
+                            info!(
+                                "Force flag detected. Overwriting existing '{}'",
+                                path.display()
+                            );
+                        } else {
+                            info!(
+                                "'{}' already exists and therefore will not be overwritten",
+                                path.display()
+                            );
+                            break;
+                        }
                     }
                 } else {
                     error!("Unexpected error, cannot determine if 'index.hbs' exists");
