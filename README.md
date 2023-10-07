@@ -77,7 +77,7 @@
 This table shows the compatibility between the mdBook version and the mdbook-catppuccin version.
 
 > [!IMPORTANT]  
-> Updates to the major version are **BREAKING CHANGES** to the
+> Updates to the major version may contain **BREAKING CHANGES** to the
 > `index.hbs` file, which means that you will have to update the file manually
 > or use `mdbook-catppuccin install --force` flag to overwrite the `index.hbs`
 > upon installation.
