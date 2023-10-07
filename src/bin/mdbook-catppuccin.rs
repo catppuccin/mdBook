@@ -45,7 +45,7 @@ pub fn make_app() -> Command {
                     .long("force")
                     .short('f')
                     .action(ArgAction::SetTrue)
-                    .help("Overwrite the existing 'index.hbs' file, should only be used when upgrading major versions")
+                    .help("Forcefully overwrite the existing 'index.hbs' file")
                 )
                 .about("Install the necessary files needed and update the config to include them"),
         )
