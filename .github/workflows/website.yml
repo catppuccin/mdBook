@@ -2,12 +2,6 @@ name: website
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - "example/**"
-  pull_request:
-    paths:
-      - "example/**"
 
 jobs:
   build-website:
