@@ -74,3 +74,16 @@ impl ArrayExt for Array {
         })
     }
 }
+
+pub trait ItemExt {
+    fn get_assets_version(&self) -> Result<&str, &str>;
+}
+
+impl ItemExt for Item {
+    fn get_assets_version(&self) -> Result<&str, &str> {
+        self.get("assets_version")
+            .ok_or("assets_version not found")?
+            .as_str()
+            .ok_or("assets_version is not a string")
+    }
+}

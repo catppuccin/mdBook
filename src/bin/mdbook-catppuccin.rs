@@ -86,6 +86,7 @@ fn handle_supports(pre: &Catppuccin, sub_args: &ArgMatches) -> ! {
 }
 
 mod install {
+    use mdbook_catppuccin::log_major_version_difference;
     use std::fs::File;
     use std::io::{ErrorKind, Write};
     use std::path::Path;
@@ -93,6 +94,7 @@ mod install {
 
     use clap::ArgMatches;
     use log::{error, info, warn};
+    use mdbook_catppuccin::toml::ItemExt;
     use toml_edit::{Document, Value};
 
     use mdbook_catppuccin::{
@@ -172,11 +174,14 @@ mod install {
 
     fn copy_assets(document: &mut Document, theme_dir: &Path, is_force: bool) {
         if let Ok(preprocessor) = document.insert_into_preprocessor("catppuccin") {
-            let value = toml_edit::value(Value::from(VERSION.trim()).decorated(
+            let latest_assets_version = toml_edit::value(Value::from(VERSION.trim()).decorated(
                 " ",
                 " # DO NOT EDIT: Managed by `mdbook-catppuccin install`",
             ));
-            preprocessor["assets_version"] = value;
+            if let Ok(existing_assets_version) = preprocessor.get_assets_version() {
+                log_major_version_difference(existing_assets_version, VERSION.trim());
+            }
+            preprocessor["assets_version"] = latest_assets_version;
         } else {
             warn!("Unexpected configuration, not updating pre-processor configuration");
         };
