@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [2.0.0](https://github.com/catppuccin/mdBook/compare/v1.2.0...v2.0.0) (2023-10-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* support mdbook version `0.4.35`
+
+### Features
+
+* **cli:** add "--force" flag to install command ([28f9d0f](https://github.com/catppuccin/mdBook/commit/28f9d0f02aea41c7278659fb22ba9db5bbf02b5d))
+* **cli:** detect differences in major version ([8956c61](https://github.com/catppuccin/mdBook/commit/8956c61a727b0408be202c9c7fc6c2f336166272))
+* support mdbook version `0.4.35` ([55e8722](https://github.com/catppuccin/mdBook/commit/55e872267de2c63e91659c6be5eac1be4fc34540))
+
 ## [1.2.0](https://github.com/catppuccin/mdBook/compare/v1.1.0...v1.2.0) (2023-10-03)
 
 
