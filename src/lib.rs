@@ -57,7 +57,7 @@ Please upgrade by running 'cargo install --force mdbook-catppuccin' and then re-
                         Cmp::Gt => {
                             error!(
                                 r#"Out-Of-Date Asset Version '{current_assets_version}' Found:
-Please update your version of 'mdbook-catppuccin' to '{LATEST_ASSETS_VERSION}'.
+Please update your version of 'mdbook-catppuccin' to '{LATEST_ASSETS_VERSION}'
 Then run 'mdbook-catppuccin install' to install the lastest assets."#
                             );
 
@@ -66,7 +66,7 @@ Then run 'mdbook-catppuccin install' to install the lastest assets."#
                             if latest_major_version > current_major_version {
                                 error!(
                                     r#"BREAKING CHANGES - Major Version Mismatch Detected.
-Please see the version compatibility table to understand if you need to upgrade your 'index.hbs'.
+Please see the version compatibility table to understand if you need to upgrade your 'index.hbs'
 https://github.com/catppuccin/mdBook?tab=readme-ov-file#version-compatibility"#
                                 )
                             }
