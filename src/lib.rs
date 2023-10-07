@@ -58,7 +58,7 @@ Please upgrade by running 'cargo install --force mdbook-catppuccin' and then re-
                             error!(
                                 r#"Out-Of-Date Asset Version '{current_assets_version}' Found:
 Please update your version of 'mdbook-catppuccin' to '{LATEST_ASSETS_VERSION}'
-Then run 'mdbook-catppuccin install' to install the lastest assets."#
+Then run 'mdbook-catppuccin install' to install the latest assets."#
                             );
 
                             let current_major_version = get_major_version(current_assets_version);
