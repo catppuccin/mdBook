@@ -8,7 +8,7 @@ title = "Catppuccin's mdBook"
 [preprocessor]
 
 [preprocessor.catppuccin]
-assets_version = "1.2.0" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
+assets_version = "2.0.0" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
 
 [preprocessor.admonish]
 command = "mdbook-admonish"

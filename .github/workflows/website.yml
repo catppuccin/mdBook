@@ -16,14 +16,14 @@ jobs:
       - name: Setup mdBook
         uses: peaceiris/actions-mdbook@v1
         with:
-          mdbook-version: "0.4.34"
+          mdbook-version: "0.4.35"
 
       - name: Download mdbook-catppuccin
         run: |
           curl -sSL https://github.com/catppuccin/mdBook/releases/download/${{ env.VERSION }}/${{ env.TARGET }}.tar.gz | tar -xz
           echo `pwd`/${{ env.TARGET }} >> $GITHUB_PATH
         env:
-          VERSION: "v1.2.0"
+          VERSION: "v2.0.0"
           TARGET: "mdbook-catppuccin-x86_64-unknown-linux-gnu"
 
       - name: Download mdbook-admonish
