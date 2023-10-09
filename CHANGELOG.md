@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [2.0.1](https://github.com/catppuccin/mdBook/compare/v2.0.0...v2.0.1) (2023-10-09)
+
+
+### Bug Fixes
+
+* **admonish:** prefix `admonish-` to class names ([#76](https://github.com/catppuccin/mdBook/issues/76)) ([ba711b6](https://github.com/catppuccin/mdBook/commit/ba711b6ceb67f9d4e352cafc4a11d8a28d0b4980))
+
 ## [2.0.0](https://github.com/catppuccin/mdBook/compare/v1.2.0...v2.0.0) (2023-10-07)
 
 
