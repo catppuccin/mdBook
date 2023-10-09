@@ -16,51 +16,51 @@
 
 $mappings: (
   "yellow": (
-    ".hint",
-    ".important",
-    ".tip",
+    ".admonish-hint",
+    ".admonish-important",
+    ".admonish-tip",
   ),
   "flamingo": (
-    ".abstract",
-    ".summary",
-    ".tldr",
+    ".admonish-abstract",
+    ".admonish-summary",
+    ".admonish-tldr",
   ),
   "mauve": (
-    ".example",
+    ".admonish-example",
   ),
   "sky": (
-    ".info",
-    ".todo",
+    ".admonish-info",
+    ".admonish-todo",
   ),
   "green": (
-    ".check",
-    ".done",
-    ".success",
+    ".admonish-check",
+    ".admonish-done",
+    ".admonish-success",
   ),
   "blue": (
-    ".note",
+    ".admonish-note",
   ),
   "peach": (
-    ".attention",
-    ".caution",
-    ".warning",
+    ".admonish-attention",
+    ".admonish-caution",
+    ".admonish-warning",
   ),
   "teal": (
-    ".faq",
-    ".help",
-    ".question",
+    ".admonish-faq",
+    ".admonish-help",
+    ".admonish-question",
   ),
   "red": (
-    ".bug",
-    ".danger",
-    ".error",
-    ".fail",
-    ".failure",
-    ".missing",
+    ".admonish-bug",
+    ".admonish-danger",
+    ".admonish-error",
+    ".admonish-fail",
+    ".admonish-failure",
+    ".admonish-missing",
   ),
   "pink": (
-    ".cite",
-    ".quote",
+    ".admonish-cite",
+    ".admonish-quote",
   ),
 );
 
