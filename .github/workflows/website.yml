@@ -23,7 +23,7 @@ jobs:
           curl -sSL https://github.com/catppuccin/mdBook/releases/download/${{ env.VERSION }}/${{ env.TARGET }}.tar.gz | tar -xz
           echo `pwd`/${{ env.TARGET }} >> $GITHUB_PATH
         env:
-          VERSION: "v2.0.0"
+          VERSION: "v2.0.1"
           TARGET: "mdbook-catppuccin-x86_64-unknown-linux-gnu"
 
       - name: Download mdbook-admonish
@@ -32,8 +32,8 @@ jobs:
           curl -sSL https://github.com/tommilligan/mdbook-admonish/releases/download/${{ env.VERSION }}/${{ env.TARGET }}.tar.gz | tar -xz --directory=${{ env.TARGET }}
           echo `pwd`/${{ env.TARGET }} >> $GITHUB_PATH
         env:
-          VERSION: "v1.12.0"
-          TARGET: "mdbook-admonish-v1.12.0-x86_64-unknown-linux-gnu"
+          VERSION: "v1.13.0"
+          TARGET: "mdbook-admonish-v1.13.0-x86_64-unknown-linux-gnu"
 
       - name: Build mdBook
         run: |
