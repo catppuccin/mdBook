@@ -25,5 +25,12 @@
       ]
     }
   },
+  "changelog-sections": [
+    {
+      "section": "Build system & distribution",
+      "type": "build",
+      "hidden": false
+    }
+  ],
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
 }
