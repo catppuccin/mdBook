@@ -1,7 +1,7 @@
 [package]
 name = "mdbook-catppuccin"
 authors = ["Goudham Suresh <sgoudham@gmail.com>", "winston <hey@winston.sh>"]
-description = "A mdbook preprocessor that exposes the catppuccin flavours as available themes!"
+description = "🎊 Soothing pastel theme for mdBook"
 version = "2.0.1"
 edition = "2021"
 license = "MIT"
@@ -20,6 +20,7 @@ path = "src/lib.rs"
 
 [dependencies]
 clap = { version = "4.4.6", features = ["cargo"] }
+clap_complete = "4.4.4"
 mdbook = { version = "0.4.35", default_features = false }
 env_logger = "0.10.0"
 log = "0.4.20"
