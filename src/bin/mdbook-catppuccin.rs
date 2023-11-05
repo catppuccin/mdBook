@@ -79,6 +79,7 @@ pub fn make_app() -> Command {
                 .required(true)
                 .value_parser(value_parser!(Shell))
             )
+            .about("Generate shell completion scripts")
         )
 }
 
