@@ -61,5 +61,6 @@
     --searchresults-border-color: #{map-get($color, "crust")};
     --searchresults-li-bg: #{map-get($color, "base")};
     --search-mark-bg: #{map-get($color, "peach")};
+    --warning-border: #{map-get($color, "peach")};
   }
 }
