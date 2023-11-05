@@ -19,7 +19,6 @@
       mdbook-catppuccin = pkgs.rustPlatform.buildRustPackage {
         pname = "mdbook-catppuccin";
         inherit version;
-        buildInputs = with pkgs; ([] ++ lib.optionals stdenv.isDarwin [libiconv]);
         src = pkgs.nix-gitignore.gitignoreSource [] ./.;
         cargoLock.lockFile = ./Cargo.lock;
       };
@@ -28,21 +27,18 @@
 
     devShells = forAllSystems (pkgs: rec {
       default = pkgs.mkShell {
-        buildInputs = with pkgs; (
-          [
-            rustc
-            cargo
-            gcc
-            rustfmt
-            clippy
-            rust-analyzer
-            # mdbook
-            mdbook-admonish
-            node2nix
-            nodejs
-          ]
-          ++ lib.optionals stdenv.isDarwin [libiconv]
-        );
+        buildInputs = with pkgs; [
+          rustc
+          cargo
+          gcc
+          rustfmt
+          clippy
+          rust-analyzer
+          # mdbook
+          mdbook-admonish
+          node2nix
+          nodejs
+        ];
         RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
       };
       demo = pkgs.mkShell {
