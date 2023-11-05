@@ -1,7 +1,8 @@
 use std::{io, process};
 
 use clap::{
-    command, crate_authors, crate_version, value_parser, Arg, ArgAction, ArgMatches, Command,
+    command, crate_authors, crate_description, crate_version, value_parser, Arg, ArgAction,
+    ArgMatches, Command,
 };
 use clap_complete::{generate, Generator, Shell};
 use mdbook::errors::Error;
@@ -43,7 +44,7 @@ fn print_completions<G: Generator>(gen: G, cmd: &mut Command) {
 pub fn make_app() -> Command {
     command!()
         .name("mdbook-catppuccin")
-        .about("Soothing pastel theme for mdBook")
+        .about(crate_description!())
         .author(crate_authors!())
         .version(crate_version!())
         .subcommand_required(true)
