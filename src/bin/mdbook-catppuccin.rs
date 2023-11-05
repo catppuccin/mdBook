@@ -1,6 +1,9 @@
 use std::{io, process};
 
-use clap::{command, crate_version, Arg, ArgAction, ArgMatches, Command};
+use clap::{
+    command, crate_authors, crate_version, value_parser, Arg, ArgAction, ArgMatches, Command,
+};
+use clap_complete::{generate, Generator, Shell};
 use mdbook::errors::Error;
 use mdbook::preprocess::{CmdPreprocessor, Preprocessor};
 use semver::{Version, VersionReq};
@@ -10,6 +13,16 @@ use mdbook_catppuccin::Catppuccin;
 fn main() {
     env_logger::init_from_env(env_logger::Env::default().default_filter_or("info"));
     let matches = make_app().get_matches();
+
+    if let Some(generator) = matches.subcommand_matches("completion") {
+        let generator = generator
+            .get_one::<Shell>("shell")
+            .expect("Shell argument is required");
+        let mut cmd = make_app();
+        eprintln!("Generating completion file for {generator}...");
+        print_completions(*generator, &mut cmd);
+        return;
+    }
 
     let preprocessor = Catppuccin::new();
 
@@ -23,22 +36,30 @@ fn main() {
     }
 }
 
+fn print_completions<G: Generator>(gen: G, cmd: &mut Command) {
+    generate(gen, cmd, cmd.get_name().to_string(), &mut io::stdout());
+}
+
 pub fn make_app() -> Command {
     command!()
         .name("mdbook-catppuccin")
-        .about("A mdbook preprocessor that implements catppuccin flavours as default themes")
+        .about("Soothing pastel theme for mdBook")
+        .author(crate_authors!())
         .version(crate_version!())
+        .subcommand_required(true)
         .subcommand(
-            Command::new("supports")
-                .arg(Arg::new("renderer").required(true))
+            command!("supports")
+                .arg(
+                    Arg::new("renderer").required(true)
+                )
                 .about("Check whether a renderer is supported by this preprocessor"),
         )
         .subcommand(
-            Command::new("install")
+            command!("install")
                 .arg(
                     Arg::new("dir")
-                        .default_value(".")
-                        .help("Root directory for the book, this should contain the configuration file `book.toml`")
+                    .default_value(".")
+                    .help("Root directory for the book, this should contain the configuration file `book.toml`")
                 )
                 .arg(
                     Arg::new("force")
@@ -48,6 +69,15 @@ pub fn make_app() -> Command {
                     .help("Forcefully overwrite the existing 'index.hbs' file")
                 )
                 .about("Install the necessary files needed and update the config to include them"),
+        )
+        .subcommand(
+            command!("completion")
+            .arg(
+                Arg::new("shell")
+                .action(ArgAction::Set)
+                .required(true)
+                .value_parser(value_parser!(Shell))
+            )
         )
 }
 
@@ -145,7 +175,7 @@ mod install {
 
     fn read_configuration_file(toml_config: &PathBuf) -> (String, Document) {
         info!("Reading configuration file '{}'", toml_config.display());
-        let toml = fs::read_to_string(&toml_config).expect("Can't read configuration file");
+        let toml = fs::read_to_string(toml_config).expect("Can't read configuration file");
         let document = toml
             .parse::<Document>()
             .expect("Configuration is not valid TOML");
