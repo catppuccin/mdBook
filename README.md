@@ -35,28 +35,33 @@
 <img src="assets/mocha.webp"/>
 </details>
 
-## Installation
+## Usage
 
-### Rust (Preferred)
+1. Install the binary using one of the methods below.
 
-1. Install by running `cargo install mdbook-catppuccin` or download the latest [release](https://github.com/catppuccin/mdBook/releases/latest).
+    | Installation Method | Instructions |
+    | ------ | ------- |
+    | **Rust** | `cargo install mdbook-catppuccin` |
+    | **Homebrew** | `brew install catppuccin/tap/mdbook-catppuccin` |
+    | **Nix** | `nix run github:catppuccin/mdbook -- install` |
+    | **GitHub** | Download the [latest release](https://github.com/catppuccin/mdBook/releases/latest) |
+    | **Manual** | [See below](#manual-installation) |
 
-2. Navigate to your mdBook's root directory (same location where the `book.toml`
-   lives) and run `mdbook-catppuccin install`
+2. Navigate to your mdBook's root directory (same location where the
+   **book.toml** lives) and run `mdbook-catppuccin install`
 
-3. Build your mdBook using `mdbook build` and enjoy your new catppuccin
-   flavours!
+3. Build using `mdbook build` and enjoy your new catppuccin flavours!
 
-### Manual
+### Manual Installation
 
-1. Navigate to `src/bin/assets` within this repository
+1. Navigate to [src/bin/assets](./src/bin/assets) within this repository
 
-2. Download all assets: `index.hbs`, `catppuccin.css` and
-   `catppuccin-admonish.css`
+2. Download all assets: [index.hbs](./src/bin/assets/index.hbs),
+   [catppuccin.css](./src/bin/assets/catppuccin.css) and [catppuccin-admonish.css](./src/bin/assets/catppuccin-admonish.css)
 
    > [!NOTE]
-   > The `catppuccin-admonish.css` file is **NOT** required if you are not using
-   > the [mdbook-admonish](https://github.com/tommilligan/mdbook-admonish) plugin.
+   > The [catppuccin-admonish.css](./src/bin/assets/catppuccin-admonish.css)
+   > file is **NOT** required if you are not using the [mdbook-admonish](https://github.com/tommilligan/mdbook-admonish) plugin.
 
 3. Transfer downloaded assets to your mdBook's theme directory (the default
    directory is `./theme` beside `book.toml`)
@@ -69,8 +74,7 @@
    +additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-admonish.css"]
    ```
 
-5. Build your mdBook using `mdbook build` and enjoy your new catppuccin
-   flavours!
+5. Build using `mdbook build` and enjoy your new catppuccin flavours!
 
 ### Version Compatibility
 
@@ -87,7 +91,7 @@ This table shows the compatibility between the mdBook version and the mdbook-cat
 | 1.x.x             | 0.4.22 → 0.4.34  |
 | 2.x.x             | 0.4.35 → latest  |
 
-### Development
+## Development
 
 1. Clone the repository and navigate to the repository root.
 
