@@ -16,6 +16,14 @@ another one with italic text. _This is some italic text._
 
 Here is another one with struckout text. ~~This is some struckout text.~~
 
+<div class="warning">
+  This is some text in a warning block.
+
+  Warning blocks should be used sparingly in documentation, to avoid "warning
+  fatigue," where people are trained to ignore them because they usually don't
+  matter for what they're doing.
+</div>
+
 ## Links
 
 Autolink: <http://example.com>
