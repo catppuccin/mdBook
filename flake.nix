@@ -42,7 +42,7 @@
           rustfmt
           clippy
           rust-analyzer
-          # mdbook
+          mdbook
           mdbook-admonish
           node2nix
           nodejs
