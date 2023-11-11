@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## [2.1.0](https://github.com/catppuccin/mdBook/compare/v2.0.1...v2.1.0) (2023-11-11)
+
+
+### Features
+
+* **cli:** add shell completion ([a9a79c6](https://github.com/catppuccin/mdBook/commit/a9a79c6f5441f1f62ae4658d7d1aaf9f79b3b9d3))
+* style `.warning` class ([#91](https://github.com/catppuccin/mdBook/issues/91)) ([ff9851d](https://github.com/catppuccin/mdBook/commit/ff9851d395934d8b5a084b7290d992b127169d51))
+
+
+### Build system & distribution
+
+* **cargo:** reduce build-time dependencies ([8e9ea6e](https://github.com/catppuccin/mdBook/commit/8e9ea6e2e9fd7b33fb62740eca4d7fb47aa3b38e))
+* **cargo:** update/unpin clap and mdbook ([b209ae7](https://github.com/catppuccin/mdBook/commit/b209ae7ffa85e5cc3dba1dbf5e73b2560ad592c7))
+* **distribution:** remove `linux-musl`, `win-gnu`, and `win32-msvc` ([170419d](https://github.com/catppuccin/mdBook/commit/170419dd6059a164b46ef60b85d9fc153603eb53))
+* **nix:** add shell completions ([#89](https://github.com/catppuccin/mdBook/issues/89)) ([097a72a](https://github.com/catppuccin/mdBook/commit/097a72ab17272063772f88441c902511f36bd188))
+* **nix:** drop macOS native dependencies ([#88](https://github.com/catppuccin/mdBook/issues/88)) ([547ed85](https://github.com/catppuccin/mdBook/commit/547ed8546b1870cb1e5747a2f2338aa33b3af522))
+* **website:** use mdbook-admonish v1.13.0 ([33eb09c](https://github.com/catppuccin/mdBook/commit/33eb09c677719474e8726e6bf7278e1c9390cacc))
+
 ## [2.0.1](https://github.com/catppuccin/mdBook/compare/v2.0.0...v2.0.1) (2023-10-09)
 
 
