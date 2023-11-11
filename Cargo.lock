@@ -419,7 +419,7 @@ dependencies = [
 
 [[package]]
 name = "mdbook-catppuccin"
-version = "2.0.1"
+version = "2.1.0"
 dependencies = [
  "clap",
  "clap_complete",
