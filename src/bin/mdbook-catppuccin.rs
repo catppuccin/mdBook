@@ -47,7 +47,6 @@ pub fn make_app() -> Command {
         .about(crate_description!())
         .author(crate_authors!())
         .version(crate_version!())
-        .subcommand_required(true)
         .subcommand(
             command!("supports")
                 .arg(
