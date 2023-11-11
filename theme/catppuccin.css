@@ -687,6 +687,7 @@
   --searchresults-border-color: #11111b;
   --searchresults-li-bg: #1e1e2e;
   --search-mark-bg: #fab387;
+  --warning-border: #fab387;
 }
 
 .macchiato {
@@ -718,6 +719,7 @@
   --searchresults-border-color: #181926;
   --searchresults-li-bg: #24273a;
   --search-mark-bg: #f5a97f;
+  --warning-border: #f5a97f;
 }
 
 .frappe {
@@ -749,6 +751,7 @@
   --searchresults-border-color: #232634;
   --searchresults-li-bg: #303446;
   --search-mark-bg: #ef9f76;
+  --warning-border: #ef9f76;
 }
 
 .latte {
@@ -780,4 +783,5 @@
   --searchresults-border-color: #dce0e8;
   --searchresults-li-bg: #eff1f5;
   --search-mark-bg: #fe640b;
+  --warning-border: #fe640b;
 }
