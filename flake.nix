@@ -35,18 +35,19 @@
 
     devShells = forAllSystems (pkgs: rec {
       default = pkgs.mkShell {
-        buildInputs = with pkgs; [
-          rustc
-          cargo
-          gcc
-          rustfmt
-          clippy
-          rust-analyzer
-          mdbook
-          mdbook-admonish
-          node2nix
-          nodejs
-        ];
+        buildInputs = with pkgs; ([
+            rustc
+            cargo
+            gcc
+            rustfmt
+            clippy
+            rust-analyzer
+            mdbook
+            mdbook-admonish
+            node2nix
+            nodejs
+          ]
+          ++ lib.optionals stdenv.isDarwin [libiconv]);
         RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
       };
       demo = pkgs.mkShell {
