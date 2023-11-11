@@ -41,11 +41,11 @@
 
     | Installation Method | Instructions |
     | ------ | ------- |
-    | **Rust** | `cargo install mdbook-catppuccin` |
-    | **Homebrew** | `brew install catppuccin/tap/mdbook-catppuccin` |
-    | **Nix** | `nix run github:catppuccin/mdbook -- install` |
-    | **GitHub** | Download the [latest release](https://github.com/catppuccin/mdBook/releases/latest) |
-    | **Manual** | [See below](#manual-installation) |
+    | Rust| `cargo install mdbook-catppuccin` |
+    | Homebrew | `brew install catppuccin/tap/mdbook-catppuccin` |
+    | Nix | `nix profile install github:catppuccin/mdbook` |
+    | GitHub | Download the [latest release](https://github.com/catppuccin/mdBook/releases/latest) |
+    | Manual | [See below](#manual-installation) |
 
 2. Navigate to your mdBook's root directory (same location where the
    **book.toml** lives) and run `mdbook-catppuccin install`
