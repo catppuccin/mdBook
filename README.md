@@ -163,6 +163,20 @@ This table shows the compatibility between the mdBook version and the mdbook-cat
   + <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</button></li>
   ```
 
+  Additionally, you can use
+  [default-theme](https://rust-lang.github.io/mdBook/format/configuration/renderers.html?highlight=default-theme#html-renderer-options)
+  and
+  [preferred-dark-theme](https://rust-lang.github.io/mdBook/format/configuration/renderers.html?highlight=preferred-dark-theme#html-renderer-options)
+  keys for setting default light/dark mode themes.
+
+  E.g. To set the default theme to `latte` and default dark mode to `mocha`:
+
+  ```diff
+  [output.html]
+  + default-theme = "latte"
+  + preferred-dark-theme = "mocha"
+  ```
+
 ## Acknowledgement
 
 Inspiration for the `install` command came from
