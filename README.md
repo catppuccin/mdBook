@@ -141,8 +141,8 @@ This table shows the compatibility between the mdBook version and the mdbook-cat
 
   ```diff
   [output.html]
-  -additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-admonish.css"]
-  +additional-css = ["./theme/catppuccin.css"]
+  - additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-admonish.css"]
+  + additional-css = ["./theme/catppuccin.css"]
   ```
 
 - Q: **_"How can I remove the default themes?"_**\
