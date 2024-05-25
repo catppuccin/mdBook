@@ -59,9 +59,9 @@
 2. Download all assets: [index.hbs](./src/bin/assets/index.hbs),
    [catppuccin.css](./src/bin/assets/catppuccin.css) and [catppuccin-admonish.css](./src/bin/assets/catppuccin-admonish.css)
 
-   > [!NOTE]
-   > The [catppuccin-admonish.css](./src/bin/assets/catppuccin-admonish.css)
-   > file is **NOT** required if you are not using the [mdbook-admonish](https://github.com/tommilligan/mdbook-admonish) plugin.
+  > [!NOTE]
+  > The [catppuccin-admonish.css](./src/bin/assets/catppuccin-admonish.css)
+  > file is **NOT** required if you are not using the [mdbook-admonish](https://github.com/tommilligan/mdbook-admonish) plugin.
 
 3. Transfer downloaded assets to your mdBook's theme directory (the default
    directory is `./theme` beside `book.toml`)
