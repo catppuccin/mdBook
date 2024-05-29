@@ -28,6 +28,10 @@
       color: map-get($colour, "pink");
       background: map-get($colour, "mantle");
     }
+    .tooltiptext {
+      background: map-get($colour, "mantle");
+      color: map-get($colour, "text");
+    }
   }
 }
 

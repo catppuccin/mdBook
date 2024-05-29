@@ -162,6 +162,10 @@
   color: #f5c2e7;
   background: #181825;
 }
+.mocha .tooltiptext {
+  background: #181825;
+  color: #cdd6f4;
+}
 
 .macchiato.hljs {
   color: #cad3f5;
@@ -326,6 +330,10 @@
 .macchiato .ace_gutter-active-line.ace_gutter-cell {
   color: #f5bde6;
   background: #1e2030;
+}
+.macchiato .tooltiptext {
+  background: #1e2030;
+  color: #cad3f5;
 }
 
 .frappe.hljs {
@@ -492,6 +500,10 @@
   color: #f4b8e4;
   background: #292c3c;
 }
+.frappe .tooltiptext {
+  background: #292c3c;
+  color: #c6d0f5;
+}
 
 .latte.hljs {
   color: #4c4f69;
@@ -656,6 +668,10 @@
 .latte .ace_gutter-active-line.ace_gutter-cell {
   color: #ea76cb;
   background: #e6e9ef;
+}
+.latte .tooltiptext {
+  background: #e6e9ef;
+  color: #4c4f69;
 }
 
 .mocha {
