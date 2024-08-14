@@ -56,7 +56,7 @@ jobs:
             rust: nightly
             target: arm-unknown-linux-gnueabihf
           - build: macos
-            os: macos-latest
+            os: macos-12
             rust: nightly
             target: x86_64-apple-darwin
           - build: win-msvc
