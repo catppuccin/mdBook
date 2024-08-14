@@ -101,8 +101,8 @@ jobs:
         run: ${{ env.CARGO }} build --release --verbose ${{ env.TARGET_FLAGS }}
 
       - name: Strip Binary (linux and macos)
-        if: matrix.build == 'linux-musl' || matrix.build == 'linux-gnu'
-        run: strip "target/${{ matrix.target }}/release/${{ env.BINARY }}"
+        if: matrix.build == 'linux-musl' || matrix.build == 'linux-gnu' || matrix.build == 'macos'
+        run: strip "${{ env.TARGET_DIR }}/release/${{ env.BINARY }}"
 
       - name: Strip Binary (linux-arm)
         if: matrix.build == 'linux-arm'
