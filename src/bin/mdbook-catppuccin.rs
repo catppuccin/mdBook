@@ -5,6 +5,7 @@ use clap::{
     ArgMatches, Command,
 };
 use clap_complete::{generate, Generator, Shell};
+use log::warn;
 use mdbook::errors::Error;
 use mdbook::preprocess::{CmdPreprocessor, Preprocessor};
 use semver::{Version, VersionReq};
@@ -13,6 +14,14 @@ use mdbook_catppuccin::Catppuccin;
 
 fn main() {
     env_logger::init_from_env(env_logger::Env::default().default_filter_or("info"));
+
+    warn!(
+        r#"mdbook-catppuccin will no longer support automatic tracking of assets in the next release and this package will be deprecated.
+Please uninstall this preprocessor by running 'cargo uninstall mdbook-catppuccin' and remove '[preprocessor.catppuccin]' from your 'book.toml' file.
+For further information on why this package will no longer work, please refer to https://github.com/catppuccin/mdBook/issues/107.
+"#
+    );
+
     let matches = make_app().get_matches();
 
     if let Some(generator) = matches.subcommand_matches("completion") {
