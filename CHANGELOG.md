@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [2.2.0](https://github.com/catppuccin/mdBook/compare/v2.1.0...v2.2.0) (2024-08-15)
+
+
+### Features
+
+* add deprecation notice ([#109](https://github.com/catppuccin/mdBook/issues/109)) ([d023fd5](https://github.com/catppuccin/mdBook/commit/d023fd52c6d31fe6236339afe1fd73d76d7f83e9))
+
+
+### Build system & distribution
+
+* don't make draft releases ([#110](https://github.com/catppuccin/mdBook/issues/110)) ([80fefcd](https://github.com/catppuccin/mdBook/commit/80fefcd3e51bf41ae1de3803e0963afb8d4b0b58))
+* **nix:** fix darwin devShell ([#94](https://github.com/catppuccin/mdBook/issues/94)) ([218116e](https://github.com/catppuccin/mdBook/commit/218116e83688f2786af71eef5d11108f71950987))
+
 ## [2.1.0](https://github.com/catppuccin/mdBook/compare/v2.0.1...v2.1.0) (2023-11-11)
 
 
