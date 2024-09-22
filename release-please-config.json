@@ -4,24 +4,7 @@
   "packages": {
     ".": {
       "package-name": "",
-      "release-type": "rust",
-      "extra-files": [
-        {
-          "type": "json",
-          "path": "palette/package.json",
-          "jsonpath": "$.version"
-        },
-        {
-          "type": "json",
-          "path": "palette/package-lock.json",
-          "jsonpath": "$.version"
-        },
-        {
-          "type": "json",
-          "path": "palette/package-lock.json",
-          "jsonpath": "$['packages']['']['version']"
-        }
-      ]
+      "release-type": "node"
     }
   },
   "changelog-sections": [

@@ -2,8 +2,9 @@
   "name": "catppuccin-mdbook",
   "version": "3.0.0",
   "description": "Soothing pastel theme for mdBook",
+  "private": true,
   "scripts": {
-    "build": "sass -I node_modules --no-charset --no-source-map catppuccin.scss:dist/catppuccin.css catppuccin-admonish.scss:dist/catppuccin-admonish.css"
+    "build": "sass -I node_modules --no-charset --no-source-map src/catppuccin.scss:dist/catppuccin.css src/catppuccin-admonish.scss:dist/catppuccin-admonish.css"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,6 @@
     "@catppuccin/highlightjs": "^1.0.0",
     "@catppuccin/palette": "^1.4.0",
     "sass": "^1.79.3"
-  }
+  },
+  "packageManager": "pnpm@9.11.0"
 }
