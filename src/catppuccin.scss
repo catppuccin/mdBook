@@ -28,6 +28,10 @@
       color: map-get($colour, "pink");
       background: map-get($colour, "mantle");
     }
+    .tooltiptext {
+      background: map-get($colour, "mantle");
+      color: map-get($colour, "text");
+    }
   }
 }
 
@@ -47,7 +51,7 @@
     --inline-code-color: #{map-get($color, "peach")};
     --theme-popup-bg: #{map-get($color, "mantle")};
     --theme-popup-border: #{map-get($color, "overlay0")};
-    --theme-hover: #{map-get($color, "overlay0")};
+    --theme-hover: #{map-get($color, "surface0")};
     --quote-bg: #{map-get($color, "mantle")};
     --quote-border: #{map-get($color, "crust")};
     --table-border-color: #{map-get($color, "surface0")};
