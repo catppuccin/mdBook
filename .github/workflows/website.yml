@@ -2,6 +2,8 @@ name: website
 
 on:
   workflow_dispatch:
+  push:
+    branches: ["main"]
 
 jobs:
   website:
@@ -15,28 +17,29 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Setup mdBook
         uses: peaceiris/actions-mdbook@v2
         with:
           mdbook-version: "0.4.40"
-
-      - name: Install Catppuccin CSS
-        run: |
-          gh release download v3.0.1 --pattern '*.css' --dir ./example/theme
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build
+        run: pnpm build
       - name: Build mdBook
         run: |
           mdbook build
         working-directory: ./example
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: "./example/book/"
-
       - name: Deploy artifact to GitHub Pages
         id: deploy
         uses: actions/deploy-pages@v4

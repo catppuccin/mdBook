@@ -5,5 +5,3 @@ dist/
 # ide
 .vscode
 .idea
-
-example/theme/catppuccin*.css

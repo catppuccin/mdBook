@@ -4,8 +4,7 @@
   "description": "Soothing pastel theme for mdBook",
   "private": true,
   "scripts": {
-    "build": "sass -I node_modules --no-charset --no-source-map src/catppuccin.scss:dist/catppuccin.css src/catppuccin-admonish.scss:dist/catppuccin-admonish.css",
-    "example": "sass -I node_modules --no-charset --no-source-map src/catppuccin.scss:example/theme/catppuccin.css src/catppuccin-admonish.scss:example/theme/catppuccin-admonish.css"
+    "build": "sass -I node_modules --no-charset --no-source-map src/catppuccin.scss:dist/catppuccin.css src/catppuccin-admonish.scss:dist/catppuccin-admonish.css"
   },
   "repository": {
     "type": "git",
