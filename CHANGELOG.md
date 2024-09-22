@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [3.0.0](https://github.com/catppuccin/mdBook/compare/v2.2.0...v3.0.0) (2024-09-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* deprecate rust plugin & update sass files ([#112](https://github.com/catppuccin/mdBook/issues/112))
+
+### Features
+
+* deprecate rust plugin & update sass files ([#112](https://github.com/catppuccin/mdBook/issues/112)) ([f705cb5](https://github.com/catppuccin/mdBook/commit/f705cb5a0ca7932ea88480b1793b915f47b52146))
+
 ## [2.2.0](https://github.com/catppuccin/mdBook/compare/v2.1.0...v2.2.0) (2024-08-15)
 
 
