@@ -30,6 +30,7 @@ jobs:
       - name: Build mdBook
         run: |
           mdbook build
+        working-directory: ./example
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
