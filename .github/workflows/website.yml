@@ -26,8 +26,9 @@ jobs:
 
       - name: Install Catppuccin CSS
         run: |
-          curl -LOSs --output-dir ./theme https://github.com/catppuccin/mdBook/releases/download/v3.0.1/catppuccin.css
-          curl -LOSs --output-dir ./theme https://github.com/catppuccin/mdBook/releases/download/v3.0.1/catppuccin-admonish.css
+          gh release download v3.0.1 --pattern '*.css' --dir ./theme
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build mdBook
         run: |
