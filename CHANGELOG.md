@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [3.0.3](https://github.com/catppuccin/mdBook/compare/v3.0.2...v3.0.3) (2024-09-22)
+
+
+### Bug Fixes
+
+* highlightjs syntax highlighting ([#119](https://github.com/catppuccin/mdBook/issues/119)) ([5a04755](https://github.com/catppuccin/mdBook/commit/5a04755004cf75aff86f911e684b915c9505f76f))
+* properly theme `hr` element ([#122](https://github.com/catppuccin/mdBook/issues/122)) ([90d4392](https://github.com/catppuccin/mdBook/commit/90d4392a45244cde7f0c846c5c75cfa91e0349ea))
+* reduce harshness of hover highlight ([ac84329](https://github.com/catppuccin/mdBook/commit/ac84329f1e251055f007a93cdff4caab732680fb))
+* theme tooltip when copying from codeblock ([ac84329](https://github.com/catppuccin/mdBook/commit/ac84329f1e251055f007a93cdff4caab732680fb))
+
 ## [3.0.2](https://github.com/catppuccin/mdBook/compare/v3.0.1...v3.0.2) (2024-09-22)
 
 
