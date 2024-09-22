@@ -15,7 +15,8 @@
       }
     }
     hr {
-      color: map-get($colour, "surface2");
+      border-color: map-get($colour, "surface2");
+      border-style: solid;
     }
     del {
       color: map-get($colour, "overlay2");
