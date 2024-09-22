@@ -4,24 +4,7 @@
   "packages": {
     ".": {
       "package-name": "",
-      "release-type": "rust",
-      "extra-files": [
-        {
-          "type": "json",
-          "path": "palette/package.json",
-          "jsonpath": "$.version"
-        },
-        {
-          "type": "json",
-          "path": "palette/package-lock.json",
-          "jsonpath": "$.version"
-        },
-        {
-          "type": "json",
-          "path": "palette/package-lock.json",
-          "jsonpath": "$['packages']['']['version']"
-        }
-      ]
+      "release-type": "node"
     }
   },
   "changelog-sections": [
@@ -30,10 +13,10 @@
     { "type": "fix", "section": "Bug Fixes" },
     { "type": "perf", "section": "Performance Improvements" },
     { "type": "revert", "section": "Reverts" },
+    { "type": "refactor", "section": "Code Refactoring" },
     { "type": "docs", "section": "Documentation", "hidden": true },
     { "type": "style", "section": "Styles", "hidden": true },
     { "type": "chore", "section": "Miscellaneous Chores", "hidden": true },
-    { "type": "refactor", "section": "Code Refactoring", "hidden": true },
     { "type": "test", "section": "Tests", "hidden": true },
     { "type": "build", "section": "Build system & distribution", "hidden": false },
     { "type": "ci", "section": "Continuous Integration", "hidden": true }

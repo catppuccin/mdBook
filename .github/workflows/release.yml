@@ -1,23 +1,10 @@
-# Copyright (c) 2023 Catppuccin
-# Copyright (c) 2015 Andrew Gallant
-
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-
-name: build-and-release
+name: release
 
 on:
   workflow_dispatch:
   push:
     branches:
       - main
-
-env:
-  BINARY: mdbook-catppuccin
 
 permissions:
   contents: write
@@ -30,121 +17,28 @@ jobs:
       release_created: ${{ steps.release.outputs.release_created }}
       tag_name: ${{ steps.release.outputs.tag_name }}
     steps:
-      - uses: google-github-actions/release-please-action@v3
+      - uses: googleapis/release-please-action@v4
         id: release
-        with:
-          command: manifest
 
   build:
     needs: ["release-please"]
     if: needs.release-please.outputs.release_created
-    runs-on: ${{ matrix.os }}
-    env:
-      CARGO: cargo
-      # When CARGO is set to CROSS, this is set to `--target matrix.target`.
-      TARGET_FLAGS: ''
-      # When CARGO is set to CROSS, TARGET_DIR includes matrix.target.
-      TARGET_DIR: ./target
-      # Emit backtraces on panics.
-      RUST_BACKTRACE: 1
-    defaults:
-      run:
-        shell: bash
-    strategy:
-      fail-fast: false
-      matrix:
-        build:
-          - linux-gnu
-          - linux-arm
-          - macos
-          - win-msvc
-        include:
-          - build: linux-gnu
-            os: ubuntu-22.04
-            rust: nightly
-            target: x86_64-unknown-linux-gnu
-          - build: linux-arm
-            os: ubuntu-22.04
-            rust: nightly
-            target: arm-unknown-linux-gnueabihf
-          - build: macos
-            os: macos-12
-            rust: nightly
-            target: x86_64-apple-darwin
-          - build: win-msvc
-            os: windows-2022
-            rust: nightly
-            target: x86_64-pc-windows-msvc
-
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Install Packages (Ubuntu)
-        if: matrix.os == 'ubuntu-22.04'
-        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends musl-tools
-
-      - name: Install Rust
-        uses: dtolnay/rust-toolchain@master
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          toolchain: ${{ matrix.rust }}
-          target: ${{ matrix.target }}
-
-      - name: Cache Rust
-        uses: Swatinem/rust-cache@v2
-        with:
-          key: ${{ matrix.rust }}
-
-      - name: Use Cross
-        if: matrix.os == 'ubuntu-22.04' && matrix.target != ''
-        run: |
-          cargo install cross --git https://github.com/cross-rs/cross
-          echo "CARGO=cross" >> $GITHUB_ENV
-          echo "TARGET_FLAGS=--target ${{ matrix.target }}" >> $GITHUB_ENV
-          echo "TARGET_DIR=./target/${{ matrix.target }}" >> $GITHUB_ENV
-
-      - name: Show Cargo Command
-        run: |
-          echo "cargo command is: ${{ env.CARGO }}"
-          echo "target flag is: ${{ env.TARGET_FLAGS }}"
-          echo "target dir is: ${{ env.TARGET_DIR }}"
-
-      - name: Compile
-        run: ${{ env.CARGO }} build --release --verbose ${{ env.TARGET_FLAGS }}
-
-      - name: Strip Binary (linux and macos)
-        if: matrix.build == 'linux-musl' || matrix.build == 'linux-gnu' || matrix.build == 'macos'
-        run: strip "${{ env.TARGET_DIR }}/release/${{ env.BINARY }}"
-
-      - name: Strip Binary (linux-arm)
-        if: matrix.build == 'linux-arm'
-        run: |
-          docker run --rm -v \
-            "$PWD/target:/target:Z" \
-            rustembedded/cross:arm-unknown-linux-gnueabihf \
-            arm-linux-gnueabihf-strip \
-            /target/arm-unknown-linux-gnueabihf/release/${{ env.BINARY }}
-
-      - name: Create Artifact
-        id: create-artifact
-        run: |
-          staging="${{ env.BINARY }}-${{ matrix.target }}"
-          mkdir "$staging"
-          cp LICENSE "$staging/"
-
-          if [ "${{ matrix.os }}" == "windows-2022" ]; then
-            artifact="${{ env.TARGET_DIR }}/release/${{ env.BINARY }}.exe"
-            cp "$artifact" "$staging/"
-            7z a "$staging.zip" "$staging"
-            echo "asset=$staging.zip" >> $GITHUB_OUTPUT
-          else
-            artifact="${{ env.TARGET_DIR}}/release/${{ env.BINARY }}"
-            cp "$artifact" "$staging/"
-            tar czf "$staging.tar.gz" "$staging"
-            echo "asset=$staging.tar.gz" >> $GITHUB_OUTPUT
-          fi
-
+          node-version: "lts/*"
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build
+        run: pnpm build
       - name: Upload Artifacts to Release
-        run: gh release upload ${{ needs.release-please.outputs.tag_name }} ${{ steps.create-artifact.outputs.asset }}
+        run: gh release upload ${{ needs.release-please.outputs.tag_name }} dist/*.css
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
