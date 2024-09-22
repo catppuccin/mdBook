@@ -60,11 +60,11 @@
    rm -d fonts css
    ```
 
-3. Download the following CSS assets from this repository to the `theme` directory:
+3. Download the CSS files from the [latest GitHub release](https://github.com/catppuccin/mdBook/releases/latest) to the `theme` directory:
 
-   - [catppuccin.css](palette/dist/catppuccin.css)
-   - [catppuccin-admonish.css](palette/dist/catppuccin-admonish.css) (**Only
-     required if you are using
+   - [catppuccin.css](https://github.com/catppuccin/mdBook/releases/latest/download/catppuccin.css)
+   - [catppuccin-admonish.css](https://github.com/catppuccin/mdBook/releases/latest/download/catppuccin-admonish.css)
+     (**Only required if you are using
      [mdbook-admonish](https://github.com/tommilligan/mdbook-admonish)**)
 
 4. Update `additional-css` key within the `book.toml` as shown below
