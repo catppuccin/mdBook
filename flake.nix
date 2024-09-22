@@ -16,19 +16,11 @@
     });
 
     packages = forAllSystems (pkgs: rec {
-      mdbook-catppuccin = pkgs.rustPlatform.buildRustPackage rec {
+      mdbook-catppuccin = pkgs.rustPlatform.buildRustPackage {
         pname = "mdbook-catppuccin";
         inherit version;
         src = pkgs.nix-gitignore.gitignoreSource [] ./.;
         cargoLock.lockFile = ./Cargo.lock;
-
-        nativeBuildInputs = with pkgs; [installShellFiles];
-        postInstall = ''
-          installShellCompletion --cmd ${pname} \
-            --bash <($out/bin/${pname} completion bash) \
-            --fish <($out/bin/${pname} completion fish) \
-            --zsh <($out/bin/${pname} completion zsh)
-        '';
       };
       default = mdbook-catppuccin;
     });
