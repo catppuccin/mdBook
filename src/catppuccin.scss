@@ -3,7 +3,7 @@
 
 @each $flavour, $colour in catppuccin.$palette {
   .#{$flavour} {
-    @include hljs.highlights($flavour, "hex");
+    @include hljs.highlights($flavour);
     code {
       color: map-get($colour, "text");
       background: map-get($colour, "mantle");
@@ -62,5 +62,6 @@
     --searchresults-li-bg: #{map-get($color, "base")};
     --search-mark-bg: #{map-get($color, "peach")};
     --warning-border: #{map-get($color, "peach")};
+    --color-scheme: #{if($flavour == "latte", "light", "dark")};
   }
 }
