@@ -4,8 +4,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-website:
+  website:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      pages: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
     defaults:
       run:
         working-directory: ./example
@@ -14,37 +20,24 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup mdBook
-        uses: peaceiris/actions-mdbook@v1
+        uses: peaceiris/actions-mdbook@v2
         with:
-          mdbook-version: "0.4.35"
+          mdbook-version: "0.4.40"
 
-      - name: Download mdbook-catppuccin
+      - name: Install Catppuccin CSS
         run: |
-          curl -sSL https://github.com/catppuccin/mdBook/releases/download/${{ env.VERSION }}/${{ env.TARGET }}.tar.gz | tar -xz
-          echo `pwd`/${{ env.TARGET }} >> $GITHUB_PATH
-        env:
-          VERSION: "v2.1.0"
-          TARGET: "mdbook-catppuccin-x86_64-unknown-linux-gnu"
-
-      - name: Download mdbook-admonish
-        run: |
-          mkdir ${{ env.TARGET }}
-          curl -sSL https://github.com/tommilligan/mdbook-admonish/releases/download/${{ env.VERSION }}/${{ env.TARGET }}.tar.gz | tar -xz --directory=${{ env.TARGET }}
-          echo `pwd`/${{ env.TARGET }} >> $GITHUB_PATH
-        env:
-          VERSION: "v1.13.0"
-          TARGET: "mdbook-admonish-v1.13.0-x86_64-unknown-linux-gnu"
+          curl -LSs https://github.com/catppuccin/mdBook/releases/download/v3.0.1/catppuccin.css -o theme/catppuccin.css
+          curl -LSs https://github.com/catppuccin/mdBook/releases/download/v3.0.1/catppuccin-admonish.css -o theme/catppuccin-admonish.css
 
       - name: Build mdBook
         run: |
-          mdbook-admonish install
-          mdbook-catppuccin install
           mdbook build
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main'
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./example/book
-          exclude_assets: ".github,**/.gitignore"
+          path: "book/"
+
+      - name: Deploy artifact to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
