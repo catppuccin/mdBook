@@ -37,34 +37,28 @@
 
 ## Usage
 
-1. Install the binary using one of the methods below.
+1. Initialise your mdBook with the theme files:
 
-    | Installation Method | Instructions |
-    | ------ | ------- |
-    | Rust| `cargo install mdbook-catppuccin` |
-    | Homebrew | `brew install catppuccin/tap/mdbook-catppuccin` |
-    | Nix | `nix profile install github:catppuccin/mdbook` |
-    | GitHub | Download the [latest release](https://github.com/catppuccin/mdBook/releases/latest) |
-    | Manual | [See below](#manual-installation) |
+   ```shell
+   mdbook init --theme <name>
+   ```
 
-2. Navigate to your mdBook's root directory (same location where the
-   **book.toml** lives) and run `mdbook-catppuccin install`
+2. Enter the book directory and remove all theme files except `index.hbs`:
 
-3. Build using `mdbook build` and enjoy your new catppuccin flavours!
+   ```shell
+   cd <name>
+   # Remove all files except index.hbs
+   find ./theme -type f ! -name 'index.hbs' -delete
+   # Remove the left over empty directories
+   rm -d fonts css
+   ```
 
-### Manual Installation
+3. Download the following CSS assets from this repository to the `theme` directory:
 
-1. Navigate to [src/bin/assets](./src/bin/assets) within this repository
-
-2. Download all assets: [index.hbs](./src/bin/assets/index.hbs),
-   [catppuccin.css](./src/bin/assets/catppuccin.css) and [catppuccin-admonish.css](./src/bin/assets/catppuccin-admonish.css)
-
-  > [!NOTE]
-  > The [catppuccin-admonish.css](./src/bin/assets/catppuccin-admonish.css)
-  > file is **NOT** required if you are not using the [mdbook-admonish](https://github.com/tommilligan/mdbook-admonish) plugin.
-
-3. Transfer downloaded assets to your mdBook's theme directory (the default
-   directory is `./theme` beside `book.toml`)
+   - [catppuccin.css](src/bin/assets/catppuccin.css)
+   - [catppuccin-admonish.css](src/bin/assets/catppuccin-admonish.css) (**Only
+     required if you are using
+     [mdbook-admonish](https://github.com/tommilligan/mdbook-admonish)**)
 
 4. Update `additional-css` key within the `book.toml` as shown below
 
@@ -74,22 +68,35 @@
    +additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-admonish.css"]
    ```
 
-5. Build using `mdbook build` and enjoy your new catppuccin flavours!
+5. Edit the `index.hbs` file to include the Catppuccin flavours:
 
-### Version Compatibility
+   ```diff
+   - <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+   - <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+   - <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+   - <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+   - <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+   + <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
+   + <li role="none"><button role="menuitem" class="theme" id="frappe">Frappé</button></li>
+   + <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
+   + <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</button></li>
+   ```
 
-This table shows the compatibility between the mdBook version and the mdbook-catppuccin version.
+   Additionally, you can use
+   [default-theme](https://rust-lang.github.io/mdBook/format/configuration/renderers.html?highlight=default-theme#html-renderer-options)
+   and
+   [preferred-dark-theme](https://rust-lang.github.io/mdBook/format/configuration/renderers.html?highlight=preferred-dark-theme#html-renderer-options)
+   keys for setting default light/dark mode themes in your `book.toml`.
 
-> [!IMPORTANT]  
-> Updates to the major version may contain **BREAKING CHANGES** to the
-> `index.hbs` file, which means that you will have to update the file manually
-> or use `mdbook-catppuccin install --force` flag to overwrite the `index.hbs`
-> upon installation.
+   E.g. To set the default theme to `latte` and default dark mode to `mocha`:
 
-| mdbook-catppuccin | mdBook |
-| ----------------- | ------ |
-| 1.x.x             | 0.4.22 → 0.4.34  |
-| 2.x.x             | 0.4.35 → latest  |
+   ```diff
+   [output.html]
+   + default-theme = "latte"
+   + preferred-dark-theme = "mocha"
+   ```
+
+6. Build using `mdbook build` and enjoy your new catppuccin flavours!
 
 ## Development
 
@@ -100,7 +107,7 @@ This table shows the compatibility between the mdBook version and the mdbook-cat
    cd mdbook
    ```
 
-2. Run the following command to generate the CSS files that will be packaged by the rust binary:
+2. Generate the CSS files:
 
    ```shell
    cd palette
@@ -108,29 +115,7 @@ This table shows the compatibility between the mdBook version and the mdbook-cat
    npm run build
    ```
 
-3. Build the rust binary using the following command:
-
-   Note that the **Minimum Rust Version** is 1.63.0
-
-   ```shell
-   cargo build --release
-   ```
-
-4. Test the binary by installing the new assets on the [`example`](./example/) directory:
-
-   ```shell
-   cd example
-   ../target/release/mdbook-catppuccin install
-   mdbook serve
-   ```
-
 ## 🙋 FAQ
-
-- Q: **_"What's the point of the `mdbook-catppuccin` binary?"_**\
-  A: Arguably, it's better to transfer over the files manually to avoid
-  installing another tool. However, the assets will **NOT** be managed for you.
-  It is also worth mentioning that the binary will be able to detect differences
-  in versions of assets.
 
 - Q: **_"What's the `catppuccin-admonish.css` file?"_**\
   A: It is a CSS file that is used to style the admonishments that are generated
@@ -145,43 +130,11 @@ This table shows the compatibility between the mdBook version and the mdbook-cat
   + additional-css = ["./theme/catppuccin.css"]
   ```
 
-- Q: **_"How can I remove the default themes?"_**\
-  A: Navigate to [`index.hbs (L154 - L162)`](https://github.com/catppuccin/mdBook/blob/main/src/bin/assets/index.hbs#L154-L162)
-  and remove the themes that you don't want. Remember to run `mdbook build` again!
-
-  E.g. To remove all default themes:
-
-  ```diff
-  - <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-  - <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-  - <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-  - <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-  - <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-  + <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
-  + <li role="none"><button role="menuitem" class="theme" id="frappe">Frappé</button></li>
-  + <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
-  + <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</button></li>
-  ```
-
-  Additionally, you can use
-  [default-theme](https://rust-lang.github.io/mdBook/format/configuration/renderers.html?highlight=default-theme#html-renderer-options)
-  and
-  [preferred-dark-theme](https://rust-lang.github.io/mdBook/format/configuration/renderers.html?highlight=preferred-dark-theme#html-renderer-options)
-  keys for setting default light/dark mode themes.
-
-  E.g. To set the default theme to `latte` and default dark mode to `mocha`:
-
-  ```diff
-  [output.html]
-  + default-theme = "latte"
-  + preferred-dark-theme = "mocha"
-  ```
-
 ## Acknowledgement
 
-Inspiration for the `install` command came from
-[mdbook-admonish](https://github.com/tommilligan/mdbook-admonish) which is
-another great mdBook pre-processor!
+[mdbook-admonish](https://github.com/tommilligan/mdbook-admonish) for
+inspiration on the `install` command for the now deprecated `mdbook-catppuccin`
+binary.
 
 ## 💝 Thanks to
 
