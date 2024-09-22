@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [3.0.1](https://github.com/catppuccin/mdBook/compare/v3.0.0...v3.0.1) (2024-09-22)
+
+
+### Code Refactoring
+
+* remove all rust ([#114](https://github.com/catppuccin/mdBook/issues/114)) ([e1da91c](https://github.com/catppuccin/mdBook/commit/e1da91c95e99cf5642a4aff020865a8ffa7ca481))
+
 ## [3.0.0](https://github.com/catppuccin/mdBook/compare/v2.2.0...v3.0.0) (2024-09-22)
 
 
