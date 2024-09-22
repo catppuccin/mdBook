@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [3.0.2](https://github.com/catppuccin/mdBook/compare/v3.0.1...v3.0.2) (2024-09-22)
+
+
+### Code Refactoring
+
+* add symlinks back ([0aad6a2](https://github.com/catppuccin/mdBook/commit/0aad6a2f148faf7f8d112a53c0529f8a80a4de80))
+* **example:** remove symlinks to see if website ci passes ([291ceb7](https://github.com/catppuccin/mdBook/commit/291ceb76911b0656544c1e4b4e0cdf6322a52835))
+* **example:** update mdbook-admonish & rework pages ci ([#116](https://github.com/catppuccin/mdBook/issues/116)) ([db0d22c](https://github.com/catppuccin/mdBook/commit/db0d22cc63d4d24cd23c6635de1ab55ef2f1d499))
+* ignore css in example directory ([ccc7de7](https://github.com/catppuccin/mdBook/commit/ccc7de7d6c1fbb2a64da6d4cf516d30524b40afa))
+* switch borders from `crust` to `surface0` ([#118](https://github.com/catppuccin/mdBook/issues/118)) ([c315046](https://github.com/catppuccin/mdBook/commit/c3150466e94cdd08e1bea5b92c18d0a7ecb84f28))
+
 ## [3.0.1](https://github.com/catppuccin/mdBook/compare/v3.0.0...v3.0.1) (2024-09-22)
 
 
