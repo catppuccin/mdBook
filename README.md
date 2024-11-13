@@ -66,13 +66,16 @@
    - [catppuccin-admonish.css](https://github.com/catppuccin/mdBook/releases/latest/download/catppuccin-admonish.css)
      (**Only required if you are using
      [mdbook-admonish](https://github.com/tommilligan/mdbook-admonish)**)
+   - [catppuccin-alerts.css](https://github.com/catppuccin/mdBook/releases/latest/download/catppuccin-alerts.css)
+     (**Only required if you are using
+     [mdbook-alerts](https://github.com/lambdalisue/rs-mdbook-alerts)**)
 
 4. Update `additional-css` key within the `book.toml` as shown below
 
    ```diff
    [output.html]
    -additional-css = []
-   +additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-admonish.css"]
+   +additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-admonish.css", "./theme/catppuccin-alerts.css"]
    ```
 
 5. Edit the `index.hbs` file to include the Catppuccin flavours:
@@ -133,8 +136,21 @@
 
   ```diff
   [output.html]
-  - additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-admonish.css"]
-  + additional-css = ["./theme/catppuccin.css"]
+  - additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-admonish.css", "./theme/catppuccin-alerts.css"]
+  + additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-alerts.css"]
+  ```
+
+- Q: **_"What's the `catppuccin-alerts.css` file?"_**\
+  A: It is a CSS file that is used to style the alerts that are generated
+  by [mdbook-alerts](https://github.com/lambdalisue/rs-mdbook-alerts).
+  **You can remove this file if you are not using this plugin.**
+
+  E.g.
+
+  ```diff
+  [output.html]
+  - additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-admonish.css", "./theme/catppuccin-alerts.css"]
+  + additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-admonish.css"]
   ```
 
 ## Acknowledgement
