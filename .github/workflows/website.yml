@@ -32,10 +32,12 @@ jobs:
       - name: Download mdbook-alerts
         run: |
           mkdir ${{ env.TARGET }}
-          curl -sSL https://github.com/lambdalisue/rs-mdbook-alerts/releases/download/${{ env.VERSION }}/${{ env.TARGET }}.tar.gz | tar -xz --directory=${{ env.TARGET }}
+          curl -sSLo ${{ env.TARGET }}/${{ env.BINARY }} https://github.com/lambdalisue/rs-mdbook-alerts/releases/download/${{ env.VERSION }}/${{ env.TARGET }}
+          chmod +x ${{ env.TARGET }}/${{ env.BINARY }}
           echo `pwd`/${{ env.TARGET }} >> $GITHUB_PATH
         env:
           VERSION: "v0.6.9"
+          BINARY: "mdbook-alerts"
           TARGET: "mdbook-alerts-x86_64-unknown-linux-gnu"
       - name: Setup PNPM
         uses: pnpm/action-setup@v3
