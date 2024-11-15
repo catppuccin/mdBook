@@ -62,8 +62,8 @@
 
 3. Download the [catppuccin.css](https://github.com/catppuccin/mdBook/releases/latest/download/catppuccin.css)
    file from the [latest GitHub release](https://github.com/catppuccin/mdBook/releases/latest) to the `theme`
-   directory. 
-   
+   directory.
+
    See the [Supported Plugins](#supported-plugins) section below for integrations with other
    mdBook plugins.
 
@@ -75,7 +75,7 @@
    +additional-css = ["./theme/catppuccin.css"]
    ```
 
-5. Edit the `index.hbs` file to include the Catppuccin flavours:
+5. Edit the `index.hbs` file to include the Catppuccin flavors:
 
    ```diff
    - <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
@@ -103,7 +103,7 @@
    + preferred-dark-theme = "mocha"
    ```
 
-6. Build using `mdbook build` and enjoy your new Catppuccin flavours!
+6. Build using `mdbook build` and enjoy your new Catppuccin flavors!
 
 ### Supported Plugins
 

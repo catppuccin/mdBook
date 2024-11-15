@@ -1,16 +1,17 @@
 @use "sass:color";
 @use "sass:list";
+@use "sass:map";
 @use "@catppuccin/palette/scss/catppuccin" as catppuccin;
 
 @mixin level($palette, $classes, $color) {
   :is(.admonition):is(#{$classes}) {
-    border-color: #{map-get($palette, $color)};
+    border-color: #{map.get($palette, $color)};
   }
   :is(#{$classes}) > :is(.admonition-title, summary.admonition-title) {
-    background-color: #{color.change(map-get($palette, $color), $alpha: 0.2)};
+    background-color: #{color.change(map.get($palette, $color), $alpha: 0.2)};
   }
   :is(#{$classes}) > :is(.admonition-title, summary.admonition-title)::before {
-    background-color: #{map-get($palette, $color)};
+    background-color: #{map.get($palette, $color)};
   }
 }
 
@@ -70,8 +71,8 @@ $mappings: (
   }
 }
 
-@each $flavour, $color in catppuccin.$palette {
-  .#{$flavour} {
-    @include main($color);
+@each $flavor, $colors in catppuccin.$palette {
+  .#{$flavor} {
+    @include main($colors);
   }
 }
