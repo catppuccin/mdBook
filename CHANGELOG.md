@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## [3.1.0](https://github.com/catppuccin/mdBook/compare/v3.0.3...v3.1.0) (2024-11-15)
+
+
+### Features
+
+* add support for `lambdalisue/rs-mdbook-alerts` ([#135](https://github.com/catppuccin/mdBook/issues/135)) ([cd3ca47](https://github.com/catppuccin/mdBook/commit/cd3ca47e761df31288641a5134879b8e76af827f))
+
+
+### Bug Fixes
+
+* change inline codeblocks from `peach` to `text` ([45da623](https://github.com/catppuccin/mdBook/commit/45da62372ca500102ec542cebc39ec999f196ff2))
+* increase contrast on icons hover ([#140](https://github.com/catppuccin/mdBook/issues/140)) ([7edf128](https://github.com/catppuccin/mdBook/commit/7edf128b50f9a256d3a0ec37defad3ff755369fa))
+* preserve links as `blue` inside inline codeblocks ([45da623](https://github.com/catppuccin/mdBook/commit/45da62372ca500102ec542cebc39ec999f196ff2))
+
+
+### Code Refactoring
+
+* consistently use "flavor" and "color" spellings, update sass syntax ([#138](https://github.com/catppuccin/mdBook/issues/138)) ([fa0912e](https://github.com/catppuccin/mdBook/commit/fa0912e7eea8863278d566e33b2dd45d9625fd40))
+* **website:** set default to `latte` ([#141](https://github.com/catppuccin/mdBook/issues/141)) ([e8a0135](https://github.com/catppuccin/mdBook/commit/e8a013513c882e390f2694f74cede5da76a5cf83))
+
 ## [3.0.3](https://github.com/catppuccin/mdBook/compare/v3.0.2...v3.0.3) (2024-09-22)
 
 
