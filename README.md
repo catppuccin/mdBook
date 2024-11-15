@@ -130,7 +130,6 @@ in step `4.` of the [Usage](#usage) section.
 2. Generate the CSS files:
 
    ```shell
-   cd palette
    pnpm install
    pnpm run build
    ```
