@@ -5,6 +5,17 @@
 @each $flavor, $colors in catppuccin.$palette {
   .#{$flavor} {
     @include hljs.highlights($flavor);
+
+    // Each heading is technically a link but
+    // we don't want to highlight it as `blue`
+    :is(h1, h2, h3, h4, h5, h6) {
+      a code {
+        color: map.get($colors, "text");
+      }
+    }
+    a code {
+      color: map.get($colors, "blue");
+    }
     code {
       color: map.get($colors, "text");
       background: map.get($colors, "mantle");
@@ -50,7 +61,7 @@
     --icons: #{map.get($colors, "overlay0")};
     --icons-hover: #{map.get($colors, "overlay1")};
     --links: #{map.get($colors, "blue")};
-    --inline-code-color: #{map.get($colors, "peach")};
+    --inline-code-color: #{map.get($colors, "text")};
     --theme-popup-bg: #{map.get($colors, "mantle")};
     --theme-popup-border: #{map.get($colors, "overlay0")};
     --theme-hover: #{map.get($colors, "surface0")};
