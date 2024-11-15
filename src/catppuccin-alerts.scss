@@ -1,0 +1,21 @@
+@use "@catppuccin/palette/scss/catppuccin" as catppuccin;
+
+@each $flavour, $color in catppuccin.$palette {
+  .#{$flavour} {
+    .mdbook-alerts-note {
+      --mdbook-alerts-color: #{map-get($color, "blue")};
+    }
+    .mdbook-alerts-tip {
+      --mdbook-alerts-color: #{map-get($color, "green")};
+    }
+    .mdbook-alerts-important {
+      --mdbook-alerts-color: #{map-get($color, "mauve")};
+    }
+    .mdbook-alerts-warning {
+      --mdbook-alerts-color: #{map-get($color, "yellow")};
+    }
+    .mdbook-alerts-caution {
+      --mdbook-alerts-color: #{map-get($color, "red")};
+    }
+  }
+}

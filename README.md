@@ -60,19 +60,19 @@
    rm -d fonts css
    ```
 
-3. Download the CSS files from the [latest GitHub release](https://github.com/catppuccin/mdBook/releases/latest) to the `theme` directory:
-
-   - [catppuccin.css](https://github.com/catppuccin/mdBook/releases/latest/download/catppuccin.css)
-   - [catppuccin-admonish.css](https://github.com/catppuccin/mdBook/releases/latest/download/catppuccin-admonish.css)
-     (**Only required if you are using
-     [mdbook-admonish](https://github.com/tommilligan/mdbook-admonish)**)
+3. Download the [catppuccin.css](https://github.com/catppuccin/mdBook/releases/latest/download/catppuccin.css)
+   file from the [latest GitHub release](https://github.com/catppuccin/mdBook/releases/latest) to the `theme`
+   directory. 
+   
+   See the [Supported Plugins](#supported-plugins) section below for integrations with other
+   mdBook plugins.
 
 4. Update `additional-css` key within the `book.toml` as shown below
 
    ```diff
    [output.html]
    -additional-css = []
-   +additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-admonish.css"]
+   +additional-css = ["./theme/catppuccin.css"]
    ```
 
 5. Edit the `index.hbs` file to include the Catppuccin flavours:
@@ -103,7 +103,20 @@
    + preferred-dark-theme = "mocha"
    ```
 
-6. Build using `mdbook build` and enjoy your new catppuccin flavours!
+6. Build using `mdbook build` and enjoy your new Catppuccin flavours!
+
+### Supported Plugins
+
+This theme also generates CSS files to style elements added by other mdBook
+plugins. We support the following list of plugins:
+
+| Plugin                                                            | CSS File                                                                                                         |
+| ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| [mdbook-admonish](https://github.com/tommilligan/mdbook-admonish) | [catppuccin-admonish.css](https://github.com/catppuccin/mdBook/releases/latest/download/catppuccin-admonish.css) |
+| [mdbook-alerts](https://github.com/lambdalisue/rs-mdbook-alerts)  | [catppuccin-alerts.css](https://github.com/catppuccin/mdBook/releases/latest/download/catppuccin-alerts.css)     |
+
+The CSS file(s) can be downloaded and added to the `additional-css` key shown
+in step `4.` of the [Usage](#usage) section.
 
 ## Development
 
@@ -118,24 +131,9 @@
 
    ```shell
    cd palette
-   npm install
-   npm run build
+   pnpm install
+   pnpm run build
    ```
-
-## 🙋 FAQ
-
-- Q: **_"What's the `catppuccin-admonish.css` file?"_**\
-  A: It is a CSS file that is used to style the admonishments that are generated
-  by [mdbook-admonish](https://github.com/tommilligan/mdbook-admonish).
-  **You can remove this file if you are not using this plugin.**
-
-  E.g.
-
-  ```diff
-  [output.html]
-  - additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-admonish.css"]
-  + additional-css = ["./theme/catppuccin.css"]
-  ```
 
 ## Acknowledgement
 

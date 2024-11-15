@@ -20,7 +20,7 @@ jobs:
       - name: Setup mdBook
         uses: peaceiris/actions-mdbook@v2
         with:
-          mdbook-version: "0.4.40"
+          mdbook-version: "0.4.42"
       - name: Download mdbook-admonish
         run: |
           mkdir ${{ env.TARGET }}
@@ -29,6 +29,14 @@ jobs:
         env:
           VERSION: "v1.18.0"
           TARGET: "mdbook-admonish-v1.18.0-x86_64-unknown-linux-gnu"
+      - name: Download mdbook-alerts
+        run: |
+          mkdir ${{ env.TARGET }}
+          curl -sSL https://github.com/lambdalisue/rs-mdbook-alerts/releases/download/${{ env.VERSION }}/${{ env.TARGET }}.tar.gz | tar -xz --directory=${{ env.TARGET }}
+          echo `pwd`/${{ env.TARGET }} >> $GITHUB_PATH
+        env:
+          VERSION: "v0.6.9"
+          TARGET: "mdbook-alerts-x86_64-unknown-linux-gnu"
       - name: Setup PNPM
         uses: pnpm/action-setup@v3
       - name: Setup Node
