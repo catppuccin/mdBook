@@ -64,6 +64,10 @@
    file from the [latest GitHub release](https://github.com/catppuccin/mdBook/releases/latest) to the `theme`
    directory.
 
+   ```shell
+   curl -Lo ./theme/catppuccin.css https://github.com/catppuccin/mdBook/releases/latest/download/catppuccin.css
+   ```
+
    See the [Supported Plugins](#supported-plugins) section below for integrations with other
    mdBook plugins.
 
