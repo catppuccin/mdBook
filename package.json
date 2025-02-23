@@ -21,5 +21,5 @@
     "@catppuccin/palette": "^1.4.0",
     "sass": "^1.79.3"
   },
-  "packageManager": "pnpm@9.15.5"
+  "packageManager": "pnpm@10.4.1"
 }
