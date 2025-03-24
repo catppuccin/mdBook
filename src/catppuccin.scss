@@ -2,61 +2,33 @@
 @use "@catppuccin/palette/scss/catppuccin" as catppuccin;
 @use "@catppuccin/highlightjs/sass/_theme" as hljs;
 
-@mixin generate-clipboard-icon-filters($flavor) {
-  @if $flavor == "latte" {
-    --copy-button-filter: invert(71%)
-      sepia(8%)
-      saturate(435%)
-      hue-rotate(191deg)
-      brightness(90%)
-      contrast(88%);
-    --copy-button-filter-hover: invert(27%)
-      sepia(98%)
-      saturate(1766%)
-      hue-rotate(211deg)
-      brightness(96%)
-      contrast(100%);
-  } @else if $flavor == "frappe" {
-    --copy-button-filter: invert(51%)
-      sepia(22%)
-      saturate(392%)
-      hue-rotate(192deg)
-      brightness(88%)
-      contrast(89%);
-    --copy-button-filter-hover: invert(64%)
-      sepia(43%)
-      saturate(414%)
-      hue-rotate(185deg)
-      brightness(98%)
-      contrast(91%);
-  } @else if $flavor == "macchiato" {
-    --copy-button-filter: invert(50%)
-      sepia(14%)
-      saturate(616%)
-      hue-rotate(193deg)
-      brightness(87%)
-      contrast(87%);
-    --copy-button-filter-hover: invert(64%)
-      sepia(13%)
-      saturate(1528%)
-      hue-rotate(186deg)
-      brightness(105%)
-      contrast(91%);
-  } @else if $flavor == "mocha" {
-    --copy-button-filter: invert(44%)
-      sepia(10%)
-      saturate(814%)
-      hue-rotate(193deg)
-      brightness(96%)
-      contrast(81%);
-    --copy-button-filter-hover: invert(68%)
-      sepia(11%)
-      saturate(2148%)
-      hue-rotate(187deg)
-      brightness(103%)
-      contrast(96%);
-  }
-}
+// filters taken from https://github.com/catppuccin/userstyles/blob/main/docs/guide/images-and-svgs.md#non-svg-images-or-many-img-elements-with-external-svgs
+$filters: (
+  latte: (
+    "subtext0": brightness(0) saturate(100%) invert(47%) sepia(6%)
+      saturate(1263%) hue-rotate(195deg) brightness(90%) contrast(81%),
+    "blue": brightness(0) saturate(100%) invert(30%) sepia(80%) saturate(1850%)
+      hue-rotate(209deg) brightness(94%) contrast(105%),
+  ),
+  frappe: (
+    "subtext0": brightness(0) saturate(100%) invert(82%) sepia(6%)
+      saturate(1287%) hue-rotate(192deg) brightness(86%) contrast(85%),
+    "blue": brightness(0) saturate(100%) invert(68%) sepia(16%) saturate(1070%)
+      hue-rotate(185deg) brightness(96%) contrast(95%),
+  ),
+  macchiato: (
+    "subtext0": brightness(0) saturate(100%) invert(75%) sepia(18%)
+      saturate(361%) hue-rotate(190deg) brightness(91%) contrast(86%),
+    "blue": brightness(0) saturate(100%) invert(67%) sepia(17%) saturate(1007%)
+      hue-rotate(183deg) brightness(99%) contrast(94%),
+  ),
+  mocha: (
+    "subtext0": brightness(0) saturate(100%) invert(84%) sepia(9%)
+      saturate(767%) hue-rotate(192deg) brightness(84%) contrast(84%),
+    "blue": brightness(0) saturate(100%) invert(68%) sepia(18%) saturate(951%)
+      hue-rotate(180deg) brightness(98%) contrast(100%),
+  ),
+);
 
 @each $flavor, $colors in catppuccin.$palette {
   .#{$flavor} {
@@ -136,7 +108,7 @@
     --search-mark-bg: #{map.get($colors, "peach")};
     --warning-border: #{map.get($colors, "peach")};
     --color-scheme: #{if($flavor == "latte", "light", "dark")};
-
-    @include generate-clipboard-icon-filters($flavor);
+    --copy-button-filter: #{map.get($filters, $flavor, "subtext0")};
+    --copy-button-filter-hover: #{map.get($filters, $flavor, "blue")};
   }
 }
