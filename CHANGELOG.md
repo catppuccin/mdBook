@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## [3.1.1](https://github.com/catppuccin/mdBook/compare/v3.1.0...v3.1.1) (2025-03-24)
+
+
+### Bug Fixes
+
+* theme clipboard copy button ([#154](https://github.com/catppuccin/mdBook/issues/154)) ([92eb828](https://github.com/catppuccin/mdBook/commit/92eb82828fc7077ae4860fadd277e58134fbd602))
+
+
+### Build system & distribution
+
+* **example:** update mdbook & mdbook-admonish ([#156](https://github.com/catppuccin/mdBook/issues/156)) ([ce6d873](https://github.com/catppuccin/mdBook/commit/ce6d8737732fda8a1856874afe7abb81ba42e262))
+
 ## [3.1.0](https://github.com/catppuccin/mdBook/compare/v3.0.3...v3.1.0) (2024-11-15)
 
 
