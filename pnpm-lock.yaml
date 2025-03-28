@@ -10,7 +10,7 @@ importers:
     devDependencies:
       '@catppuccin/highlightjs':
         specifier: ^1.0.0
-        version: 1.0.0
+        version: 1.0.1
       '@catppuccin/palette':
         specifier: ^1.4.0
         version: 1.7.1
@@ -20,8 +20,8 @@ importers:
 
 packages:
 
-  '@catppuccin/highlightjs@1.0.0':
-    resolution: {integrity: sha512-Cq0b5pNkzAxTf7QwXkGcMnfEawOdaJP9wQJNsLO1PCqml+NgMe7mOknH3l/j/0Q3bgjijm+N26B8BAYiv18oQg==}
+  '@catppuccin/highlightjs@1.0.1':
+    resolution: {integrity: sha512-wnagsNQbJroHQMalkprwRoapfGV1hHRx46d7GXp4kf6rlShImBlgpqPCt9OD471Gq4qpHdfFH/GJFIvY1CLqHA==}
 
   '@catppuccin/palette@1.7.1':
     resolution: {integrity: sha512-aRc1tbzrevOTV7nFTT9SRdF26w/MIwT4Jwt4fDMc9itRZUDXCuEDBLyz4TQMlqO9ZP8mf5Hu4Jr6D03NLFc6Gw==}
@@ -164,7 +164,7 @@ packages:
 
 snapshots:
 
-  '@catppuccin/highlightjs@1.0.0': {}
+  '@catppuccin/highlightjs@1.0.1': {}
 
   '@catppuccin/palette@1.7.1': {}
 
