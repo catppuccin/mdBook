@@ -17,9 +17,9 @@
   },
   "homepage": "https://github.com/catppuccin/mdBook#readme",
   "devDependencies": {
-    "@catppuccin/highlightjs": "^1.0.0",
-    "@catppuccin/palette": "^1.4.0",
-    "sass": "^1.79.3"
+    "@catppuccin/highlightjs": "^1.0.1",
+    "@catppuccin/palette": "^1.7.1",
+    "sass": "^1.86.0"
   },
   "packageManager": "pnpm@10.7.0"
 }
