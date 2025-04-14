@@ -55,9 +55,7 @@
    ```shell
    cd <name>
    # Remove all files except index.hbs
-   find ./theme -type f ! -name 'index.hbs' -delete
-   # Remove the left over empty directories
-   rm -d fonts css
+   find ./theme -mindepth 1 ! -name 'index.hbs' -delete
    ```
 
 3. Download the [catppuccin.css](https://github.com/catppuccin/mdBook/releases/latest/download/catppuccin.css)
