@@ -2,7 +2,7 @@
 @use "@catppuccin/palette/scss/catppuccin" as catppuccin;
 @use "@catppuccin/highlightjs/sass/_theme" as hljs;
 
-// filters taken from https://github.com/catppuccin/userstyles/blob/main/docs/guide/images-and-svgs.md#non-svg-images-or-many-img-elements-with-external-svgs
+// filters taken from https://userstyles.catppuccin.com/contributing/guides/images-and-svgs/
 $filters: (
   latte: (
     "subtext0": brightness(0) saturate(100%) invert(47%) sepia(6%)
