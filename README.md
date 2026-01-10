@@ -105,19 +105,6 @@
 
 6. Build using `mdbook build` and enjoy your new Catppuccin flavors!
 
-### Supported Plugins
-
-This theme also generates CSS files to style elements added by other mdBook
-plugins. We support the following list of plugins:
-
-| Plugin                                                            | CSS File                                                                                                         |
-| ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| [mdbook-admonish](https://github.com/tommilligan/mdbook-admonish) | [catppuccin-admonish.css](https://github.com/catppuccin/mdBook/releases/latest/download/catppuccin-admonish.css) |
-| [mdbook-alerts](https://github.com/lambdalisue/rs-mdbook-alerts)  | [catppuccin-alerts.css](https://github.com/catppuccin/mdBook/releases/latest/download/catppuccin-alerts.css)     |
-
-The CSS file(s) can be downloaded and added to the `additional-css` key shown
-in step `4.` of the [Usage](#usage) section.
-
 ## Development
 
 1. Clone the repository and navigate to the repository root.

@@ -110,5 +110,10 @@ $filters: (
     --color-scheme: #{if($flavor == "latte", "light", "dark")};
     --copy-button-filter: #{map.get($filters, $flavor, "subtext0")};
     --copy-button-filter-hover: #{map.get($filters, $flavor, "blue")};
+    --blockquote-note-color: #{map.get($colors, "blue")};
+    --blockquote-tip-color: #{map.get($colors, "green")};
+    --blockquote-important-color: #{map.get($colors, "mauve")};
+    --blockquote-warning-color: #{map.get($colors, "yellow")};
+    --blockquote-caution-color: #{map.get($colors, "red")};
   }
 }
