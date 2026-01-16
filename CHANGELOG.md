@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [4.0.0](https://github.com/catppuccin/mdBook/compare/v3.1.1...v4.0.0) (2026-01-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* support native mdbook alerts ([#176](https://github.com/catppuccin/mdBook/issues/176))
+
+### Features
+
+* support native mdbook alerts ([#176](https://github.com/catppuccin/mdBook/issues/176)) ([39dd772](https://github.com/catppuccin/mdBook/commit/39dd7726eeafc7442f17b4003692bae69a75aa68))
+
 ## [3.1.1](https://github.com/catppuccin/mdBook/compare/v3.1.0...v3.1.1) (2025-03-24)
 
 
