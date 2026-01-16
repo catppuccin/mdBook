@@ -1,11 +1,5 @@
 # Example Markdown Document
 
-## Information
-
-**crates.io**: [https://crates.io/crates/mdbook-catppuccin](https://crates.io/crates/mdbook-catppuccin)
-
-**repository**: [https://github.com/catppuccin/mdBook](https://github.com/catppuccin/mdBook)
-
 ## Text
 
 Here is a paragraph with bold text. **This is some bold text.** Here is a
@@ -16,17 +10,26 @@ another one with italic text. _This is some italic text._
 
 Here is another one with struckout text. ~~This is some struckout text.~~
 
-<div class="warning">
-  This is some text in a warning block.
+## Admonishments / Alerts
 
-  Warning blocks should be used sparingly in documentation, to avoid "warning
-  fatigue," where people are trained to ignore them because they usually don't
-  matter for what they're doing.
-</div>
+> [!NOTE]  
+> Highlights information that users should take into account, even when skimming.
+
+> [!TIP]
+> Optional information to help a user be more successful.
+
+> [!IMPORTANT]  
+> Crucial information necessary for users to succeed.
+
+> [!WARNING]  
+> Critical content demanding immediate user attention due to potential risks.
+
+> [!CAUTION]
+> Negative potential consequences of an action.
 
 ## Links
 
-Autolink: <http://example.com>
+GitHub Repository: [https://github.com/catppuccin/mdBook](https://github.com/catppuccin/mdBook)
 
 Link: [Example](http://example.com)
 
@@ -115,8 +118,8 @@ This is a code block:
 
 ## Html
 
-This is inline <span>html</html>.
-And this is an html block.
+This is inline <span>html</span>.
+And this is an html table:
 
 <table>
   <tr>
@@ -132,6 +135,14 @@ And this is an html block.
     <td>Row 2 Cell 2</td>
   </tr>
 </table>
+
+<div class="warning">
+  This is some text in an html warning block.
+
+  Warning blocks should be used sparingly in documentation, to avoid "warning
+  fatigue," where people are trained to ignore them because they usually don't
+  matter for what they're doing.
+</div>
 
 ## Horizontal rules
 

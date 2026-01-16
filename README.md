@@ -37,13 +37,6 @@
 
 ## Usage
 
-> [!IMPORTANT]  
-> The `mdbook-catppuccin` rust package has been deprecated. For further information
-> on why this decision was made, please refer to
-> [catppuccin/mdBook#107](https://github.com/catppuccin/mdBook/issues/107)
->
-> Please follow the instructions below to install the Catppuccin theme for mdBook.
-
 1. Initialise your mdBook with the theme files:
 
    ```shell
@@ -63,9 +56,6 @@
 3. Download the [catppuccin.css](https://github.com/catppuccin/mdBook/releases/latest/download/catppuccin.css)
    file from the [latest GitHub release](https://github.com/catppuccin/mdBook/releases/latest) to the `theme`
    directory.
-
-   See the [Supported Plugins](#supported-plugins) section below for integrations with other
-   mdBook plugins.
 
 4. Update `additional-css` key within the `book.toml` as shown below
 
@@ -105,19 +95,6 @@
 
 6. Build using `mdbook build` and enjoy your new Catppuccin flavors!
 
-### Supported Plugins
-
-This theme also generates CSS files to style elements added by other mdBook
-plugins. We support the following list of plugins:
-
-| Plugin                                                            | CSS File                                                                                                         |
-| ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| [mdbook-admonish](https://github.com/tommilligan/mdbook-admonish) | [catppuccin-admonish.css](https://github.com/catppuccin/mdBook/releases/latest/download/catppuccin-admonish.css) |
-| [mdbook-alerts](https://github.com/lambdalisue/rs-mdbook-alerts)  | [catppuccin-alerts.css](https://github.com/catppuccin/mdBook/releases/latest/download/catppuccin-alerts.css)     |
-
-The CSS file(s) can be downloaded and added to the `additional-css` key shown
-in step `4.` of the [Usage](#usage) section.
-
 ## Development
 
 1. Clone the repository and navigate to the repository root.
@@ -133,12 +110,6 @@ in step `4.` of the [Usage](#usage) section.
    pnpm install
    pnpm run build
    ```
-
-## Acknowledgement
-
-[mdbook-admonish](https://github.com/tommilligan/mdbook-admonish) for
-inspiration on the `install` command for the now deprecated `mdbook-catppuccin`
-binary.
 
 ## 💝 Thanks to
 

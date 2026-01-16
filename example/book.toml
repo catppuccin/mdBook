@@ -1,27 +1,16 @@
 [book]
 authors = ["sgoudham"]
 language = "en"
-multilingual = false
 src = "src"
 title = "Catppuccin's mdBook"
-
-[preprocessor.admonish]
-command = "mdbook-admonish"
-assets_version = "3.0.3" # do not edit: managed by `mdbook-admonish install`
-
-[preprocessor.alerts]
 
 [output.html]
 default-theme = "latte"
 preferred-dark-theme = "mocha"
 additional-css = [
-  "./theme/catppuccin.css",
-  "./theme/catppuccin-admonish.css",
-  "./theme/mdbook-admonish.css",
-  "./theme/catppuccin-alerts.css",
+  "./theme/catppuccin.css"
 ]
 no-section-label = true
 git-repository-url = "https://github.com/catppuccin/mdBook"
-git-repository-icon = "fa-github"
 edit-url-template = "https://github.com/catppuccin/mdBook/edit/main/example/{path}"
 cname = "mdbook.catppuccin.com"
