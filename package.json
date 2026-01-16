@@ -19,7 +19,7 @@
   "devDependencies": {
     "@catppuccin/highlightjs": "^1.0.1",
     "@catppuccin/palette": "^1.7.1",
-    "sass": "^1.86.0"
+    "sass": "^1.97.2"
   },
-  "packageManager": "pnpm@10.10.0"
+  "packageManager": "pnpm@10.28.0"
 }

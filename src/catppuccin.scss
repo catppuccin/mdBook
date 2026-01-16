@@ -105,6 +105,7 @@ $filters: (
     --searchresults-header-fg: #{map.get($colors, "text")};
     --searchresults-border-color: #{map.get($colors, "surface0")};
     --searchresults-li-bg: #{map.get($colors, "base")};
+    --sidebar-header-border-color: #{map.get($colors, "lavender")};
     --search-mark-bg: #{map.get($colors, "peach")};
     --warning-border: #{map.get($colors, "peach")};
     --color-scheme: #{if($flavor == "latte", "light", "dark")};

@@ -37,13 +37,6 @@
 
 ## Usage
 
-> [!IMPORTANT]  
-> The `mdbook-catppuccin` rust package has been deprecated. For further information
-> on why this decision was made, please refer to
-> [catppuccin/mdBook#107](https://github.com/catppuccin/mdBook/issues/107)
->
-> Please follow the instructions below to install the Catppuccin theme for mdBook.
-
 1. Initialise your mdBook with the theme files:
 
    ```shell
@@ -63,9 +56,6 @@
 3. Download the [catppuccin.css](https://github.com/catppuccin/mdBook/releases/latest/download/catppuccin.css)
    file from the [latest GitHub release](https://github.com/catppuccin/mdBook/releases/latest) to the `theme`
    directory.
-
-   See the [Supported Plugins](#supported-plugins) section below for integrations with other
-   mdBook plugins.
 
 4. Update `additional-css` key within the `book.toml` as shown below
 
@@ -120,12 +110,6 @@
    pnpm install
    pnpm run build
    ```
-
-## Acknowledgement
-
-[mdbook-admonish](https://github.com/tommilligan/mdbook-admonish) for
-inspiration on the `install` command for the now deprecated `mdbook-catppuccin`
-binary.
 
 ## 💝 Thanks to
 

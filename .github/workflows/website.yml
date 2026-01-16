@@ -16,7 +16,7 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Setup mdBook
         uses: peaceiris/actions-mdbook@v2
         with:
@@ -24,7 +24,7 @@ jobs:
       - name: Setup PNPM
         uses: pnpm/action-setup@v4
       - name: Setup Node
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version: "lts/*"
           cache: "pnpm"
@@ -37,7 +37,7 @@ jobs:
           mdbook build
         working-directory: ./example
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: "./example/book/"
       - name: Deploy artifact to GitHub Pages
