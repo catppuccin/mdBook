@@ -103,7 +103,7 @@ $filters: (
     --searchbar-fg: #{map.get($colors, "text")};
     --searchbar-shadow-color: #{map.get($colors, "crust")};
     --searchresults-header-fg: #{map.get($colors, "text")};
-    --searchresults-border-color: #{map.get($colors, "surface0")};
+    --searchresults-border-color: #{map.get($colors, "surface2")};
     --searchresults-li-bg: #{map.get($colors, "base")};
     --sidebar-header-border-color: #{map.get($colors, "lavender")};
     --search-mark-bg: #{map.get($colors, "peach")};
