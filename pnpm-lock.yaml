@@ -13,7 +13,7 @@ importers:
         version: 1.0.1
       '@catppuccin/palette':
         specifier: ^1.7.1
-        version: 1.7.1
+        version: 1.8.0
       sass:
         specifier: ^1.97.2
         version: 1.97.2
@@ -23,8 +23,8 @@ packages:
   '@catppuccin/highlightjs@1.0.1':
     resolution: {integrity: sha512-wnagsNQbJroHQMalkprwRoapfGV1hHRx46d7GXp4kf6rlShImBlgpqPCt9OD471Gq4qpHdfFH/GJFIvY1CLqHA==}
 
-  '@catppuccin/palette@1.7.1':
-    resolution: {integrity: sha512-aRc1tbzrevOTV7nFTT9SRdF26w/MIwT4Jwt4fDMc9itRZUDXCuEDBLyz4TQMlqO9ZP8mf5Hu4Jr6D03NLFc6Gw==}
+  '@catppuccin/palette@1.8.0':
+    resolution: {integrity: sha512-qXhwKiLzQomUygUJYB36YAFgs+dET5bIocfkiaFIatQF5Pwc7L112TlF9P8J5Oqs3x3XTjYSucG0ncHXSCuk7Q==}
 
   '@parcel/watcher-android-arm64@2.5.1':
     resolution: {integrity: sha512-KF8+j9nNbUN8vzOFDpRMsaKBHZ/mcjEjMToVMJOhTozkDonQFFrRcfdLWn6yWKCmJKmdVxSgHiYvTCef4/qcBA==}
@@ -172,7 +172,7 @@ snapshots:
 
   '@catppuccin/highlightjs@1.0.1': {}
 
-  '@catppuccin/palette@1.7.1': {}
+  '@catppuccin/palette@1.8.0': {}
 
   '@parcel/watcher-android-arm64@2.5.1':
     optional: true
